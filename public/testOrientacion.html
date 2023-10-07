@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orientacion Vocalcional</title>
+    <link rel="stylesheet" href="css/estilo.css">
+       <!-- fevicon -->
+   <link href="https://fonts.cdnfonts.com/css/cavolini" rel="stylesheet">
+   
+</head>
+<body class="fondo-con-logos">
+    <header class="header_section">
+        <div class="logo"><a href="index.html"><img src="images/logoesan.png" width="150" height="50"></a></div>
+        <div class="logos-derecha">
+            <a href="#"><img src="images/bienestoy.png" width="150" height="50"></a>
+            <a href="#"><img src="images/departamento.png" width="150" height="50"></a>
+        </div>
+    </header>
+    <div class="fondo-con-logos">
+        <form action="/procesar" method="post" id="formulario">
+            <!-- Sección 1 de preguntas -->
+            <div class="seccion-preguntas" id="seccion1">
+                <img id="imagenSeccion" src="images/sec1.png">
+                <h2 class="titulo-seccion">Sección 1: Datos Personales</h2>  <!-- Título de la sección 1 -->
+                <div class="contenedor-columnas">
+                    <!-- Primera columna -->
+                    <div class="columna">
+                        <label for="nombre">Nombre Completo:</label>
+                        <input type="text" id="nombre" name="nombre" oninput="validarTexto(this)" autocomplete="off" required>
+                        <br>
+                        
+                        <label for="codigo">Código:</label>
+                        <input type="text" id="codigo" name="codigo" maxlength="8" oninput="validarNumero(this)" autocomplete="off" required>
+                        <br>
+                        
+                        <label for="lugarNacimiento">Lugar de nacimiento:</label>
+                        <input type="text" id="lugarNacimiento" name="lugarNacimiento" oninput="validarTexto(this)" autocomplete="off" required>
+                        <br>
+                        
+                        <label for="fechaNacimiento">Fecha de nacimiento:</label>
+                        <input type="date" id="fechaNacimiento" name="fechaNacimiento" autocomplete="off" min="1900-01-01" required>
+                        <br>                        
+                        <label for="edad">Edad:</label>
+                        <input type="text" id="edad" name="edad" maxlength="2" oninput="validarNumero(this)" autocomplete="off"  required>
+                        <br>
+                    </div>
+                <!-- Segunda columna -->
+                    <div class="columna">
+                        <label for="estudioPrevio">¿Has estudiado antes en alguna universidad o instituto?</label>
+                        <br>
+                        <br>
+                        <select id="estudioPrevio" name="estudioPrevio" onchange="mostrarCamposAdicionales()">
+                            <option value="no">No</option>
+                            <option value="si">Sí</option>
+                        </select>
+                        <br>
+                        <br>
+                        <div id="camposAdicionales" style="display: none;">
+                            <label for="tiempoEstudio">¿Cuánto tiempo?</label>
+                            <input type="text" id="tiempoEstudio"  name="tiempoEstudio" autocomplete="off" >
+                            <br>
+                        
+                            <label for="lugarEstudio">¿Dónde?</label>
+                            <input type="text" id="lugarEstudio" oninput="validarTexto(this)" name="lugarEstudio" autocomplete="off" >
+                            <br>
+                        </div>
+                        
+                        <label for="carreraIngreso">¿A qué carrera ingresaste a la Universidad ESAN?</label>
+                        <input type="text" id="carreraIngreso" name="carreraIngreso" list="carreras" oninput="validarTexto(this)" autocomplete="off" required>
+                        <datalist id="carreras">
+                            <option value="Administración y Finanzas">
+                            <option value="Administración y Marketing">
+                            <option value="Economía y Negocios Internacionales">
+                            <option value="Administración y Gestión del Capital Humano">
+                            <option value="Administración y Negocios Internacionales">
+                            <option value="Comunicación Corporativa y Marketing Digital">
+                            <option value="Contabilidad y Auditoría">
+                            <option value="Economía y Finanzas">
+                            <option value="Ingeniería en Gestión Ambiental">
+                            <option value="Ingeniería de Tecnologías de Información y Sistemas">
+                            <option value="Ingeniería Industrial y Comercial">
+                            <option value="Ingeniería de Software">
+                            <option value="Ingeniería en Ciencias de Datos">
+                            <option value="Derecho Corporativo">
+                            <option value="Psicología">
+                        </datalist>
+                        <br>
+                        
+                        <label for="carreraDeseada">¿A qué carrera deseas cambiarte?</label>
+                        <input type="text" id="carreraDeseada" name="carreraDeseada" list="carrerasDeseadas" oninput="validarTexto(this)" autocomplete="off" required>
+                        <datalist id="carrerasDeseadas">
+                            <option value="Administración y Finanzas">
+                            <option value="Administración y Marketing">
+                            <option value="Economía y Negocios Internacionales">
+                            <option value="Administración y Gestión del Capital Humano">
+                            <option value="Administración y Negocios Internacionales">
+                            <option value="Comunicación Corporativa y Marketing Digital">
+                            <option value="Contabilidad y Auditoría">
+                            <option value="Economía y Finanzas">
+                            <option value="Ingeniería en Gestión Ambiental">
+                            <option value="Ingeniería de Tecnologías de Información y Sistemas">
+                            <option value="Ingeniería Industrial y Comercial">
+                            <option value="Ingeniería de Software">
+                            <option value="Ingeniería en Ciencias de Datos">
+                            <option value="Derecho Corporativo">
+                            <option value="Psicología">
+                        </datalist>
+                        <br>
+                    </div>
+                </div>
+            </div> 
+
+            <!-- Sección 2 de preguntas -->
+            <div class="seccion-preguntas" id="seccion2" style="display: none; width: 100%;">
+                <img id="imagenSeccion" src="images/sec2.png">
+                <h2 class="titulo-seccion">Sección 2: Historia Familiar</h2>  <!-- Título de la sección 1 -->
+                <!-- Primera columna -->
+                <div class="contenedor-columnas">
+                    <div class="columna">
+                        <label for="conQuienVives">¿Con quién vives?</label>
+                        <input type="text" id="conQuienVives" name="conQuienVives" oninput="validarTexto(this)" autocomplete="off"  required>
+                        <br>
+                
+                        <label for="profesionPadre">¿Cuál es la profesión de tu padre?</label>
+                        <input type="text" id="profesionPadre" name="profesionPadre" oninput="validarTexto(this)" autocomplete="off"  required>
+                        <br>
+                
+                        <label for="profesionMadre">¿Cuál es la profesión de tu madre?</label>
+                        <input type="text" id="profesionMadre" name="profesionMadre" oninput="validarTexto(this)" autocomplete="off"  required>
+                        <br>
+                
+                        <label for="influenciaCarrera">¿Quién es la persona que más influyó en tu elección de carrera?</label>
+                        <input type="text" id="influenciaCarrera" name="influenciaCarrera" oninput="validarTexto(this)" autocomplete="off"  required>
+                        <br>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección 3 de preguntas -->
+            <div class="seccion-preguntas" id="seccion3" style="display: none;">
+                <img id="imagenSeccion" src="images/sec3.png">
+                <h2 class="titulo-seccion">Sección 3: Historia Académica</h2>  <!-- Título de la sección 1 -->
+                <!-- Primera columna -->
+                <div class="contenedor-columnas">
+                    <div class="columna">
+                        <label for="cursosPreferidos">¿Cuáles eran tus cursos preferidos?</label>
+                        <input type="text" id="cursosPreferidos" name="cursosPreferidos" oninput="validarTexto(this)" autocomplete="off"  required>
+                        <br>
+                
+                        <label for="cursosDesagradables">¿Cuáles eran los cursos que te desagradaban?</label>
+                        <input type="text" id="cursosDesagradables" name="cursosDesagradables" oninput="validarTexto(this)" autocomplete="off"  required>
+                        <br>
+                
+                        <label for="mejoresNotas">¿Cuáles eran los cursos en los que obtuviste las mejores notas?</label>
+                        <input type="text" id="mejoresNotas" name="mejoresNotas" oninput="validarTexto(this)" autocomplete="off"  required>
+                        <br>
+
+                        <label for="peoresNotas">¿Cuáles eran los cursos en los que obtuviste las peores notas?</label>
+                        <input type="text" id="peoresNotas" name="peoresNotas" oninput="validarTexto(this)" autocomplete="off"  required>
+                        <br>
+
+                        <label for="cursosDesaprobados">¿Qué cursos desaprobaste?</label>
+                        <input type="text" id="cursosDesaprobados" name="cursosDesaprobados" oninput="validarTexto(this)" autocomplete="off"  required>
+                        <br>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección 4 de preguntas -->
+            <div class="seccion-preguntas" id="seccion4" style="display: none; width: 100%;">
+                <img id="imagenSeccion" src="images/sec4.png">
+                <h2 class="titulo-seccion">Sección 4: En la universidad</h2>  <!-- Título de la sección 1 -->
+                <div class="contenedor-columnas">
+                    <!-- Primera columna -->
+                    <div class="columna">
+                        <label for="cursosPreferidos">¿Cuáles han sido o son tus cursos preferidos?</label>
+                        <input type="text" id="cursosPreferidos" name="cursosPreferidos" oninput="validarTexto(this)" autocomplete="off"  required>
+                        <br>
+                
+                        <label for="cursosDesagradables">¿Qué cursos te desagradan?</label>
+                        <input type="text" id="cursosDesagradables" name="cursosDesagradables" oninput="validarTexto(this)" autocomplete="off"  required>
+                        <br>
+                
+                        <label for="mejoresNotas">¿En qué cursos has obtenido las mejores notas?</label>
+                        <input type="text" id="mejoresNotas" name="mejoresNotas" oninput="validarTexto(this)" autocomplete="off"  required>
+                        <br>
+
+                        <label for="peoresNotas">¿En qué cursos has obtenido las peores notas?</label>
+                        <input type="text" id="peoresNotas" name="peoresNotas" oninput="validarTexto(this)" autocomplete="off"  required>
+                        <br>
+                    </div>
+                    <!-- Segunda columna -->
+                    <div class="columna">
+                        <label for="cursosDesaprobados">¿Qué cursos has desaprobado?</label>
+                        <input type="text" id="cursosDesaprobados" name="cursosDesaprobados" oninput="validarTexto(this)" autocomplete="off"  required>
+                        <br>
+
+                        <label for="cursosRetirados">¿De qué curso o cursos te has retirado alguna vez?</label>
+                        <input type="text" id="cursosRetirados" name="cursosRetirados" oninput="validarTexto(this)" autocomplete="off"  required>
+                        <br>
+
+                        <label for="cursosBICAS">¿Has llevado algún curso o cursos por segunda vez (BICAS)?</label>
+                        <input type="text" id="cursosBICAS" name="cursosBICAS" oninput="validarTexto(this)" autocomplete="off"  required>
+                        <br>
+
+                        <label for="cursosTRICAS">¿Has llevado algún curso o cursos por tercera vez (TRICAS)?</label>
+                        <input type="text" id="cursosTRICAS" name="cursosTRICAS" oninput="validarTexto(this)" autocomplete="off"  required>
+                        <br>
+
+                        <label for="cursosAlumnoLibre">¿Has asistido a algún curso o cursos como alumno libre?</label>
+                        <input type="text" id="cursosAlumnoLibre" name="cursosAlumnoLibre" oninput="validarTexto(this)" autocomplete="off"  required>
+                        <br>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Sección 5 de preguntas -->
+            <div class="seccion-preguntas" id="seccion5" style="display: none;">
+                <img id="imagenSeccion" src="images/sec5.png">
+                <h2 class="titulo-seccion">Sección 5: Motivo de cambio</h2>  <!-- Título de la sección 1 -->
+                <!-- Primera columna -->
+                <div class="contenedor-columnas">
+                    <div class="columna">
+                        <label for="motivoCambioCarrera">¿Cuál es el motivo por el que deseas cambiarte de carrera?</label>
+                        <input type="text" id="motivoCambioCarrera" name="motivoCambioCarrera" oninput="validarTexto(this)" autocomplete="off"  required>
+                        <br>
+                        <br>
+                        <br>
+
+
+                        <label for="motivoDudaCambio">¿Cuál es el motivo que te hace dudar de cambiarte de carrera?</label>
+                        <input type="text" id="motivoDudaCambio" name="motivoDudaCambio" oninput="validarTexto(this)" autocomplete="off"  required>
+                        <br>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección 6 de preguntas -->
+            <div class="seccion-preguntas" id="seccion6" style="display: none;">
+                <img id="imagenSeccion" src="images/sec6.png">
+                <h2 class="titulo-seccion">Sección 6: Tus Propócitos</h2>  <!-- Título de la sección 1 -->
+                <!-- Primera columna -->
+                <div class="contenedor-columnas">
+                    <div class="columna">
+                        <label for="amasHacer">¿Qué es lo que amas hacer?</label>
+                        <input type="text" id="amasHacer" name="amasHacer" oninput="validarTexto(this)" autocomplete="off"  required>
+                        <br>
+
+                        <label for="talentos">¿Cuáles consideras que son tus talentos?</label>
+                        <input type="text" id="talentos" name="talentos" oninput="validarTexto(this)" autocomplete="off"  required>
+                        <br>
+
+                        <label for="actividadGustaria">¿Qué actividad te gustaría realizar o consideras que haces bien?</label>
+                        <input type="text" id="actividadGustaria" name="actividadGustaria" oninput="validarTexto(this)" autocomplete="off"  required>
+                        <br>
+                        
+                        <label for="actividadRentable">¿Crees que esa actividad es rentable o que alguien te podría pagar por hacerla?</label>
+                        <input type="text" id="actividadRentable" name="actividadRentable" oninput="validarTexto(this)" autocomplete="off"  required>
+                        <br>                        
+
+                        <label for="necesidadMundo">Con una visión de negocio y de acuerdo a tus habilidades ¿Qué consideras es lo que el mundo necesita?</label>
+                        <input type="text" id="necesidadMundo" name="necesidadMundo" oninput="validarTexto(this)" autocomplete="off"  required>
+                        <br>
+                    </div>
+                </div>
+            </div>
+            <!-- Sección 7 de preguntas -->
+            <div class="seccion-preguntas" id="seccion7" style="display: none;">
+                <img id="imagenSeccion" src="images/sec7.png">
+                <h2 class="titulo-seccion">Sección 7: información para la cita</h2>  <!-- Título de la sección 1 -->
+                <!-- Primera columna -->
+                <div class="contenedor-columnas">
+                    <div class="columna">
+                        <!-- Campo para subir imagen -->
+                        <label for="imagenHorario">Sube una imagen de tu horario:</label>
+                        <input type="file" id="imagenHorario" name="imagenHorario" accept="image/*" required><br>
+
+                        <!-- Campo para seleccionar días preferidos -->
+                        <label for="diasCita">¿Qué días preferirías para la cita?</label>
+                        <br>
+                        <br>
+                        <select id="diasCita" name="diasCita" class="select-estilo" required>
+                            <option value="" disabled selected>Selecciona un día</option>
+                            <option value="Lunes">Lunes</option>
+                            <option value="Martes">Martes</option>
+                            <option value="Miércoles">Miércoles</option>
+                            <option value="Jueves">Jueves</option>
+                            <option value="Viernes">Viernes</option>
+                        </select><br>
+                    </div>
+                </div>
+            </div>
+            <div id="mensaje-exito" class="mensaje-exito"></div>
+            <div class="botones-contenedor">
+                <button id="anterior" type="button">Anterior</button>
+                <button id="botonSiguiente" type="button">Siguiente</button>                
+                <!-- Otros botones que puedas tener -->
+            </div>
+            <input type="submit" value="Enviar" id="enviar" style="display: none;">
+        </form>
+    </div> 
+    <!-- Aquí es donde vinculas tu archivo JavaScript -->
+    <script src="script.js"></script>  
+</body>
+</html>
