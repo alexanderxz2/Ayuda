@@ -6,7 +6,7 @@ html, body {
 #formulario {
     position: absolute;
     z-index: 2;  
-    top: 50px;
+    top: 20px;
     left: 50%;
     transform: translateX(-50%);
     width: 80%;
@@ -201,5 +201,36 @@ img {
     opacity: 0.1;        /* ajusta la opacidad según lo que necesites, 0.2 es bastante transparente */
     z-index: -1;          /* asegura que la imagen esté detrás del contenido principal pero encima del fondo */
 }
+.opcion {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    margin-bottom: 10px; /* Ajusta este valor según lo necesites */
+    padding: 5px; 
+}
+
+.checkbox {
+    width: 40px;
+    height: 40px;
+    margin-left: 8px;  /* Ajusta el espacio entre el checkbox y la etiqueta */
+}
+
+/* Asegúrate de que las etiquetas estén alineadas verticalmente con los checkboxes */
+.opcion label {
+    margin: 0;
+    line-height: 1.5;
+}
+.contenedor-centrado {
+    width: 80%;  /* Ajusta el porcentaje según lo necesites */
+    margin: auto;
+    margin-left: 10%;  /* Ajusta el porcentaje según lo necesites */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
 
 

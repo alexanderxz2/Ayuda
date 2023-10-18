@@ -24,6 +24,8 @@ const transporter = nodemailer.createTransport({
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use('/descargas', express.static(path.join(__dirname, 'descargas')));
+app.use(bodyParser.text({ limit: '10mb', type: 'text/plain' }));
+
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
@@ -104,6 +106,10 @@ app.post('/procesar', upload, (req, res) => {
             
             const imagenHorario = req.files && req.files.length > 0 ? req.files[0] : null;
 
+            const imagenData = req.body.imagenData;
+            // Convertir la Data URL a un Buffer
+            const imagenBuffer = Buffer.from(imagenData.split(',')[1], 'base64');
+
             const mailOptions = {
                 from: 'tuCorreo@gmail.com',
                 to: 'myangali@esan.edu.pe',
@@ -113,6 +119,11 @@ app.post('/procesar', upload, (req, res) => {
                     {   // Adjunto del archivo DOCX
                         filename: path.basename(filename),
                         path: filename
+                    },
+                    {   // Adjunto del gráfico
+                        filename: 'grafico.png',
+                        encoding: 'base64',
+                        content: imagenBuffer
                     },
                     imagenHorario ? {  // Adjunto de la imagen del horario
                         filename: imagenHorario.originalname,

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -267,10 +270,896 @@
                     </div>
                 </div>
             </div>
-            <!-- Sección 7 de preguntas -->
+            <!-- ---------------------(Test de Holland)------------------------------------------------- -->
+            <!-- Sección 6.1 de preguntas (Test de Holland) -->
             <div class="seccion-preguntas" id="seccion7" style="display: none;">
+                <img id="imagenSeccion" src="images/sec6.png">
+                <h2 class="titulo-seccion">Sección 6.1: Test de Holland</h2>
+                <!-- Contenido de la sección -->
+                <div class="contenedor-columnas">
+                    <!-- Columna de la izquierda -->
+                    <div class="columna">
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion1" name="opcion1" value="Falso" class="checkbox">
+                            <label for="opcion1">Criminólogo</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion2" name="opcion2" value="Falso" class="checkbox">
+                            <label for="opcion2">Investigador privado</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion3" name="opcion3" value="Falso" class="checkbox">
+                            <label for="opcion3">Empleado de restaurante</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion4" name="opcion4" value="Falso" class="checkbox">
+                            <label for="opcion4">Detective</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion5" name="opcion5" value="Falso" class="checkbox">
+                            <label for="opcion5">Fotograbador</label>
+                        </div>
+                    </div>
+                    <!-- Columna de la derecha -->
+                    <div class="columna">
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion6" name="opcion6" value="Falso" class="checkbox">
+                            <label for="opcion6">Vendedor de hortalizas</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion7" name="opcion7" value="Falso" class="checkbox">
+                            <label for="opcion7">Profesor de Educación física</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion8" name="opcion8" value="Falso" class="checkbox">
+                            <label for="opcion8">Humorista</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion9" name="opcion9" value="Falso" class="checkbox">
+                            <label for="opcion9">Fotógrafo</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion10" name="opcion10" value="Falso" class="checkbox">
+                            <label for="opcion10">Diplomático</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Sección 8 de preguntas (Test de Holland) -->
+            <div class="seccion-preguntas" id="seccion8" style="display: none;">
+                <img id="imagenSeccion" src="images/sec6.png">
+                <h2 class="titulo-seccion">Sección 6.1: Test de Holland</h2>
+                <!-- Contenido de la sección -->
+                <div class="contenedor-columnas">
+                    <!-- Columna de la izquierda -->
+                    <div class="columna">
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion11" name="opcion11" value="R" class="checkbox">
+                            <label for="opcion11">Mecánico de aviones</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion12" name="opcion12" value="I" class="checkbox">
+                            <label for="opcion12">Meteorólogo</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion13" name="opcion13" value="S" class="checkbox">
+                            <label for="opcion13">Sociólogo</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion14" name="opcion14" value="C" class="checkbox">
+                            <label for="opcion14">Bibliotecario</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion15" name="opcion15" value="E" class="checkbox">
+                            <label for="opcion15">Corredor de la Bolsa</label>
+                        </div>
+                    </div>
+                    <!-- Columna de la derecha -->
+                    <div class="columna">
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion16" name="opcion16" value="A" class="checkbox">
+                            <label for="opcion16">Poeta</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion17" name="opcion17" value="Falso" class="checkbox">
+                            <label for="opcion17">Buzo</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion18" name="opcion18" value="Falso" class="checkbox">
+                            <label for="opcion18">Técnico de Inventarios</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion19" name="opcion19" value="Falso" class="checkbox">
+                            <label for="opcion19">Profesor de arte dramático</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion20" name="opcion20" value="Falso" class="checkbox">
+                            <label for="opcion20">Abogado</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Sección 9 de preguntas (Test de Holland) -->
+            <div class="seccion-preguntas" id="seccion9" style="display: none;">
+                <img id="imagenSeccion" src="images/sec6.png">
+                <h2 class="titulo-seccion">Sección 9: Test de Holland</h2>
+                <!-- Contenido de la sección -->
+                <div class="contenedor-columnas">
+                    <!-- Columna de la izquierda -->
+                    <div class="columna">
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion21" name="opcion21" value="R" class="checkbox">
+                            <label for="opcion21">Especialista en vida animal</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion22" name="opcion22" value="I" class="checkbox">
+                            <label for="opcion22">Biólogo</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion23" name="opcion23" value="S" class="checkbox">
+                            <label for="opcion23">Profesor Educación Media</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion24" name="opcion24" value="C" class="checkbox">
+                            <label for="opcion24">Empleado de Comercio Exterior</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion25" name="opcion25" value="E" class="checkbox">
+                            <label for="opcion25">Agente de aduanas</label>
+                        </div>
+                    </div>
+                    <!-- Columna de la derecha -->
+                    <div class="columna">
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion26" name="opcion26" value="A" class="checkbox">
+                            <label for="opcion26">Director de orquesta sinfónica</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion27" name="opcion27" value="Falso" class="checkbox">
+                            <label for="opcion27">Paracaidista</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion28" name="opcion28" value="Falso" class="checkbox">
+                            <label for="opcion28">Veterinario</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion29" name="opcion29" value="Falso" class="checkbox">
+                            <label for="opcion29">Profesor Educación Básica</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion30" name="opcion30" value="Falso" class="checkbox">
+                            <label for="opcion30">Médico</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Sección 10 de preguntas (Test de Holland) -->
+            <div class="seccion-preguntas" id="seccion10" style="display: none;">
+                <img id="imagenSeccion" src="images/sec6.png">
+                <h2 class="titulo-seccion">Sección 10: Test de Holland</h2>
+                <!-- Contenido de la sección -->
+                <div class="contenedor-columnas">
+                    <!-- Columna de la izquierda -->
+                    <div class="columna">
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion31" name="opcion31" value="R" class="checkbox">
+                            <label for="opcion31">Mecánico automotriz</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion32" name="opcion32" value="I" class="checkbox">
+                            <label for="opcion32">Astrónomo</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion33" name="opcion33" value="S" class="checkbox">
+                            <label for="opcion33">Experto en delincuencia juvenil</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion34" name="opcion34" value="C" class="checkbox">
+                            <label for="opcion34">Analista de presupuesto</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion35" name="opcion35" value="E" class="checkbox">
+                            <label for="opcion35">Ejecutivo de agencia de publicidad</label>
+                        </div>
+                    </div>
+                    <!-- Columna de la derecha -->
+                    <div class="columna">
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion36" name="opcion36" value="A" class="checkbox">
+                            <label for="opcion36">Músico</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion37" name="opcion37" value="Falso" class="checkbox">
+                            <label for="opcion37">Karateca</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion38" name="opcion38" value="Falso" class="checkbox">
+                            <label for="opcion38">Empleado de oficina de correo</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion39" name="opcion39" value="Falso" class="checkbox">
+                            <label for="opcion39">Ingeniero de investigación</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion40" name="opcion40" value="Falso" class="checkbox">
+                            <label for="opcion40">Acomodador de teatro</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Sección 11 de preguntas (Test de Holland) -->
+            <div class="seccion-preguntas" id="seccion11" style="display: none;">
+                <img id="imagenSeccion" src="images/sec6.png">
+                <h2 class="titulo-seccion">Sección 11: Test de Holland</h2>
+                <!-- Contenido de la sección -->
+                <div class="contenedor-columnas">
+                    <!-- Columna de la izquierda -->
+                    <div class="columna">
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion41" name="opcion41" value="R" class="checkbox">
+                            <label for="opcion41">Mueblista</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion42" name="opcion42" value="I" class="checkbox">
+                            <label for="opcion42">Tecnólogo Médico</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion43" name="opcion43" value="S" class="checkbox">
+                            <label for="opcion43">Educador especial en lenguaje</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion44" name="opcion44" value="C" class="checkbox">
+                            <label for="opcion44">Contador auditor</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion45" name="opcion45" value="E" class="checkbox">
+                            <label for="opcion45">Representante de Fábrica</label>
+                        </div>
+                    </div>
+                    <!-- Columna de la derecha -->
+                    <div class="columna">
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion46" name="opcion46" value="A" class="checkbox">
+                            <label for="opcion46">Autor</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion47" name="opcion47" value="Falso" class="checkbox">
+                            <label for="opcion47">Bombero</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion48" name="opcion48" value="Falso" class="checkbox">
+                            <label for="opcion48">Vendedor de pasajes aéreos</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion49" name="opcion49" value="Falso" class="checkbox">
+                            <label for="opcion49">Animador de espectáculos</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion50" name="opcion50" value="Falso" class="checkbox">
+                            <label for="opcion50">Director de financiera</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Sección 12 de preguntas (Test de Holland) -->
+            <div class="seccion-preguntas" id="seccion12" style="display: none;">
+                <img id="imagenSeccion" src="images/sec6.png">
+                <h2 class="titulo-seccion">Sección 12: Test de Holland</h2>
+                <!-- Contenido de la sección -->
+                <div class="contenedor-columnas">
+                    <!-- Columna de la izquierda -->
+                    <div class="columna">
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion51" name="opcion51" value="R" class="checkbox">
+                            <label for="opcion51">Relojero</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion52" name="opcion52" value="I" class="checkbox">
+                            <label for="opcion52">Antropólogo</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion53" name="opcion53" value="S" class="checkbox">
+                            <label for="opcion53">Orientador Matrimonial</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion54" name="opcion54" value="C" class="checkbox">
+                            <label for="opcion54">Investigador de crédito</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion55" name="opcion55" value="E" class="checkbox">
+                            <label for="opcion55">Productor de TV</label>
+                        </div>
+                    </div>
+                    <!-- Columna de la derecha -->
+                    <div class="columna">
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion56" name="opcion56" value="A" class="checkbox">
+                            <label for="opcion56">Actor/Actriz</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion57" name="opcion57" value="Falso" class="checkbox">
+                            <label for="opcion57">Entrenador de animales salvajes</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion58" name="opcion58" value="Falso" class="checkbox">
+                            <label for="opcion58">Supervisor Administrativo</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion59" name="opcion59" value="Falso" class="checkbox">
+                            <label for="opcion59">Kinesiólogo</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion60" name="opcion60" value="Falso" class="checkbox">
+                            <label for="opcion60">Cajero</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Sección 13 de preguntas (Test de Holland) -->
+            <div class="seccion-preguntas" id="seccion13" style="display: none;">
+                <img id="imagenSeccion" src="images/sec6.png">
+                <h2 class="titulo-seccion">Sección 13: Test de Holland</h2>
+                <!-- Contenido de la sección -->
+                <div class="contenedor-columnas">
+                    <!-- Columna de la izquierda -->
+                    <div class="columna">
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion61" name="opcion61" value="R" class="checkbox">
+                            <label for="opcion61">Técnico dental</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion62" name="opcion62" value="I" class="checkbox">
+                            <label for="opcion62">Médico Veterinario</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion63" name="opcion63" value="S" class="checkbox">
+                            <label for="opcion63">Director de Colegio</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion64" name="opcion64" value="C" class="checkbox">
+                            <label for="opcion64">Taquígrafo de tribunal</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion65" name="opcion65" value="E" class="checkbox">
+                            <label for="opcion65">Gerente de Hotel</label>
+                        </div>
+                    </div>
+                    <!-- Columna de la derecha -->
+                    <div class="columna">
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion66" name="opcion66" value="A" class="checkbox">
+                            <label for="opcion66">Escritor</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion67" name="opcion67" value="Falso" class="checkbox">
+                            <label for="opcion67">Acróbata</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion68" name="opcion68" value="Falso" class="checkbox">
+                            <label for="opcion68">Vendedor viajero</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion69" name="opcion69" value="Falso" class="checkbox">
+                            <label for="opcion69">Atleta Profesional</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion70" name="opcion70" value="Falso" class="checkbox">
+                            <label for="opcion70">Sobrecargo de buses provinciales</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Sección 14 de preguntas (Test de Holland) -->
+            <div class="seccion-preguntas" id="seccion14" style="display: none;">
+                <img id="imagenSeccion" src="images/sec6.png">
+                <h2 class="titulo-seccion">Sección 14: Test de Holland</h2>
+                <!-- Contenido de la sección -->
+                <div class="contenedor-columnas">
+                    <!-- Columna de la izquierda -->
+                    <div class="columna">
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion71" name="opcion71" value="R" class="checkbox">
+                            <label for="opcion71">Inspector de Construcciones</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion72" name="opcion72" value="I" class="checkbox">
+                            <label for="opcion72">Químico</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion73" name="opcion73" value="S" class="checkbox">
+                            <label for="opcion73">Presidente de junta vecinos</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion74" name="opcion74" value="C" class="checkbox">
+                            <label for="opcion74">Administrador de caja</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion75" name="opcion75" value="E" class="checkbox">
+                            <label for="opcion75">Gerente de empresa</label>
+                        </div>
+                    </div>
+                    <!-- Columna de la derecha -->
+                    <div class="columna">
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion76" name="opcion76" value="A" class="checkbox">
+                            <label for="opcion76">Areglador musical</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion77" name="opcion77" value="Falso" class="checkbox">
+                            <label for="opcion77">Jinete profesional</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion78" name="opcion78" value="Falso" class="checkbox">
+                            <label for="opcion78">Decorador de interiores</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion79" name="opcion79" value="Falso" class="checkbox">
+                            <label for="opcion79">Piloto de aviones</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion80" name="opcion80" value="Falso" class="checkbox">
+                            <label for="opcion80">Presidente de Banco</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        <!-- Sección 6.1 de preguntas (Test de Holland) -->
+            <div class="seccion-preguntas" id="seccion15" style="display: none;">
+                <img id="imagenSeccion" src="images/sec6.png">
+                <h2 class="titulo-seccion">Sección 6.1: Test de Holland</h2>
+                <!-- Contenido de la sección -->
+                <div class="contenedor-columnas">
+                    <div class="columna">
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion81" name="opcion81" value="R" class="checkbox">
+                            <label for="opcion81">Radio operador</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion82" name="opcion82" value="I" class="checkbox">
+                            <label for="opcion82">Investigador científico independiente</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion83" name="opcion83" value="S" class="checkbox">
+                            <label for="opcion83">Psicólogo clínico</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion84" name="opcion84" value="C" class="checkbox">
+                            <label for="opcion84">Inspector de impuesto</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion85" name="opcion85" value="E" class="checkbox">
+                            <label for="opcion85">Concesionario automotriz</label>
+                        </div>
+                    </div>
+                    <div class="columna">
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion86" name="opcion86" value="A" class="checkbox">
+                            <label for="opcion86">Periodista</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion87" name="opcion87" value="Falso" class="checkbox">
+                            <label for="opcion87">Motociclista</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion88" name="opcion88" value="Falso" class="checkbox">
+                            <label for="opcion88">Gerente de tienda grande</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion89" name="opcion89" value="Falso" class="checkbox">
+                            <label for="opcion89">Árbitro deportivo</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion90" name="opcion90" value="Falso" class="checkbox">
+                            <label for="opcion90">Cartero</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección 15 de preguntas (Test de Holland) -->
+            <div class="seccion-preguntas" id="seccion16" style="display: none;">
+                <img id="imagenSeccion" src="images/sec6.png">
+                <h2 class="titulo-seccion">Sección 15: Test de Holland</h2>
+                <!-- Contenido de la sección -->
+                <div class="contenedor-columnas">
+                    <!-- Columna de la izquierda -->
+                    <div class="columna">
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion91" name="opcion91" value="R" class="checkbox">
+                            <label for="opcion91">Jefe de taller automotriz</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion92" name="opcion92" value="I" class="checkbox">
+                            <label for="opcion92">Escritor de artículos científicos</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion93" name="opcion93" value="S" class="checkbox">
+                            <label for="opcion93">Profesor jefe</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion94" name="opcion94" value="C" class="checkbox">
+                            <label for="opcion94">Empleado administrativo</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion95" name="opcion95" value="E" class="checkbox">
+                            <label for="opcion95">Locutor de radio</label>
+                        </div>
+                    </div>
+                    <!-- Columna de la derecha -->
+                    <div class="columna">
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion96" name="opcion96" value="A" class="checkbox">
+                            <label for="opcion96">Caricaturista</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion97" name="opcion97" value="Falso" class="checkbox">
+                            <label for="opcion97">Técnico en explosiones</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion98" name="opcion98" value="Falso" class="checkbox">
+                            <label for="opcion98">Oficial de las FFAA</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion99" name="opcion99" value="Falso" class="checkbox">
+                            <label for="opcion99">Profesor de Castellano</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion100" name="opcion100" value="Falso" class="checkbox">
+                            <label for="opcion100">Funcionario de la ONU</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Sección 16 de preguntas (Test de Holland) -->
+            <div class="seccion-preguntas" id="seccion17" style="display: none;">
+                <img id="imagenSeccion" src="images/sec6.png">
+                <h2 class="titulo-seccion">Sección 16: Test de Holland</h2>
+                <!-- Contenido de la sección -->
+                <div class="contenedor-columnas">
+                    <!-- Columna de la izquierda -->
+                    <div class="columna">
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion101" name="opcion101" value="R" class="checkbox">
+                            <label for="opcion101">Experto en patología de árboles</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion102" name="opcion102" value="I" class="checkbox">
+                            <label for="opcion102">Editor de revistas científicas</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion103" name="opcion103" value="S" class="checkbox">
+                            <label for="opcion103">Director de hogares de Menores</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion104" name="opcion104" value="C" class="checkbox">
+                            <label for="opcion104">Operador de equipo IBM</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion105" name="opcion105" value="E" class="checkbox">
+                            <label for="opcion105">Agente de rentas</label>
+                        </div>
+                    </div>
+                    <!-- Columna de la derecha -->
+                    <div class="columna">
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion106" name="opcion106" value="A" class="checkbox">
+                            <label for="opcion106">Cantante</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion107" name="opcion107" value="Falso" class="checkbox">
+                            <label for="opcion107">Agente de Investigaciones de Chile</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion108" name="opcion108" value="Falso" class="checkbox">
+                            <label for="opcion108">Agente de custodia para la libertad provisional</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion109" name="opcion109" value="Falso" class="checkbox">
+                            <label for="opcion109">Astronauta</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion110" name="opcion110" value="Falso" class="checkbox">
+                            <label for="opcion110">Profesor universitario</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección 17 de preguntas (Test de Holland) -->
+            <div class="seccion-preguntas" id="seccion18" style="display: none;">
+                <img id="imagenSeccion" src="images/sec6.png">
+                <h2 class="titulo-seccion">Sección 17: Test de Holland</h2>
+                <!-- Contenido de la sección -->
+                <div class="contenedor-columnas">
+                    <!-- Columna de la izquierda -->
+                    <div class="columna">
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion111" name="opcion111" value="R" class="checkbox">
+                            <label for="opcion111">Chofer de bus interprovincial</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion112" name="opcion112" value="I" class="checkbox">
+                            <label for="opcion112">Geólogo</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion113" name="opcion113" value="S" class="checkbox">
+                            <label for="opcion113">Jefe de grupos juveniles</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion114" name="opcion114" value="C" class="checkbox">
+                            <label for="opcion114">Análisis de finanzas</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion115" name="opcion115" value="E" class="checkbox">
+                            <label for="opcion115">Comerciante</label>
+                        </div>
+                    </div>
+                    <!-- Columna de la derecha -->
+                    <div class="columna">
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion116" name="opcion116" value="A" class="checkbox">
+                            <label for="opcion116">Compositor</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion117" name="opcion117" value="Falso" class="checkbox">
+                            <label for="opcion117">Andinista</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion118" name="opcion118" value="Falso" class="checkbox">
+                            <label for="opcion118">Maestro de cocina</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion119" name="opcion119" value="Falso" class="checkbox">
+                            <label for="opcion119">Director de teatro</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion120" name="opcion120" value="Falso" class="checkbox">
+                            <label for="opcion120">Boletero</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Sección 18 de preguntas (Test de Holland) -->
+            <div class="seccion-preguntas" id="seccion19" style="display: none;">
+                <img id="imagenSeccion" src="images/sec6.png">
+                <h2 class="titulo-seccion">Sección 18: Test de Holland</h2>
+                <!-- Contenido de la sección -->
+                <div class="contenedor-columnas">
+                    <!-- Columna de la izquierda -->
+                    <div class="columna">
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion121" name="opcion121" value="R" class="checkbox">
+                            <label for="opcion121">Técnico Industrial</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion122" name="opcion122" value="I" class="checkbox">
+                            <label for="opcion122">Botánico</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion123" name="opcion123" value="S" class="checkbox">
+                            <label for="opcion123">Orientador personal</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion124" name="opcion124" value="C" class="checkbox">
+                            <label for="opcion124">Telegrafista</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion125" name="opcion125" value="E" class="checkbox">
+                            <label for="opcion125">Director de publicidad</label>
+                        </div>
+                    </div>
+                    <!-- Columna de la derecha -->
+                    <div class="columna">
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion126" name="opcion126" value="A" class="checkbox">
+                            <label for="opcion126">Escultor</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion127" name="opcion127" value="Falso" class="checkbox">
+                            <label for="opcion127">Explorador</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion128" name="opcion128" value="Falso" class="checkbox">
+                            <label for="opcion128">Profesor de jardín infantil</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion129" name="opcion129" value="Falso" class="checkbox">
+                            <label for="opcion129">Experto en control de calidad</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion130" name="opcion130" value="Falso" class="checkbox">
+                            <label for="opcion130">Ministro de la Corte Suprema</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Sección 19 de preguntas (Test de Holland) -->
+            <div class="seccion-preguntas" id="seccion20" style="display: none;">
+                <img id="imagenSeccion" src="images/sec6.png">
+                <h2 class="titulo-seccion">Sección 19: Test de Holland</h2>
+                <!-- Contenido de la sección -->
+                <div class="contenedor-columnas">
+                    <!-- Columna de la izquierda -->
+                    <div class="columna">
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion131" name="opcion131" value="R" class="checkbox">
+                            <label for="opcion131">Maquinista de locomotora</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion132" name="opcion132" value="I" class="checkbox">
+                            <label for="opcion132">Asistente de investigaciones científicas</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion133" name="opcion133" value="S" class="checkbox">
+                            <label for="opcion133">Asistente social psiquiátrico</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion134" name="opcion134" value="C" class="checkbox">
+                            <label for="opcion134">Empleado de contabilidad</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion135" name="opcion135" value="E" class="checkbox">
+                            <label for="opcion135">Promotor de deportes</label>
+                        </div>
+                    </div>
+                    <!-- Columna de la derecha -->
+                    <div class="columna">
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion136" name="opcion136" value="A" class="checkbox">
+                            <label for="opcion136">Dramaturgo</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion137" name="opcion137" value="Falso" class="checkbox">
+                            <label for="opcion137">Piloto de pruebas aéreas</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion138" name="opcion138" value="Falso" class="checkbox">
+                            <label for="opcion138">Programador de computadoras</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion139" name="opcion139" value="Falso" class="checkbox">
+                            <label for="opcion139">Diseñador de modas</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion140" name="opcion140" value="Falso" class="checkbox">
+                            <label for="opcion140">Chofer de camión</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Sección 20 de preguntas (Test de Holland) -->
+            <div class="seccion-preguntas" id="seccion21" style="display: none;">
+                <img id="imagenSeccion" src="images/sec6.png">
+                <h2 class="titulo-seccion">Sección 20: Test de Holland</h2>
+                <!-- Contenido de la sección -->
+                <div class="contenedor-columnas">
+                    <!-- Columna de la izquierda -->
+                    <div class="columna">
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion141" name="opcion141" value="R" class="checkbox">
+                            <label for="opcion141">Técnico electrónico</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion142" name="opcion142" value="I" class="checkbox">
+                            <label for="opcion142">Físico</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion143" name="opcion143" value="S" class="checkbox">
+                            <label for="opcion143">Orientador vocacional</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion144" name="opcion144" value="C" class="checkbox">
+                            <label for="opcion144">Inspector de bancos</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion145" name="opcion145" value="E" class="checkbox">
+                            <label for="opcion145">Gerente de ventas</label>
+                        </div>
+                    </div>
+                    <!-- Columna de la derecha -->
+                    <div class="columna">
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion146" name="opcion146" value="A" class="checkbox">
+                            <label for="opcion146">Caricaturistas</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion147" name="opcion147" value="Falso" class="checkbox">
+                            <label for="opcion147">Corredor de autos</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion148" name="opcion148" value="Falso" class="checkbox">
+                            <label for="opcion148">Ingeniero forestal</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion149" name="opcion149" value="Falso" class="checkbox">
+                            <label for="opcion149">Asistente social</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion150" name="opcion150" value="Falso" class="checkbox">
+                            <label for="opcion150">Vendedor</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección 21 de preguntas (Test de Holland) -->
+            <div class="seccion-preguntas" id="seccion22" style="display: none;">
+                <img id="imagenSeccion" src="images/sec6.png">
+                <h2 class="titulo-seccion">Sección 21: Test de Holland</h2>
+                <!-- Contenido de la sección -->
+                <div class="contenedor-columnas">
+                    <!-- Columna de la izquierda -->
+                    <div class="columna">
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion151" name="opcion151" value="Falso" class="checkbox">
+                            <label for="opcion151">Administrador de funeraria</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion152" name="opcion152" value="Falso" class="checkbox">
+                            <label for="opcion152">Mentalista</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion153" name="opcion153" value="Falso" class="checkbox">
+                            <label for="opcion153">Arquitecto</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion154" name="opcion154" value="Falso" class="checkbox">
+                            <label for="opcion154">Empleado de envios o entregas</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion155" name="opcion155" value="Falso" class="checkbox">
+                            <label for="opcion155">Psicólogo Criminalista</label>
+                        </div>
+                    </div>
+                    <!-- Columna de la derecha -->
+                    <div class="columna">
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion156" name="opcion156" value="Falso" class="checkbox">
+                            <label for="opcion156">Empleado de seguros</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion157" name="opcion157" value="Falso" class="checkbox">
+                            <label for="opcion157">Peluquero</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion158" name="opcion158" value="Falso" class="checkbox">
+                            <label for="opcion158">Cobrador de cuentas</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion159" name="opcion159" value="Falso" class="checkbox">
+                            <label for="opcion159">Vigilante de pabellón carcelario</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="opcion160" name="opcion160" value="Falso" class="checkbox">
+                            <label for="opcion160">Masajista</label>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sección final de preguntas -->
+            </div>
+
+
+            <!-- ---------------------(Resultados)------------------------------------------------- -->
+            <!-- Sección final de preguntas -->
+            <div class="seccion-preguntas" id="seccion23" style="display: none;">
+                <!-- Contenedor para captura -->
+                <div id="contenedorCaptura" style="display:block;">
+                    <!-- Sección del gráfico -->
+                    <section id="seccionGrafica" style="display:block;">
+                        <canvas id="miGrafica"></canvas>
+                    </section>
+                    <!-- Sección de resultados -->
+                    <div id="resultados" style="display: none;"></div>
+                </div>
                 <img id="imagenSeccion" src="images/sec7.png">
-                <h2 class="titulo-seccion">Sección 7: información para la cita</h2>  <!-- Título de la sección 1 -->
+                <!-- Resto del contenido de la sección23 -->
+            </div>
+            <!-- ---------------------(Test de Holland)------------------------------------------------- -->
+            <div class="seccion-preguntas" id="seccion24" style="display: none;">
+                <img id="imagenSeccion" src="images/sec7.png">
+                <h2 class="titulo-seccion">información para la cita</h2>  <!-- Título de la sección 1 -->
                 <!-- Primera columna -->
                 <div class="contenedor-columnas">
                     <div class="columna">
@@ -303,6 +1192,7 @@
         </form>
     </div> 
     <!-- Aquí es donde vinculas tu archivo JavaScript -->
-    <script src="script.js"></script>  
+
+    <script src="script.js"></script>
 </body>
 </html>
