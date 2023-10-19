@@ -80,7 +80,7 @@
     }    
     let miGrafico;
     function mostrarGrafica(fila1, fila2, fila3, fila4, fila5, fila6) {
-        document.getElementById('seccionGrafica').style.display = 'none';
+        document.getElementById('seccionGrafica').style.display = 'hidden';
 
         const ctx = document.getElementById('miGrafica').getContext('2d');
 
