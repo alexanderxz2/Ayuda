@@ -81,7 +81,7 @@
     let miGrafico;
     function mostrarGrafica(fila1, fila2, fila3, fila4, fila5, fila6) {
 
-        document.getElementById('seccionGrafica').style.display = 'hidden';
+        document.getElementById('seccionGrafica').style.visibility = 'hidden';
         const ctx = document.getElementById('miGrafica').getContext('2d');
 
         if (miGrafico) {
