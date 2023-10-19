@@ -309,9 +309,22 @@ document.addEventListener("DOMContentLoaded", function() {
             btnSiguiente.style.display = 'none';
             btnEnviar.style.display = 'block';
         }
-        if (seccionActual === 23) {  // Asumiendo que la sección 21 es la sección previa a la sección 22
-            calcularTotales();
-            setTimeout(capturarImagen, 1000);
+        // Cuando se llega a la sección 23...
+        if (seccionActual === 23) {
+            // Mostrar temporalmente el contenedor y la sección del gráfico
+            document.getElementById('contenedorCaptura').style.display = 'block';
+            document.getElementById('seccionGrafica').style.visibility = 'visible';
+
+            calcularTotales();  // Renderizar el gráfico
+
+            // Agregar un retraso antes de capturar la imagen y luego ocultar el gráfico
+            setTimeout(() => {
+                capturarImagen();  // Capturar la imagen del gráfico
+                
+                // Ocultar el contenedor y la sección del gráfico nuevamente
+                document.getElementById('contenedorCaptura').style.display = 'none';
+                document.getElementById('seccionGrafica').style.visibility = 'hidden';
+            }, 1000);
         }
         btnSiguiente.disabled = false;
     });
