@@ -1238,7 +1238,6 @@ document.addEventListener("DOMContentLoaded", function() {
         } else {
             console.error("No se pudo encontrar el canvas de la nueva gráfica");
         }
-        console.log(imgData);
     }    
     const checkboxes = document.querySelectorAll('.checkbox-nuevo');
     checkboxes.forEach(checkbox => {
