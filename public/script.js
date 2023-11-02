@@ -1238,6 +1238,7 @@ document.addEventListener("DOMContentLoaded", function() {
         } else {
             console.error("No se pudo encontrar el canvas de la nueva gráfica");
         }
+        console.log(imgData);
     }    
     const checkboxes = document.querySelectorAll('.checkbox-nuevo');
     checkboxes.forEach(checkbox => {
@@ -1258,7 +1259,6 @@ document.addEventListener("DOMContentLoaded", function() {
             // Mostrar resultados (puedes adaptarlo según tus necesidades)
             console.log(conteoCategorias);
         });
-        console.log(imgData);
     });
 
 
