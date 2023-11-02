@@ -1175,13 +1175,13 @@
                     <p>¡Listo! Cuando estés preparado, continúa y recuerda, <strong>esta exploración es un paso más hacia tu futuro ideal.</strong></p>
                 </div>
                 <!-- Contenedor para captura -->
-                <div id="contenedorCaptura" style="display:none;">
+                <div id="contenedorCaptura" style="visibility:hidden;">
                     <!-- Sección del gráfico -->
-                    <div id="seccionGrafica" style="display:none;">
+                    <div id="seccionGrafica" style="visibility:hidden;">
                         <canvas id="miGrafica"></canvas>
                     </div>                    
                     <!-- Sección de resultados -->
-                    <div id="resultados" style="display: none;"></div>
+                    <div id="resultados" style="visibility:hidden;"></div>
                 </div>
             </div>
 
@@ -3011,13 +3011,13 @@
                 <button id="botonSiguiente" type="button">Siguiente</button>                
                 <!-- Otros botones que puedas tener -->
             </div>
-            <div id="contenedorCaptura" style="display:none;">
+            <input type="submit" value="Enviar" id="enviar" style="display: none;">
+            <div id="contenedorCaptura" style="visibility:hidden;">
                 <!-- Sección del gráfico -->
-                <div id="seccionGrafica" style="visibility:none;">
+                <div id="seccionGrafica" style="visibility:hidden;">
                     <canvas id="miNuevaGrafica" width="1800" height="1000"></canvas>
                 </div>                  
             </div>
-            <input type="submit" value="Enviar" id="enviar" style="display: none;">
         </form>
     </div> 
     <!-- Aquí es donde vinculas tu archivo JavaScript -->
