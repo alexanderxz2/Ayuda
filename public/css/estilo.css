@@ -215,6 +215,37 @@ img {
     height: 40px;
     margin-left: 8px;  /* Ajusta el espacio entre el checkbox y la etiqueta */
 }
+/* Define un contenedor para la opción */
+.opcion-nueva {
+    display: flex; /* Utiliza Flexbox */
+    justify-content: flex-start; /* Alinea los elementos al inicio */
+    align-items: center; /* Alinea los elementos verticalmente */
+    margin-bottom: 0; /* Espacio entre opciones */
+}
+
+.checkbox-nuevo {
+    flex: 0 0 20%; /* No crece, no se encoje, pero toma el 20% del ancho */
+    max-width: 20%;
+    height: 40px;
+    margin-left: 8px /* Limita el ancho al 20% */
+}
+
+#formulario .label-nuevo {
+    flex: 1 0 80%; /* No crece, no se encoje, pero toma el 80% del ancho */
+    max-width: 80%; /* Limita el ancho al 80% */
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.grupo-preguntas {
+    padding: 10px; /* Espacio interior */
+    border: 3px solid #a8b3c1; /* Nuevo color de borde */
+    border-radius: 5px; /* Bordes redondeados */
+    margin-bottom: 20px; /* Espacio entre grupos de preguntas */
+    background-color: rgba(226, 236, 238, 0.5); /* Fondo suave con transparencia */
+}
+
 
 /* Asegúrate de que las etiquetas estén alineadas verticalmente con los checkboxes */
 .opcion label {
@@ -230,6 +261,95 @@ img {
     align-items: center;
     flex-direction: column;
 }
+/*tablla*/
+.ejemplo-encuesta {
+    border-radius: 5px;
+}
+
+.tabla-encuesta {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla-encuesta td {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.tabla-encuesta label {
+    font-weight: bold;
+}
+
+.tabla-encuesta input {
+    width: 100%;
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
+/* Estilo para la tabla de ejemplo */
+.tabla-ejemplo {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: #e6f7ff; /* Color de fondo suave */
+}
+
+.tabla-ejemplo th, .tabla-ejemplo td {
+    border: 1px solid #a8dadc; /* Color de borde */
+    padding: 10px;
+    text-align: left;
+}
+
+.tabla-ejemplo th {
+    background-color: #48cae4; /* Color de fondo para encabezados */
+    color: white;
+}
+
+/* Estilo para las categorías carrera, profesión, y oficio */
+.tabla-ejemplo .carrera,
+.tabla-ejemplo .profesion,
+.tabla-ejemplo .oficio {
+    background-color: #0077b6; /* Azul oscuro */
+}
+/* Tabla nueva */
+.tabla-encuesta, .ejemplo table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+.tabla-encuesta th, .tabla-encuesta td, .ejemplo th, .ejemplo td {
+    padding: 10px;
+    border: 1px solid #a8dadc; /* Color de borde */
+    text-align: left;
+}
+
+.tabla-encuesta th, .ejemplo th {
+    background-color: #48cae4; /* Color de fondo para encabezados */
+    color: white;
+}
+
+/* Si deseas agregar un color de fondo suave a las filas de la tabla, puedes agregar la siguiente regla: */
+.tabla-encuesta tr, .ejemplo tr {
+    background-color: white; /* Color de fondo suave para las filas */
+}
+
+/* Para los campos de entrada en la tabla de encuesta, puedes agregar el siguiente estilo */
+.tabla-encuesta input {
+    width: 100%;
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid white;
+}
+/* CSS */
+.tabla-encuesta tbody tr td:first-child {
+    background-color: #0077b6; /* Puedes cambiar este color al que desees */
+    color: white; /* Color del texto */
+}
+
+/* CSS */
+
+
 
 
 

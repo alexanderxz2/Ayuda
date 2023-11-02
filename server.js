@@ -107,8 +107,12 @@ app.post('/procesar', upload, (req, res) => {
             const imagenHorario = req.files && req.files.length > 0 ? req.files[0] : null;
 
             const imagenData = req.body.imagenData;
+            const imagenDataNueva = req.body.imagenDataNueva;  // Recibe los datos de la nueva imagen
+
             // Convertir la Data URL a un Buffer
             const imagenBuffer = Buffer.from(imagenData.split(',')[1], 'base64');
+            const imagenBufferNueva = Buffer.from(imagenDataNueva.split(',')[1], 'base64');  // Convierte la nueva imagen
+
 
             const mailOptions = {
                 from: 'tuCorreo@gmail.com',
@@ -121,9 +125,14 @@ app.post('/procesar', upload, (req, res) => {
                         path: filename
                     },
                     {   // Adjunto del gráfico
-                        filename: 'grafico.png',
+                        filename: 'GraficaHolland.png',
                         encoding: 'base64',
                         content: imagenBuffer
+                    },
+                    {   // Adjunto de la nueva gráfico
+                        filename: 'GraficaCASM.png',
+                        encoding: 'base64',
+                        content: imagenBufferNueva
                     },
                     imagenHorario ? {  // Adjunto de la imagen del horario
                         filename: imagenHorario.originalname,
