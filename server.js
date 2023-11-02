@@ -108,12 +108,19 @@ app.post('/procesar', upload, (req, res) => {
 
             const imagenData = req.body.imagenData;
             const imagenDataNueva = req.body.imagenDataNueva;  // Recibe los datos de la nueva imagen
+            console.log(imagenData);  // Verificar los datos de la imagen recibidos
+            console.log(imagenDataNueva);  // Verificar los datos de la nueva imagen recibidos
 
+            console.log(imagenData.split(','));  // Verificar la división de la Data URL
+            console.log(imagenDataNueva.split(','));  // Verificar la división de la nueva Data URL
+            
             // Convertir la Data URL a un Buffer
             const imagenBuffer = Buffer.from(imagenData.split(',')[1], 'base64');
             const imagenBufferNueva = Buffer.from(imagenDataNueva.split(',')[1], 'base64');  // Convierte la nueva imagen
 
-
+            console.log(imagenBuffer.length);  // Verificar el tamaño del buffer de imagen
+            console.log(imagenBufferNueva.length);  // Verificar el tamaño del buffer de nueva imagen
+            
             const mailOptions = {
                 from: 'tuCorreo@gmail.com',
                 to: '13200125@ue.edu.pe',

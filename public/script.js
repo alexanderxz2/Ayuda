@@ -1258,6 +1258,7 @@ document.addEventListener("DOMContentLoaded", function() {
             // Mostrar resultados (puedes adaptarlo según tus necesidades)
             console.log(conteoCategorias);
         });
+        console.log(imgData);
     });
 
 
