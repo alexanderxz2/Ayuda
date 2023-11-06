@@ -76,7 +76,15 @@
         // Aquí, puedes hacer lo que necesites con los valores de fila1, fila2, ..., fila6
         // Por ejemplo, enviar estos valores al servidor o actualizar la interfaz de usuario
         mostrarGrafica(fila1, fila2, fila3, fila4, fila5, fila6);
-
+        return {
+            fila1: fila1,
+            fila2: fila2,
+            fila3: fila3,
+            fila4: fila4,
+            fila5: fila5,
+            fila6: fila6,
+            fila7: fila7
+        };
     }    
     let miGrafico;
     function mostrarGrafica(fila1, fila2, fila3, fila4, fila5, fila6) {
