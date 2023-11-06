@@ -66,6 +66,26 @@ app.post('/procesar', upload, (req, res) => {
         console.log("Inicio de la función /procesar");
         console.log(req.body);
 
+        const valorVera = obtenerValor('valorVera', req.body);
+        const valorCons = obtenerValor('valorCons', req.body);
+        const valorCCFM = obtenerValor('valorCCFM', req.body);
+        const valorCCNA = obtenerValor('valorCCNA', req.body);
+        const valorCCCO = obtenerValor('valorCCCO', req.body);
+        const valorARTE = obtenerValor('valorARTE', req.body);
+        const valorBURO = obtenerValor('valorBURO', req.body);
+        const valorCCEP = obtenerValor('valorCCEP', req.body);
+        const valorIIAA = obtenerValor('valorIIAA', req.body);
+        const valorFINA = obtenerValor('valorFINA', req.body);
+        const valorLING = obtenerValor('valorLING', req.body);
+        const valorJURI = obtenerValor('valorJURI', req.body);
+        const fila1 = obtenerValor('valorR', req.body);
+        const fila2 = obtenerValor('valorI', req.body);
+        const fila3 = obtenerValor('valorS', req.body);
+        const fila4 = obtenerValor('valorC', req.body);
+        const fila5 = obtenerValor('valorE', req.body);
+        const fila6 = obtenerValor('valorA', req.body);
+        const fila7 = obtenerValor('valorVacio', req.body);
+
         const seccionesEncuesta = [
             // Tus otras secciones aquí...
             // Añade aquí las nuevas secciones con las elecciones del usuario

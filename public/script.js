@@ -1405,8 +1405,8 @@ document.addEventListener("DOMContentLoaded", function() {
         formData.append('valorVacio', resultados.fila7);
 
 
-        console.log('Datos a enviar:', [...new FormData(formulario).entries()]);
-    
+        console.log('Datos a enviar:', [...formData.entries()]);  
+          
         fetch('/procesar', {
             method: 'POST',
             body: formData        
