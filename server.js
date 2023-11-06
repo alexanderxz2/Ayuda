@@ -140,7 +140,7 @@ app.post('/procesar', upload, (req, res) => {
             }
             ]
         });
-        const diasCita = Array.isArray(req.body.diasCita) ? req.body.diasCita.join(', ') : req.body.diasCita || 'N/A';
+        const diaCita = obtenerValor('diasCita', req.body);  // Obtener el día seleccionado para la cita
 
         const codigoUsuario = obtenerValor('codigo', req.body) !== 'N/A' ? obtenerValor('codigo', req.body) : 'SinCodigo';
         const nombreUsuario = obtenerValor('nombre', req.body) !== 'N/A' ? obtenerValor('nombre', req.body) : 'SinNombre';
@@ -172,7 +172,7 @@ app.post('/procesar', upload, (req, res) => {
                 from: 'tuCorreo@gmail.com',
                 to: '13200125@ue.edu.pe',
                 subject: `Prueba Orientación Vocacional alumno ${codigoUsuario}`,
-                text: `Disponibilidad preferente del alumno: ${diasCita}\nAdjunto encontrarás el informe generado.`,
+                text: `Disponibilidad preferente del alumno: ${diaCita}\nAdjunto encontrarás el informe generado.`,
                 attachments: [
                     {   // Adjunto del archivo DOCX
                         filename: path.basename(filename),
