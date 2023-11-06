@@ -1356,14 +1356,53 @@ document.addEventListener("DOMContentLoaded", function() {
         
         btnEnviar.disabled = true;  // Deshabilita el botón Enviar
         
-        calcularTotales();
+        const resultados = calcularTotales();
+
+        const formData = new FormData(formulario);
+
+        const valorVera = calcularVera();
+        const valorCons = calcularCons();
+        const valorCCFM = calcularCCFM();
+        const valorCCSS = calcularCCSS();
+        const valorCCNA = calcularCCNA();
+        const valorCCCO = calcularCCCO();
+        const valorARTE = calcularARTE();
+        const valorBURO = calcularBURO();
+        const valorCCEP = calcularCCEP();
+        const valorIIAA = calcularIIAA();
+        const valorFINA = calcularFINA();
+        const valorLING = calcularLING();
+        const valorJURI = calcularJURI();
+
+        formData.append('valorVera', valorVera);
+        formData.append('valorCons', valorCons);
+        formData.append('valorCCFM', valorCCFM);
+        formData.append('valorCCSS', valorCCSS);
+        formData.append('valorCCNA', valorCCNA);
+        formData.append('valorCCCO', valorCCCO);
+        formData.append('valorARTE', valorARTE);
+        formData.append('valorBURO', valorBURO);
+        formData.append('valorCCEP', valorCCEP);
+        formData.append('valorIIAA', valorIIAA);
+        formData.append('valorFINA', valorFINA);
+        formData.append('valorLING', valorLING);
+        formData.append('valorJURI', valorJURI);
+        
+        formData.append('valorR', resultados.fila1);
+        formData.append('valorI', resultados.fila2);
+        formData.append('valorS', resultados.fila3);
+        formData.append('valorC', resultados.fila4);
+        formData.append('valorE', resultados.fila5);
+        formData.append('valorA', resultados.fila6);
+        formData.append('valorVacio', resultados.fila7);
+
 
         console.log('Datos a enviar:', [...new FormData(formulario).entries()]);
     
         fetch('/procesar', {
             method: 'POST',
-            body: new FormData(formulario)
-        })
+            body: formData        
+         })
         .then(res => {
             // Check if the response is JSON
             const contentType = res.headers.get("content-type");
