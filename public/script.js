@@ -65,13 +65,13 @@
 
         `;
         // -------------------------------------------------
-        console.log('Fila 1:', fila1);
-        console.log('Fila 2:', fila2);
-        console.log('Fila 3:', fila3);
-        console.log('Fila 4:', fila4);
-        console.log('Fila 5:', fila5);
-        console.log('Fila 6:', fila6);
-        console.log('Fila 7:', fila7);
+        console.log('R:', fila1);
+        console.log('I:', fila2);
+        console.log('S:', fila3);
+        console.log('C:', fila4);
+        console.log('E:', fila5);
+        console.log('A:', fila6);
+        console.log('Vacio:', fila7);
         
         // Aquí, puedes hacer lo que necesites con los valores de fila1, fila2, ..., fila6
         // Por ejemplo, enviar estos valores al servidor o actualizar la interfaz de usuario
@@ -1117,21 +1117,25 @@ document.addEventListener("DOMContentLoaded", function() {
             valorJURI,
             // otroValor,  // Descomenta esta línea si agregas más cálculos
         });
-        return datos;
+        mostrarNuevaGrafica(datos);
     }
+    let miNuevaGrafica;
     function mostrarNuevaGrafica(datos) {
         // Asegúrate de que el contenedor de la gráfica esté visible
-        document.getElementById('seccionGrafica').style.visibility = 'hidden';
+        document.getElementById('seccionGraficaSegundo').style.visibility = 'hidden';
     
         // Obtén el contexto del canvas donde se mostrará la gráfica
         const ctx = document.getElementById('miNuevaGrafica').getContext('2d');
+        if (miNuevaGrafica) {
+            miNuevaGrafica.destroy();
+        }
     
         // Extrae las etiquetas y valores de los datos
         const labels = Object.keys(datos);
         const values = Object.values(datos);
     
         // Crea una nueva instancia de Chart.js para la gráfica
-        const miNuevaGrafico = new Chart(ctx, {
+        miNuevaGrafica = new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: labels,
@@ -1239,6 +1243,7 @@ document.addEventListener("DOMContentLoaded", function() {
             console.error("No se pudo encontrar el canvas de la nueva gráfica");
         }
     }    
+    
     const checkboxes = document.querySelectorAll('.checkbox-nuevo');
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener('change', function() {
@@ -1306,18 +1311,18 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         if (seccionActual === 55) {
             // Mostrar temporalmente el contenedor y la sección del gráfico
-            document.getElementById('contenedorCaptura').style.display = 'block';
-            document.getElementById('seccionGrafica').style.visibility = 'visible';
-            const datos = realizarCalculos();
-            mostrarNuevaGrafica(datos); // Renderizar el gráfico
+            document.getElementById('contenedorCapturaSegundo').style.display = 'block';
+            document.getElementById('seccionGraficaSegundo').style.visibility = 'visible';
+            realizarCalculos();
+            // Renderizar el gráfico
 
             // Agregar un retraso antes de capturar la imagen y luego ocultar el gráfico
             setTimeout(() => {
                 capturarNuevaImagen()  // Capturar la imagen del gráfico
                 
                 // Ocultar el contenedor y la sección del gráfico nuevamente
-                document.getElementById('contenedorCaptura').style.display = 'none';
-                document.getElementById('seccionGrafica').style.visibility = 'hidden';
+                document.getElementById('contenedorCapturaSegundo').style.display = 'none';
+                document.getElementById('seccionGraficaSegundo').style.visibility = 'hidden';
             }, 1000);
         }
         btnSiguiente.disabled = false;

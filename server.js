@@ -40,12 +40,39 @@ function crearPreguntaRespuesta(textoPregunta, respuesta) {
     });
 }
 
+function crearResultado(nombre, valor) {
+    return new Paragraph({
+        children: [
+            new TextRun({ text: nombre + ": ", bold: true, size: 32 }),
+            new TextRun({ text: `${valor}\n`, size: 32 }),
+        ],
+    });
+}
+function crearSeleccionCategoria(categoria, valor1, valor2, valor3) {
+    return new Paragraph({
+        children: [
+            new TextRun({ text: `${categoria}: `, bold: true, size: 24 }),
+            new TextRun({ text: `Primera Elección: ${valor1}, `, size: 24 }),
+            new TextRun({ text: `Segunda Elección: ${valor2}, `, size: 24 }),
+            new TextRun({ text: `Tercera Elección: ${valor3}\n`, size: 24 }),
+        ],
+    });
+}
+
 const obtenerValor = (campo, requestBody, defaultValue = 'N/A') => requestBody[campo] || defaultValue;
 
 app.post('/procesar', upload, (req, res) => {
     try {
         console.log("Inicio de la función /procesar");
         console.log(req.body);
+
+        const seccionesEncuesta = [
+            // Tus otras secciones aquí...
+            // Añade aquí las nuevas secciones con las elecciones del usuario
+            crearSeleccionCategoria('Oficios', obtenerValor('oficio1', req.body), obtenerValor('oficio2', req.body), obtenerValor('oficio3', req.body)),
+            crearSeleccionCategoria('Carreras', obtenerValor('carrera1', req.body), obtenerValor('carrera2', req.body), obtenerValor('carrera3', req.body)),
+            crearSeleccionCategoria('Profesiones', obtenerValor('profesion1', req.body), obtenerValor('profesion2', req.body), obtenerValor('profesion3', req.body)),
+        ];
 
         let seccion = [
             crearPreguntaRespuesta("Nombre", obtenerValor('nombre', req.body)),
@@ -82,8 +109,26 @@ app.post('/procesar', upload, (req, res) => {
             crearPreguntaRespuesta("¿Cuáles consideras que son tus talentos?", obtenerValor('talentos', req.body)),
             crearPreguntaRespuesta("¿Qué actividad te gustaría realizar o consideras que haces bien?", obtenerValor('actividadGustaria', req.body)),
             crearPreguntaRespuesta("¿Crees que esa actividad es rentable o que alguien te podría pagar por hacerla?", obtenerValor('actividadRentable', req.body)),
-            crearPreguntaRespuesta("Con una visión de negocio y de acuerdo a tus habilidades ¿Qué consideras es lo que el mundo necesita?", obtenerValor('necesidadMundo', req.body))
-        
+            crearPreguntaRespuesta("Con una visión de negocio y de acuerdo a tus habilidades ¿Qué consideras es lo que el mundo necesita?", obtenerValor('necesidadMundo', req.body)),
+            crearResultado('Valor Vera', valorVera),
+            crearResultado('Valor Cons', valorCons),
+            crearResultado('Valor CCFM', valorCCFM),
+            crearResultado('Valor CCNA', valorCCNA),
+            crearResultado('Valor CCCO', valorCCCO),
+            crearResultado('Valor ARTE', valorARTE),
+            crearResultado('Valor BURO', valorBURO),
+            crearResultado('Valor CCEP', valorCCEP),
+            crearResultado('Valor IIAA', valorIIAA),
+            crearResultado('Valor FINA', valorFINA),
+            crearResultado('Valor LING', valorLING),
+            crearResultado('Valor JURI', valorJURI),
+            crearResultado('R', fila1),
+            crearResultado('I', fila2),
+            crearResultado('S', fila3),
+            crearResultado('C', fila4),
+            crearResultado('E', fila5),
+            crearResultado('A', fila6),
+            crearResultado('Vacio', fila7)
         ];
         const doc = new Document({
             creator: "TuNombre",
@@ -91,14 +136,16 @@ app.post('/procesar', upload, (req, res) => {
             description: "Documento generado desde el servidor",
             sections: [
                 {
-                    children: seccion
-                }
+                children: [...seccion, ...seccionesEncuesta]                
+            }
             ]
         });
-        const diaCita = obtenerValor('diasCita', req.body);  // Obtener el día seleccionado para la cita
+        const diasCita = Array.isArray(req.body.diasCita) ? req.body.diasCita.join(', ') : req.body.diasCita || 'N/A';
 
-        const codigoUsuario = obtenerValor('codigo', req.body);
-        const nombreArchivo = codigoUsuario !== 'N/A' ? `reporte_${codigoUsuario}_${Date.now()}.docx` : `reporte_sin_codigo_${Date.now()}.docx`;
+        const codigoUsuario = obtenerValor('codigo', req.body) !== 'N/A' ? obtenerValor('codigo', req.body) : 'SinCodigo';
+        const nombreUsuario = obtenerValor('nombre', req.body) !== 'N/A' ? obtenerValor('nombre', req.body) : 'SinNombre';
+        const nombreArchivo = `Resultados (${codigoUsuario}) ${nombreUsuario}.docx`;
+        
         const filename = path.join(__dirname, 'descargas', nombreArchivo);
 
         Packer.toBuffer(doc).then(buffer => {
@@ -125,7 +172,7 @@ app.post('/procesar', upload, (req, res) => {
                 from: 'tuCorreo@gmail.com',
                 to: '13200125@ue.edu.pe',
                 subject: `Prueba Orientación Vocacional alumno ${codigoUsuario}`,
-                text: `Disponibilidad preferente del alumno: ${diaCita}\nAdjunto encontrarás el informe generado.`,
+                text: `Disponibilidad preferente del alumno: ${diasCita}\nAdjunto encontrarás el informe generado.`,
                 attachments: [
                     {   // Adjunto del archivo DOCX
                         filename: path.basename(filename),

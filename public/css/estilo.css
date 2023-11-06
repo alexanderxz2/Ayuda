@@ -1,22 +1,28 @@
 
+
 html, body {
     margin: 0;
-    padding: 0;
+    padding: 0;  
 }
+
 #formulario {
-    position: absolute;
+    position: relative;
     z-index: 2;  
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
+    height: auto;
+    max-height: none;
     width: 80%;
     max-width: 1000px;
-    padding: 50px;
+    padding-bottom: 50px;
     background-color: transparent;
     border-radius: 8px;
     color: #000;  /* Color del texto especificado aquí */
     font-family: 'Cavolini', sans-serif; /* 'sans-serif' es una fuente de respaldo en caso de que 'Cavolini' no se cargue */
 }
+
+
 
 
 .columna {
@@ -57,7 +63,10 @@ body {
     background-attachment: fixed;
     position: relative; 
     z-index: 0;
-    
+    -webkit-user-select: none; /* Chrome, Safari, Opera */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none; /* Standard syntax */
 }
 #formulario input[type="submit"] {
     display: block;
@@ -147,8 +156,14 @@ body {
     font-size: 30px;
     font-weight: bold;
     margin-bottom: 20px;
-    text-align: left;  /* Alineación a la izquierda */
+    text-align: center; /* centrado */
     font-family: 'Cavolini', sans-serif; /* 'sans-serif' es una fuente de respaldo en caso de que 'Cavolini' no se cargue */
+}
+
+.subtitulo-seccion{
+    font-size: 20px;
+    font-family: 'Cavolini', sans-serif;
+    padding-bottom: 10px;
 }
 .select-estilo {
     font-size: 16px;
@@ -207,7 +222,11 @@ img {
     flex-direction: row-reverse;
     justify-content: flex-end;
     margin-bottom: 10px; /* Ajusta este valor según lo necesites */
-    padding: 5px; 
+    padding: 10px; /* Espacio interior */
+    border: 3px solid #a8b3c1; /* Nuevo color de borde */
+    border-radius: 5px; /* Bordes redondeados */
+    margin-bottom: 20px; /* Espacio entre grupos de preguntas */
+    background-color: rgba(226, 236, 238, 0.5); /* Fondo suave con transparencia */
 }
 
 .checkbox {
@@ -245,6 +264,7 @@ img {
     margin-bottom: 20px; /* Espacio entre grupos de preguntas */
     background-color: rgba(226, 236, 238, 0.5); /* Fondo suave con transparencia */
 }
+
 
 
 /* Asegúrate de que las etiquetas estén alineadas verticalmente con los checkboxes */
