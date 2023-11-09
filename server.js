@@ -160,8 +160,11 @@ app.post('/procesar', upload, (req, res) => {
             }
             ]
         });
-        const diaCita = obtenerValor('diasCita', req.body);  // Obtener el día seleccionado para la cita
-
+        const citasSeleccionadas = req.body['cita[]'] || [];
+        let textoCitas = 'Citas seleccionadas: \n';
+        citasSeleccionadas.forEach(cita => {
+            textoCitas += `${cita}\n`;
+        });
         const codigoUsuario = obtenerValor('codigo', req.body) !== 'N/A' ? obtenerValor('codigo', req.body) : 'SinCodigo';
         const nombreUsuario = obtenerValor('nombre', req.body) !== 'N/A' ? obtenerValor('nombre', req.body) : 'SinNombre';
         const nombreArchivo = `Resultados (${codigoUsuario}) ${nombreUsuario}.docx`;
@@ -192,7 +195,7 @@ app.post('/procesar', upload, (req, res) => {
                 from: 'tuCorreo@gmail.com',
                 to: 'myangali@esan.edu.pe',
                 subject: `Prueba Orientación Vocacional alumno ${codigoUsuario}`,
-                text: `Disponibilidad preferente del alumno: ${diaCita}\nAdjunto encontrarás el informe generado.`,
+                text: `Disponibilidad preferente del alumno: ${diaCita}\n${textoCitas}\nAdjunto encontrarás el informe generado.`,
                 attachments: [
                     {   // Adjunto del archivo DOCX
                         filename: path.basename(filename),

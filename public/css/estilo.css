@@ -8,7 +8,7 @@ html, body {
 #formulario {
     position: relative;
     z-index: 2;  
-    top: 20px;
+    top: -20px;
     left: 50%;
     transform: translateX(-50%);
     height: auto;
@@ -23,7 +23,12 @@ html, body {
 }
 
 
-
+.subtitulo-seccion2 {
+    margin-bottom: 0px;
+    padding-bottom: 0; /* Ajusta el espacio debajo de cada subtítulo */
+    font-size: 20px;
+    font-family: 'Cavolini', sans-serif;
+  }
 
 .columna {
     flex: 1;
@@ -273,8 +278,9 @@ img {
     line-height: 1.5;
 }
 .contenedor-centrado {
+    border-radius: 5px;
     width: 80%;  /* Ajusta el porcentaje según lo necesites */
-    margin: auto;
+    margin: 0 auto; /* Esto centrará el contenedor de la tabla */
     margin-left: 10%;  /* Ajusta el porcentaje según lo necesites */
     display: flex;
     justify-content: center;
@@ -289,6 +295,50 @@ img {
 .tabla-encuesta {
     width: 100%;
     border-collapse: collapse;
+}
+
+.ejemplo-encuesta, .entrada-encuesta {
+    text-align: center;
+}
+.entrada-encuesta {
+    display: flex;
+    justify-content: center;
+}
+
+/* Estilo para la tabla de entrada del usuario */
+.entrada-encuesta .tabla-encuesta {
+    width: 100%; /* Ajusta esto según el ancho deseado de la tabla */
+    border-collapse: collapse;
+    margin: 0 auto; /* Esto asegura que la tabla esté centrada en el div contenedor */
+}
+
+.entrada-encuesta .tabla-encuesta th, 
+.entrada-encuesta .tabla-encuesta td {
+    padding: 10px;
+    text-align: center; /* Centra el contenido horizontalmente */
+    vertical-align: middle; /* Centra el contenido verticalmente */
+    border: 1px solid #ccc; /* Color de borde, ajusta según necesites */
+}
+
+/* Estilo para los inputs dentro de la tabla */
+.entrada-encuesta .tabla-encuesta input[type="text"] {
+    width: 95%; /* Un poco menos que el 100% para que no toquen los bordes de la celda */
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    /* Alinea el texto dentro del input si es necesario */
+    text-align: center;
+}
+
+.tabla-ejemplo, .tabla-encuesta {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.texto-ejemplo {
+    text-align: center;
+    margin-bottom: 5px; /* Ajusta según sea necesario */
+    font-weight: bold; /* Si deseas que el texto "Ejemplo" destaque */
 }
 
 .tabla-encuesta td {
@@ -317,7 +367,8 @@ img {
 .tabla-ejemplo th, .tabla-ejemplo td {
     border: 1px solid #a8dadc; /* Color de borde */
     padding: 10px;
-    text-align: left;
+    text-align: center; /* Centra el contenido horizontalmente */
+    vertical-align: middle;
 }
 
 .tabla-ejemplo th {
