@@ -39,6 +39,15 @@ function crearPreguntaRespuesta(textoPregunta, respuesta) {
         ],
     });
 }
+function generarTextoDisponibilidad(horariosPorDia) {
+    return Object.entries(horariosPorDia).map(([dia, horarios]) => {
+      if (horarios.length > 0) {
+        return `${dia}: ${horarios.join(', ')}`; // Unimos los horarios con coma y espacio
+      }
+      return ''; // Si no hay horarios, no devolvemos nada para ese día
+    }).filter(texto => texto).join('\n'); // Filtramos los días sin horarios y unimos con un salto de línea
+  }
+  
 
 function crearResultado(nombre, valor) {
     return new Paragraph({
@@ -160,15 +169,30 @@ app.post('/procesar', upload, (req, res) => {
             }
             ]
         });
-        const citasSeleccionadas = req.body['cita[]'] || [];
-        let textoCitas = 'Citas seleccionadas: \n';
-        citasSeleccionadas.forEach(cita => {
-            textoCitas += `${cita}\n`;
-        });
+        const citasSeleccionadas = req.body['cita[]'];
+        const horariosPorDia = {
+            Lunes: [],
+            Martes: [],
+            Miércoles: [],
+            Jueves: [],
+            Viernes: []
+        };
+        if (Array.isArray(citasSeleccionadas)) {
+            citasSeleccionadas.forEach(cita => {
+                const [dia, hora] = cita.split(' '); // Separa el valor en día y hora
+                horariosPorDia[dia].push(hora); // Agrega la hora al arreglo correspondiente al día
+            });
+        } else if (citasSeleccionadas) {
+            // Si solo hay una cita seleccionada, será recibida como una cadena
+            const [dia, hora] = citasSeleccionadas.split(' ');
+            horariosPorDia[dia].push(hora);
+        }
+
         const codigoUsuario = obtenerValor('codigo', req.body) !== 'N/A' ? obtenerValor('codigo', req.body) : 'SinCodigo';
         const nombreUsuario = obtenerValor('nombre', req.body) !== 'N/A' ? obtenerValor('nombre', req.body) : 'SinNombre';
         const nombreArchivo = `Resultados (${codigoUsuario}) ${nombreUsuario}.docx`;
-        
+        const textoDisponibilidad = generarTextoDisponibilidad(horariosPorDia);
+
         const filename = path.join(__dirname, 'descargas', nombreArchivo);
 
         Packer.toBuffer(doc).then(buffer => {
@@ -193,9 +217,9 @@ app.post('/procesar', upload, (req, res) => {
             
             const mailOptions = {
                 from: 'tuCorreo@gmail.com',
-                to: 'myangali@esan.edu.pe',
+                to: '13200125@ue.edu.pe',
                 subject: `Prueba Orientación Vocacional alumno ${codigoUsuario}`,
-                text: `Disponibilidad preferente del alumno: ${diaCita}\n${textoCitas}\nAdjunto encontrarás el informe generado.`,
+                text: `Disponibilidad preferente del alumno:\n${textoDisponibilidad}\nAdjunto encontrarás el informe generado.`,
                 attachments: [
                     {   // Adjunto del archivo DOCX
                         filename: path.basename(filename),
