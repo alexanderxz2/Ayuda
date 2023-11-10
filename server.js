@@ -169,8 +169,8 @@ app.post('/procesar', upload, (req, res) => {
             }
             ]
         });
-        const diaCita = obtenerValor('diasCita', req.body);  // Obtener el día seleccionado para la cita
-        const horasCita = obtenerValor('horaCita', req.body); // Esto debería devolver un array de horas
+        const diasCita = obtenerValor('diasCita', req.body) || [];  // Si 'obtenerValor' no encuentra el campo, devuelve un arreglo vacío
+        const horasCita = obtenerValor('horaCita', req.body) || [];  // Si 'obtenerValor' no encuentra el campo, devuelve un arreglo vacío
 
         const textoDiasCita = diasCita.join(', '); // Convierte el arreglo de días en una cadena separada por comas
         const textoHorasCita = horasCita.map(hora => {
