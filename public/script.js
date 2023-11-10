@@ -1155,8 +1155,8 @@ document.addEventListener("DOMContentLoaded", function() {
         const valorJURI = calcularJURI();
 
         const datos = {
-            VERA: valorVera,
-            CONS: valorCons,
+        //    VERA: valorVera,
+        //    CONS: valorCons,
             CCFM: valorCCFM,
             CCSS: valorCCSS,
             CCNA: valorCCNA,
@@ -1214,8 +1214,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 datasets: [{
                     data: values,
                     backgroundColor: [
-                        'rgba(255, 99, 132, 0.6)',
-                        'rgba(54, 162, 235, 0.6)',
+                    //    'rgba(255, 99, 132, 0.6)',
+                    //    'rgba(54, 162, 235, 0.6)',
                         'rgba(255, 206, 86, 0.6)',
                         'rgba(75, 192, 192, 0.6)',
                         'rgba(153, 102, 255, 0.6)',
@@ -1229,8 +1229,8 @@ document.addEventListener("DOMContentLoaded", function() {
                         'rgba(250, 190, 190, 0.6)'
                     ],
                     borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
+                    //    'rgba(255, 99, 132, 1)',
+                    //    'rgba(54, 162, 235, 1)',
                         'rgba(255, 206, 86, 1)',
                         'rgba(75, 192, 192, 1)',
                         'rgba(153, 102, 255, 1)',
