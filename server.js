@@ -170,6 +170,15 @@ app.post('/procesar', upload, (req, res) => {
             ]
         });
         const diaCita = obtenerValor('diasCita', req.body);  // Obtener el día seleccionado para la cita
+        const horasCita = obtenerValor('horaCita', req.body); // Esto debería devolver un array de horas
+
+        const textoDiasCita = diasCita.join(', '); // Convierte el arreglo de días en una cadena separada por comas
+        const textoHorasCita = horasCita.map(hora => {
+            // Convertir cada valor de hora al formato deseado, por ejemplo "9.30" a "9:30 AM"
+            const [horas, minutos] = hora.split('.');
+            return `${horas}:${minutos.padEnd(2, '0')} ${parseInt(horas) < 12 ? 'AM' : 'PM'}`;
+        }).join(', '); 
+
 
         
 
@@ -204,7 +213,7 @@ app.post('/procesar', upload, (req, res) => {
                 from: 'tuCorreo@gmail.com',
                 to: '13200125@ue.edu.pe',
                 subject: `Prueba Orientación Vocacional alumno ${codigoUsuario}`,
-                text: `Disponibilidad preferente del alumno: ${diaCita}\nAdjunto encontrarás el informe generado.`,
+                text: `Disponibilidad preferente del alumno: Días - ${textoDiasCita}; Horas - ${textoHorasCita}\nAdjunto encontrarás el informe generado.`,
                 attachments: [
                     {   // Adjunto del archivo DOCX
                         filename: path.basename(filename),
