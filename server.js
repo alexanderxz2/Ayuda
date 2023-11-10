@@ -50,6 +50,21 @@ function generarTextoDisponibilidad(horariosPorDia) {
   
 
 function crearResultado(nombre, valor) {
+    let resultadoTexto;
+    
+    // Lógica para Valor Vera
+    if (nombre === 'Valor Vera') {
+        resultadoTexto = valor >= 6 ? 'La prueba no es verídica' : valor.toString();
+    }
+    // Lógica para Valor Cons
+    else if (nombre === 'Valor Cons') {
+        const valorModificado = valor + 11;
+        resultadoTexto = valorModificado >= 6 ? 'La prueba no es consistente' : valorModificado.toString();
+    }
+    // Para otros valores
+    else {
+        resultadoTexto = valor.toString();
+    }
     return new Paragraph({
         children: [
             new TextRun({ text: nombre + ": ", bold: true, size: 32 }),
