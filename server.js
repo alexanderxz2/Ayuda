@@ -174,10 +174,15 @@ app.post('/procesar', upload, (req, res) => {
 
         const textoDiasCita = diasCita.join(', '); // Convierte el arreglo de días en una cadena separada por comas
         const textoHorasCita = horasCita.map(hora => {
-            // Convertir cada valor de hora al formato deseado, por ejemplo "9.30" a "9:30 AM"
-            const [horas, minutos] = hora.split('.');
-            return `${horas}:${minutos.padEnd(2, '0')} ${parseInt(horas) < 12 ? 'AM' : 'PM'}`;
-        }).join(', '); 
+            if (typeof hora === 'string') { // Asegúrate de que hora es una cadena
+                const partes = hora.split('.');
+                const horas = partes[0];
+                const minutos = partes[1] || '00'; // Si no hay minutos, asume '00'
+                return `${horas}:${minutos.padEnd(2, '0')} ${parseInt(horas) < 12 ? 'AM' : 'PM'}`;
+            }
+            return 'Hora inválida'; // Puedes decidir cómo manejar las horas inválidas
+        }).join(', ');
+        
 
 
         
