@@ -237,8 +237,14 @@
             }
         }
     }
-document.addEventListener("DOMContentLoaded", function() {
 
+document.addEventListener("DOMContentLoaded", function() {
+    var contadorHorarios = 0;
+    var maxHorarios = 3;
+    var btnAgregarHorario = document.getElementById('btnAgregarHorario');
+    var seleccionHorarios = document.getElementById('seleccionHorarios');
+
+    
     var today = new Date().toISOString().split('T')[0];
     document.getElementsByName("fechaNacimiento")[0].setAttribute('max', today);
     // Variables
@@ -289,6 +295,60 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     }
+    btnAgregarHorario.addEventListener('click', function() {
+        if (contadorHorarios < maxHorarios) {
+            contadorHorarios++; // Incrementamos el contador para tener un identificador único.
+
+            var divHorario = document.createElement('div');
+            divHorario.className = 'horario-individual';
+            divHorario.innerHTML = `
+                <label for="diasCita${contadorHorarios}">¿Qué días preferirías para la cita?</label>
+                <br>
+                <br>
+                <select id="diasCita${contadorHorarios}" name="diasCita[]" class="select-estilo" required>
+                    <option value="" disabled selected>Selecciona un día</option>
+                    <option value="Lunes">Lunes</option>
+                    <option value="Martes">Martes</option>
+                    <option value="Miércoles">Miércoles</option>
+                    <option value="Jueves">Jueves</option>
+                    <option value="Viernes">Viernes</option>
+                </select>
+                <br>
+                <label for="horaCita${contadorHorarios}">Selecciona una hora para la cita:</label>
+                <br><br>
+                <select id="horaCita${contadorHorarios}" name="horaCita[]" class="select-estilo" required>
+                    <option value="" disabled selected>Selecciona una hora</option>
+                    <option value="9">9:00 AM</option>
+                    <option value="9.30">9:30 AM</option>
+                    <option value="10">10:00 AM</option>
+                    <option value="10.30">10:30 AM</option>
+                    <option value="11">11:00 AM</option>
+                    <option value="11.30">11:30 AM</option>
+                    <option value="12">12:00 PM</option>
+                    <option value="12.30">12:30 PM</option>
+                    <option value="3">3:00 PM</option>
+                    <option value="3.30">3:30 PM</option>
+                    <option value="4">4:00 PM</option>
+                    <option value="4.30">4:30 PM</option>
+                    <option value="5">5:00 PM</option>
+                    <option value="5.30">5:30 PM</option>
+                </select>
+                <br>
+                <button type="button" class="btnEliminarHorario">Eliminar</button>
+                <br><br>
+            `;
+
+            seleccionHorarios.appendChild(divHorario);
+
+            // Añadir la funcionalidad de eliminar al botón recién creado
+            divHorario.querySelector('.btnEliminarHorario').addEventListener('click', function() {
+                divHorario.remove();
+                contadorHorarios--; // Decrementamos el contador cuando se elimina un horario
+            });
+        } else {
+            alert('Solo puedes añadir hasta 3 horarios.');
+        }
+    });
     // Mapeo de opciones a categorías
     const mapeoOpciones = {
         "opcion1_N": "CCFM",  // j15
@@ -1367,6 +1427,15 @@ document.addEventListener("DOMContentLoaded", function() {
         const resultados = calcularTotales();
 
         const formData = new FormData(formulario);
+
+        // Recoge y añade al FormData los horarios seleccionados
+        const horariosIndividuales = document.querySelectorAll('.horario-individual');
+        horariosIndividuales.forEach((div, index) => {
+            const selectDia = div.querySelector('select[name="diasCita[]"]');
+            const selectHora = div.querySelector('select[name="horaCita[]"]');
+            formData.append(`diasCita[${index}]`, selectDia.value);
+            formData.append(`horaCita[${index}]`, selectHora.value);
+        });
 
         const valorVera = calcularVera();
         const valorCons = calcularCons();

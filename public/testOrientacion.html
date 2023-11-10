@@ -3390,40 +3390,45 @@
                         <input type="file" id="imagenHorario" name="imagenHorario" accept="image/*" required><br>
 
                         <!-- Campo para seleccionar días preferidos -->
-                        <label for="diasCita">¿Qué días preferirías para la cita?</label>
-                        <br>
-                        <br>
-                        <select id="diasCita" name="diasCita[]" class="select-estilo" multiple required>
-                            <option value="" disabled selected>Selecciona un día</option>
-                            <option value="Lunes">Lunes</option>
-                            <option value="Martes">Martes</option>
-                            <option value="Miércoles">Miércoles</option>
-                            <option value="Jueves">Jueves</option>
-                            <option value="Viernes">Viernes</option>
-                        </select>
-                        <br>
-                        <label for="horaCita">Selecciona una hora para la cita:</label>
-                        <br><br>
-                        <select id="horaCita" name="horaCita[]" class="select-estilo" multiple required>
-                            <option value="" disabled selected>Selecciona una hora</option>
-                            <option value="9">9:00 AM</option>
-                            <option value="9.30">9:30 AM</option>
-                            <option value="10">10:00 AM</option>
-                            <option value="10.30">10:30 AM</option>
-                            <option value="11">11:00 AM</option>
-                            <option value="11.30">11:30 AM</option>
-                            <option value="12">12:00 PM</option>
-                            <option value="12.30">12:30 PM</option>
-                            <option value="3">3:00 PM</option>
-                            <option value="3.30">3:30 PM</option>
-                            <option value="4">4:00 PM</option>
-                            <option value="4.30">4:30 PM</option>
-                            <option value="5">5:00 PM</option>
-                            <option value="5.30">5:30 PM</option>
-                        </select>
-                        <br>
+                        <div id="seleccionHorarios">
+                            <label for="diasCita">¿Qué días preferirías para la cita?</label>
+                            <br>
+                            <br>
+                            <select name="diasCita[0]" class="select-estilo" required>
+                                <option value="" disabled selected>Selecciona un día</option>
+                                <option value="Lunes">Lunes</option>
+                                <option value="Martes">Martes</option>
+                                <option value="Miércoles">Miércoles</option>
+                                <option value="Jueves">Jueves</option>
+                                <option value="Viernes">Viernes</option>
+                            </select>
+                            <br>
+                            <label for="horaCita">Selecciona una hora para la cita:</label>
+                            <br><br>
+                            <select name="horaCita[0]" class="select-estilo" required>
+                                <option value="" disabled selected>Selecciona una hora</option>
+                                <option value="9">9:00 AM</option>
+                                <option value="9.30">9:30 AM</option>
+                                <option value="10">10:00 AM</option>
+                                <option value="10.30">10:30 AM</option>
+                                <option value="11">11:00 AM</option>
+                                <option value="11.30">11:30 AM</option>
+                                <option value="12">12:00 PM</option>
+                                <option value="12.30">12:30 PM</option>
+                                <option value="3">3:00 PM</option>
+                                <option value="3.30">3:30 PM</option>
+                                <option value="4">4:00 PM</option>
+                                <option value="4.30">4:30 PM</option>
+                                <option value="5">5:00 PM</option>
+                                <option value="5.30">5:30 PM</option>
+                            </select>
+                            <br>
+                        </div>
                     </div>
                 </div>
+                <button type="button" id="btnAgregarHorario">+ Añadir Horario</button>
+
+
                 <div id="contenedorCapturaSegundo" style="visibility:hidden;">
                     <!-- Sección del gráfico -->
                     <div id="seccionGraficaSegundo" style="visibility:hidden;">
@@ -3438,7 +3443,6 @@
                 <!-- Otros botones que puedas tener -->
             </div>
             <input type="submit" value="Enviar" id="enviar" style="display: none;">
-
         </form>
     </div> 
     <!-- Aquí es donde vinculas tu archivo JavaScript -->
