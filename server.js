@@ -174,13 +174,13 @@ app.post('/procesar', upload, (req, res) => {
 
         const textoDiasCita = diasCita.join(', '); // Convierte el arreglo de días en una cadena separada por comas
         const textoHorasCita = horasCita.map(hora => {
-            if (typeof hora === 'string') { // Asegúrate de que hora es una cadena
-                const partes = hora.split('.');
-                const horas = partes[0];
-                const minutos = partes[1] || '00'; // Si no hay minutos, asume '00'
-                return `${horas}:${minutos.padEnd(2, '0')} ${parseInt(horas) < 12 ? 'AM' : 'PM'}`;
+            // Asegúrate de que cada hora es una cadena y tiene el formato esperado
+            if (typeof hora === 'string' && /^\d{1,2}(\.\d{1,2})?$/.test(hora)) {
+                const [horas, minutos = '00'] = hora.split('.').map(num => num.padStart(2, '0'));
+                return `${horas}:${minutos} ${parseInt(horas, 10) < 12 ? 'AM' : 'PM'}`;
+            } else {
+                return 'Hora inválida';
             }
-            return 'Hora inválida'; // Puedes decidir cómo manejar las horas inválidas
         }).join(', ');
         
 
