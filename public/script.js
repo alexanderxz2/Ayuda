@@ -298,7 +298,7 @@ document.addEventListener("DOMContentLoaded", function() {
     btnAgregarHorario.addEventListener('click', function() {
         if (contadorHorarios < maxHorarios) {
             contadorHorarios++; // Incrementamos el contador para tener un identificador único.
-
+    
             var divHorario = document.createElement('div');
             divHorario.className = 'horario-individual';
             divHorario.innerHTML = `
@@ -318,28 +318,28 @@ document.addEventListener("DOMContentLoaded", function() {
                 <br><br>
                 <select id="horaCita${contadorHorarios}" name="horaCita[]" class="select-estilo" required>
                     <option value="" disabled selected>Selecciona una hora</option>
-                    <option value="9">9:00 AM</option>
-                    <option value="9.30">9:30 AM</option>
-                    <option value="10">10:00 AM</option>
-                    <option value="10.30">10:30 AM</option>
-                    <option value="11">11:00 AM</option>
-                    <option value="11.30">11:30 AM</option>
-                    <option value="12">12:00 PM</option>
-                    <option value="12.30">12:30 PM</option>
-                    <option value="3">3:00 PM</option>
-                    <option value="3.30">3:30 PM</option>
-                    <option value="4">4:00 PM</option>
-                    <option value="4.30">4:30 PM</option>
-                    <option value="5">5:00 PM</option>
-                    <option value="5.30">5:30 PM</option>
+                    <option value="9:00 AM">9:00 AM</option>
+                    <option value="9:30 AM">9:30 AM</option>
+                    <option value="10:00 AM">10:00 AM</option>
+                    <option value="10:30 AM">10:30 AM</option>
+                    <option value="11:00 AM">11:00 AM</option>
+                    <option value="11:30 AM">11:30 AM</option>
+                    <option value="12:00 PM">12:00 PM</option>
+                    <option value="12:30 PM">12:30 PM</option>
+                    <option value="3:00 PM">3:00 PM</option>
+                    <option value="3:30 PM">3:30 PM</option>
+                    <option value="4:00 PM">4:00 PM</option>
+                    <option value="4:30 PM">4:30 PM</option>
+                    <option value="5:00 PM">5:00 PM</option>
+                    <option value="5:30 PM">5:30 PM</option>
                 </select>
                 <br>
                 <button type="button" class="btnEliminarHorario">Eliminar</button>
                 <br><br>
             `;
-
+    
             seleccionHorarios.appendChild(divHorario);
-
+    
             // Añadir la funcionalidad de eliminar al botón recién creado
             divHorario.querySelector('.btnEliminarHorario').addEventListener('click', function() {
                 divHorario.remove();
@@ -348,7 +348,7 @@ document.addEventListener("DOMContentLoaded", function() {
         } else {
             alert('Solo puedes añadir hasta 3 horarios.');
         }
-    });
+    });    
     // Mapeo de opciones a categorías
     const mapeoOpciones = {
         "opcion1_N": "CCFM",  // j15
