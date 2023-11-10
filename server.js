@@ -177,8 +177,12 @@ app.post('/procesar', upload, (req, res) => {
         
         // El resto de tu lógica de procesamiento...
         
-        const textoDiasCita = diasCita.join(', '); // Convierte el arreglo de días en una cadena separada por comas
-        const textoHorasCita = horasCita.join(', ');
+        const textoDiasCita = [...new Set(diasCita)].join(', ');
+        const textoHorasCita = [...new Set(horasCita)].map(hora => {
+            // Asegúrate de que cada hora es una cadena y tiene el formato esperado.
+            // Aquí, no necesitas convertir el formato de la hora, solo asegúrate de que no es un valor duplicado.
+            return hora; // Dado que ya son AM o PM, no necesitas procesarlas más.
+        }).join(', ');
         
 
 
