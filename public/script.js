@@ -237,7 +237,17 @@
             }
         }
     }
-
+    function recolectarDatos() {
+        const formData = new FormData();
+        const horariosIndividuales = document.querySelectorAll('.horario-individual');
+        horariosIndividuales.forEach((div) => {
+            const index = div.dataset.index; // Usa el índice asignado al div
+            const selectDia = div.querySelector(`#diasCita${index}`);
+            const selectHora = div.querySelector(`#horaCita${index}`);
+            formData.append(`diasCita[${index}]`, selectDia.value);
+            formData.append(`horaCita[${index}]`, selectHora.value);
+        });
+    }
 document.addEventListener("DOMContentLoaded", function() {
     var contadorHorarios = 0;
     var maxHorarios = 3;
@@ -297,10 +307,9 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     btnAgregarHorario.addEventListener('click', function() {
         if (contadorHorarios < maxHorarios) {
-            contadorHorarios++; // Incrementamos el contador para tener un identificador único.
-    
             var divHorario = document.createElement('div');
             divHorario.className = 'horario-individual';
+
             divHorario.innerHTML = `
                 <label for="diasCita${contadorHorarios}">¿Qué días preferirías para la cita?</label>
                 <br>
@@ -339,11 +348,11 @@ document.addEventListener("DOMContentLoaded", function() {
             `;
     
             seleccionHorarios.appendChild(divHorario);
+            contadorHorarios++;
     
             // Añadir la funcionalidad de eliminar al botón recién creado
             divHorario.querySelector('.btnEliminarHorario').addEventListener('click', function() {
                 divHorario.remove();
-                contadorHorarios--; // Decrementamos el contador cuando se elimina un horario
             });
         } else {
             alert('Solo puedes añadir hasta 3 horarios.');
@@ -826,7 +835,6 @@ document.addEventListener("DOMContentLoaded", function() {
     
         return CCNA;
     }
-
     function calcularCCCO() {
         function estaSeleccionada(id) {
             const elemento = document.getElementById(id);
@@ -865,7 +873,6 @@ document.addEventListener("DOMContentLoaded", function() {
     
         return CCCO;
     }
-
     function calcularARTE() {
         function estaSeleccionada(id) {
             const elemento = document.getElementById(id);
@@ -1056,7 +1063,6 @@ document.addEventListener("DOMContentLoaded", function() {
     
         return FINA;
     }
-
     function calcularLING() {
         function estaSeleccionada(id) {
             const elemento = document.getElementById(id);
@@ -1095,7 +1101,6 @@ document.addEventListener("DOMContentLoaded", function() {
     
         return LING;
     }
-
     function calcularJURI() {
         function estaSeleccionada(id) {
             const elemento = document.getElementById(id);
@@ -1134,7 +1139,6 @@ document.addEventListener("DOMContentLoaded", function() {
     
         return JURI;
     }
-
     function realizarCalculos() {
         const valorVera = calcularVera();
         const valorCons = calcularCons();
