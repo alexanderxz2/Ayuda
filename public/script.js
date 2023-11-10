@@ -1431,10 +1431,12 @@ document.addEventListener("DOMContentLoaded", function() {
         // Recoge y añade al FormData los horarios seleccionados
         const horariosIndividuales = document.querySelectorAll('.horario-individual');
         horariosIndividuales.forEach((div, index) => {
-            const selectDia = div.querySelector(`select[name="diasCita[${index}]"]`);
-            const selectHora = div.querySelector(`select[name="horaCita[${index}]"]`);
-            formData.append(`diasCita[${index}]`, selectDia.value);
-            formData.append(`horaCita[${index}]`, selectHora.value);
+            // No uses el índice aquí ya que el nombre ya incluye el índice
+            const selectDia = div.querySelector(`select[id^="diasCita"]`);
+            const selectHora = div.querySelector(`select[id^="horaCita"]`);
+            // Usa el índice al nombrar las claves del FormData
+            formData.append(`diasCita[${index}]`, selectDia ? selectDia.value : '');
+            formData.append(`horaCita[${index}]`, selectHora ? selectHora.value : '');
         });
 
         const valorVera = calcularVera();
