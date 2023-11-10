@@ -169,24 +169,28 @@ app.post('/procesar', upload, (req, res) => {
             }
             ]
         });
-        const citasSeleccionadas = req.body['cita[]'];
-        const horariosPorDia = {
-            Lunes: [],
-            Martes: [],
-            Miércoles: [],
-            Jueves: [],
-            Viernes: []
-        };
-        if (Array.isArray(citasSeleccionadas)) {
-            citasSeleccionadas.forEach(cita => {
-                const [dia, hora] = cita.split(' '); // Separa el valor en día y hora
-                horariosPorDia[dia].push(hora); // Agrega la hora al arreglo correspondiente al día
-            });
-        } else if (citasSeleccionadas) {
-            // Si solo hay una cita seleccionada, será recibida como una cadena
-            const [dia, hora] = citasSeleccionadas.split(' ');
-            horariosPorDia[dia].push(hora);
-        }
+        const citasSeleccionadas = req.body['cita[]'] || [];
+
+        // Asegúrate de que citasSeleccionadas sea un array, incluso si solo hay un elemento.
+        const citasArray = Array.isArray(citasSeleccionadas) ? citasSeleccionadas : [citasSeleccionadas];
+        
+        const horariosPorDia = citasArray.reduce((acumulador, cita) => {
+            const [dia, hora] = cita.split(' ');
+            // Asegúrate de que el día es uno de los esperados.
+            if (['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'].includes(dia)) {
+                if (!acumulador[dia]) {
+                    acumulador[dia] = [];
+                }
+                acumulador[dia].push(hora);
+            } else {
+                console.error(`Día inválido recibido: ${dia}`);
+                // Aquí podrías decidir qué hacer si recibes un día inválido.
+            }
+            return acumulador;
+        }, {});
+        
+        console.log(horariosPorDia);
+        
 
         const codigoUsuario = obtenerValor('codigo', req.body) !== 'N/A' ? obtenerValor('codigo', req.body) : 'SinCodigo';
         const nombreUsuario = obtenerValor('nombre', req.body) !== 'N/A' ? obtenerValor('nombre', req.body) : 'SinNombre';
@@ -199,6 +203,7 @@ app.post('/procesar', upload, (req, res) => {
             fs.writeFileSync(filename, buffer);
             
             const imagenHorario = req.files && req.files.length > 0 ? req.files[0] : null;
+            
 
             const imagenData = req.body.imagenData;
             const imagenDataNueva = req.body.imagenDataNueva;  // Recibe los datos de la nueva imagen
