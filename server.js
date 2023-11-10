@@ -169,11 +169,13 @@ app.post('/procesar', upload, (req, res) => {
             }
             ]
         });
-        const citasSeleccionadas = req.body['cita[]'] || [];
+        const citasSeleccionadas = req.body['cita[]'];
 
         // Asegúrate de que citasSeleccionadas sea un array, incluso si solo hay un elemento.
         const citasArray = Array.isArray(citasSeleccionadas) ? citasSeleccionadas : [citasSeleccionadas];
-        
+        if (typeof citasArray === 'string') {
+            citasArray = [citasArray];
+        }
         const horariosPorDia = citasArray.reduce((acumulador, cita) => {
             const [dia, hora] = cita.split(' ');
             // Asegúrate de que el día es uno de los esperados.
