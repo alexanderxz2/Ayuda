@@ -53,10 +53,10 @@ function crearResultado(nombre, valor) {
     let resultadoTexto;
 
     if (nombre === 'Valor Vera') {
-        resultadoTexto = valor >= 6 ? 'La prueba no es verídica' : 'La prueba es verídica';
+        resultadoTexto = `Valor: ${valor}. ` + (valor >= 6 ? 'La prueba no es verídica' : 'La prueba es verídica');
     } else if (nombre === 'Valor Cons') {
         const valorModificado = valor + 11;
-        resultadoTexto = valorModificado >= 6 ? 'La prueba no es consistente' : 'La prueba es consistente';
+        resultadoTexto = `Valor: ${valorModificado}. ` + (valorModificado >= 6 ? 'La prueba no es consistente' : 'La prueba es consistente');
     } else {
         resultadoTexto = valor.toString();
     }
