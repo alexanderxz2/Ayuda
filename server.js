@@ -169,35 +169,13 @@ app.post('/procesar', upload, (req, res) => {
             }
             ]
         });
-        const citasSeleccionadas = req.body['cita[]'];
+        const diaCita = obtenerValor('diasCita', req.body);  // Obtener el día seleccionado para la cita
 
-        // Asegúrate de que citasSeleccionadas sea un array, incluso si solo hay un elemento.
-        const citasArray = Array.isArray(citasSeleccionadas) ? citasSeleccionadas : [citasSeleccionadas];
-        if (typeof citasArray === 'string') {
-            citasArray = [citasArray];
-        }
-        const horariosPorDia = citasArray.reduce((acumulador, cita) => {
-            const [dia, hora] = cita.split(' ');
-            // Asegúrate de que el día es uno de los esperados.
-            if (['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'].includes(dia)) {
-                if (!acumulador[dia]) {
-                    acumulador[dia] = [];
-                }
-                acumulador[dia].push(hora);
-            } else {
-                console.error(`Día inválido recibido: ${dia}`);
-                // Aquí podrías decidir qué hacer si recibes un día inválido.
-            }
-            return acumulador;
-        }, {});
-        
-        console.log(horariosPorDia);
         
 
         const codigoUsuario = obtenerValor('codigo', req.body) !== 'N/A' ? obtenerValor('codigo', req.body) : 'SinCodigo';
         const nombreUsuario = obtenerValor('nombre', req.body) !== 'N/A' ? obtenerValor('nombre', req.body) : 'SinNombre';
         const nombreArchivo = `Resultados (${codigoUsuario}) ${nombreUsuario}.docx`;
-        const textoDisponibilidad = generarTextoDisponibilidad(horariosPorDia);
 
         const filename = path.join(__dirname, 'descargas', nombreArchivo);
 
@@ -226,7 +204,7 @@ app.post('/procesar', upload, (req, res) => {
                 from: 'tuCorreo@gmail.com',
                 to: '13200125@ue.edu.pe',
                 subject: `Prueba Orientación Vocacional alumno ${codigoUsuario}`,
-                text: `Disponibilidad preferente del alumno:\n${textoDisponibilidad}\nAdjunto encontrarás el informe generado.`,
+                text: `Disponibilidad preferente del alumno: ${diaCita}\nAdjunto encontrarás el informe generado.`,
                 attachments: [
                     {   // Adjunto del archivo DOCX
                         filename: path.basename(filename),

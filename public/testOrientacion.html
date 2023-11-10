@@ -3390,102 +3390,17 @@
                         <input type="file" id="imagenHorario" name="imagenHorario" accept="image/*" required><br>
 
                         <!-- Campo para seleccionar días preferidos -->
-                        <fieldset>
-                            <legend>Selecciona los días y horarios de preferencia:</legend>
-            
-                            <!-- Lunes -->
-                            <div class="dia-horario">
-                                <label>Lunes:</label><br>
-                                <input type="checkbox" id="lunes9am" name="cita[]" value="Lunes 9am">
-                                <label for="lunes9am">9 AM</label><br>
-                                <input type="checkbox" id="lunes10am" name="cita[]" value="Lunes 10am">
-                                <label for="lunes10am">10 AM</label><br>
-                                <input type="checkbox" id="lunes11am" name="cita[]" value="Lunes 11am">
-                                <label for="lunes11am">11 AM</label><br>
-                                <input type="checkbox" id="lunes12pm" name="cita[]" value="Lunes 12pm">
-                                <label for="lunes12pm">12 PM</label><br>
-                                <input type="checkbox" id="lunes3pm" name="cita[]" value="Lunes 3pm">
-                                <label for="lunes3pm">3 PM</label><br>
-                                <input type="checkbox" id="lunes4pm" name="cita[]" value="Lunes 4pm">
-                                <label for="lunes4pm">4 PM</label><br>
-                                <input type="checkbox" id="lunes5pm" name="cita[]" value="Lunes 5pm">
-                                <label for="lunes5pm">5 PM</label><br>
-                            </div>
-            
-                            <!-- Martes -->
-                            <div class="dia-horario">
-                                <label>Martes:</label><br>
-                                <input type="checkbox" id="martes9am" name="cita[]" value="Martes 9am">
-                                <label for="martes9am">9 AM</label><br>
-                                <input type="checkbox" id="martes10am" name="cita[]" value="Martes 10am">
-                                <label for="martes10am">10 AM</label><br>
-                                <input type="checkbox" id="martes11am" name="cita[]" value="Martes 11am">
-                                <label for="martes11am">11 AM</label><br>
-                                <input type="checkbox" id="martes12pm" name="cita[]" value="Martes 12pm">
-                                <label for="martes12pm">12 PM</label><br>
-                                <input type="checkbox" id="martes3pm" name="cita[]" value="Martes 3pm">
-                                <label for="martes3pm">3 PM</label><br>
-                                <input type="checkbox" id="martes4pm" name="cita[]" value="Martes 4pm">
-                                <label for="martes4pm">4 PM</label><br>
-                                <input type="checkbox" id="martes5pm" name="cita[]" value="Martes 5pm">
-                                <label for="martes5pm">5 PM</label><br>
-                            </div>
-                            <!-- Miércoles -->
-                            <div class="dia-horario">
-                                <label>Miércoles:</label><br>
-                                <input type="checkbox" id="miercoles9am" name="cita[]" value="Miércoles 9am">
-                                <label for="miercoles9am">9 AM</label><br>
-                                <input type="checkbox" id="miercoles10am" name="cita[]" value="Miércoles 10am">
-                                <label for="miercoles10am">10 AM</label><br>
-                                <input type="checkbox" id="miercoles11am" name="cita[]" value="Miércoles 11am">
-                                <label for="miercoles11am">11 AM</label><br>
-                                <input type="checkbox" id="miercoles12pm" name="cita[]" value="Miércoles 12pm">
-                                <label for="miercoles12pm">12 PM</label><br>
-                                <input type="checkbox" id="miercoles3pm" name="cita[]" value="Miércoles 3pm">
-                                <label for="miercoles3pm">3 PM</label><br>
-                                <input type="checkbox" id="miercoles4pm" name="cita[]" value="Miércoles 4pm">
-                                <label for="miercoles4pm">4 PM</label><br>
-                                <input type="checkbox" id="miercoles5pm" name="cita[]" value="Miércoles 5pm">
-                                <label for="miercoles5pm">5 PM</label><br>
-                            </div>
-                            <!-- Jueves -->
-                            <div class="dia-horario">
-                                <label>Jueves:</label><br>
-                                <input type="checkbox" id="jueves9am" name="cita[]" value="Jueves 9am">
-                                <label for="jueves9am">9 AM</label><br>
-                                <input type="checkbox" id="jueves10am" name="cita[]" value="Jueves 10am">
-                                <label for="jueves10am">10 AM</label><br>
-                                <input type="checkbox" id="jueves11am" name="cita[]" value="Jueves 11am">
-                                <label for="jueves11am">11 AM</label><br>
-                                <input type="checkbox" id="jueves12pm" name="cita[]" value="Jueves 12pm">
-                                <label for="jueves12pm">12 PM</label><br>
-                                <input type="checkbox" id="jueves3pm" name="cita[]" value="Jueves 3pm">
-                                <label for="jueves3pm">3 PM</label><br>
-                                <input type="checkbox" id="jueves4pm" name="cita[]" value="Jueves 4pm">
-                                <label for="jueves4pm">4 PM</label><br>
-                                <input type="checkbox" id="jueves5pm" name="cita[]" value="Jueves 5pm">
-                                <label for="jueves5pm">5 PM</label><br>
-                            </div>
-                            <!-- Viernes -->
-                            <div class="dia-horario">
-                                <label>Viernes:</label><br>
-                                <input type="checkbox" id="viernes9am" name="cita[]" value="Viernes 9am">
-                                <label for="viernes9am">9 AM</label><br>
-                                <input type="checkbox" id="viernes10am" name="cita[]" value="Viernes 10am">
-                                <label for="viernes10am">10 AM</label><br>
-                                <input type="checkbox" id="viernes11am" name="cita[]" value="Viernes 11am">
-                                <label for="viernes11am">11 AM</label><br>
-                                <input type="checkbox" id="viernes12pm" name="cita[]" value="Viernes 12pm">
-                                <label for="viernes12pm">12 PM</label><br>
-                                <input type="checkbox" id="viernes3pm" name="cita[]" value="Viernes 3pm">
-                                <label for="viernes3pm">3 PM</label><br>
-                                <input type="checkbox" id="viernes4pm" name="cita[]" value="Viernes 4pm">
-                                <label for="viernes4pm">4 PM</label><br>
-                                <input type="checkbox" id="viernes5pm" name="cita[]" value="Viernes 5pm">
-                                <label for="viernes5pm">5 PM</label><br>
-                            </div>
-                            <!-- Continuar para los demás días de la semana -->
-                        </fieldset>
+                        <label for="diasCita">¿Qué días preferirías para la cita?</label>
+                        <br>
+                        <br>
+                        <select id="diasCita" name="diasCita" class="select-estilo" required>
+                            <option value="" disabled selected>Selecciona un día</option>
+                            <option value="Lunes">Lunes</option>
+                            <option value="Martes">Martes</option>
+                            <option value="Miércoles">Miércoles</option>
+                            <option value="Jueves">Jueves</option>
+                            <option value="Viernes">Viernes</option>
+                        </select><br>
                     </div>
                 </div>
                 <div id="contenedorCapturaSegundo" style="visibility:hidden;">

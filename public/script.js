@@ -1403,12 +1403,6 @@ document.addEventListener("DOMContentLoaded", function() {
         formData.append('valorE', resultados.fila5);
         formData.append('valorA', resultados.fila6);
         formData.append('valorVacio', resultados.fila7);
-        
-        const citasCheckboxes = document.querySelectorAll('input[name="cita[]"]:checked');  // Esto selecciona solo las casillas marcadas
-        citasCheckboxes.forEach((checkbox, index) => {
-            formData.append(`cita[${index}]`, checkbox.value);  // Añade cada cita seleccionada a formData
-        });
-
 
         console.log('Datos a enviar:', [...formData.entries()]);  
 
