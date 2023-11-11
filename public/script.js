@@ -1688,6 +1688,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let generoSeleccionado = document.getElementById('generoSeleccionado').value;
         if (!generoSeleccionado) {
             alert("Por favor, selecciona un género antes de continuar.");
+            btnEnviar.disabled = false;  // Reactiva el botón Enviar
             return; // Detiene la ejecución de la función si no se ha seleccionado un género
         }
         console.log("Género al calcular: ", generoSeleccionado);
