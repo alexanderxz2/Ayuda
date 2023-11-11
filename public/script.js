@@ -280,6 +280,16 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
     }
+    document.querySelectorAll('.btn-genero').forEach(button => {
+        button.addEventListener('click', function() {
+            document.querySelectorAll('.btn-genero').forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            document.getElementById('generoSeleccionado').value = this.getAttribute('data-value');
+    
+            // Verificar si el valor se actualiza correctamente
+            console.log("Género seleccionado: ", document.getElementById('generoSeleccionado').value);
+        });
+    });
     
     
     // Restaurar el estado del formulario desde Local Storage
@@ -735,7 +745,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const CCFM = (
             estaSeleccionada("opcion1_N") +
             estaSeleccionada("opcion27_N") +
-            estaSeleccionada("opcion54_N") +
+            estaSeleccionada("opcion53_N") +
             estaSeleccionada("opcion79_N") +
             estaSeleccionada("opcion105_N") +
             estaSeleccionada("opcion131_N") +
@@ -746,7 +756,7 @@ document.addEventListener("DOMContentLoaded", function() {
             estaSeleccionada("opcion261_N") +
             estaSeleccionada("opcion2_N") +
             estaSeleccionada("opcion28_N") +
-            estaSeleccionada("opcion55_N") +
+            estaSeleccionada("opcion54_N") +
             estaSeleccionada("opcion80_N") +
             estaSeleccionada("opcion106_N") +
             estaSeleccionada("opcion132_N") +
@@ -773,7 +783,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const CCSS = (
             estaSeleccionada("opcion3_N") +
             estaSeleccionada("opcion29_N") +
-            estaSeleccionada("opcion56_N") +
+            estaSeleccionada("opcion55_N") +
             estaSeleccionada("opcion81_N") +
             estaSeleccionada("opcion107_N") +
             estaSeleccionada("opcion133_N") +
@@ -784,7 +794,7 @@ document.addEventListener("DOMContentLoaded", function() {
             estaSeleccionada("opcion263_N") +
             estaSeleccionada("opcion4_N") +
             estaSeleccionada("opcion30_N") +
-            estaSeleccionada("opcion57_N") +
+            estaSeleccionada("opcion56_N") +
             estaSeleccionada("opcion82_N") +
             estaSeleccionada("opcion108_N") +
             estaSeleccionada("opcion134_N") +
@@ -811,7 +821,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const CCNA = (
             estaSeleccionada("opcion5_N") +
             estaSeleccionada("opcion31_N") +
-            estaSeleccionada("opcion58_N") +
+            estaSeleccionada("opcion57_N") +
             estaSeleccionada("opcion83_N") +
             estaSeleccionada("opcion109_N") +
             estaSeleccionada("opcion135_N") +
@@ -822,7 +832,7 @@ document.addEventListener("DOMContentLoaded", function() {
             estaSeleccionada("opcion265_N") +
             estaSeleccionada("opcion6_N") +
             estaSeleccionada("opcion32_N") +
-            estaSeleccionada("opcion59_N") +
+            estaSeleccionada("opcion58_N") +
             estaSeleccionada("opcion84_N") +
             estaSeleccionada("opcion110_N") +
             estaSeleccionada("opcion136_N") +
@@ -849,7 +859,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const CCCO = (
             estaSeleccionada("opcion7_N") +
             estaSeleccionada("opcion33_N") +
-            estaSeleccionada("opcion60_N") +
+            estaSeleccionada("opcion59_N") +
             estaSeleccionada("opcion85_N") +
             estaSeleccionada("opcion111_N") +
             estaSeleccionada("opcion137_N") +
@@ -860,7 +870,7 @@ document.addEventListener("DOMContentLoaded", function() {
             estaSeleccionada("opcion267_N") +
             estaSeleccionada("opcion8_N") +
             estaSeleccionada("opcion34_N") +
-            estaSeleccionada("opcion61_N") +
+            estaSeleccionada("opcion60_N") +
             estaSeleccionada("opcion86_N") +
             estaSeleccionada("opcion112_N") +
             estaSeleccionada("opcion138_N") +
@@ -1283,7 +1293,239 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     }
-     
+    const cuadroMujeres = {
+        CCFM: {
+            '0-2': { percentil: '1-14', significado: 'Desinterés' },
+            '3-4': { percentil: '15-29', significado: 'Bajo' },
+            '5-6': { percentil: '30-39', significado: 'Promedio Bajo' },
+            '7-11': { percentil: '40-60', significado: 'Indeciso' },
+            '12-14': { percentil: '61-74', significado: 'Promedio Alto' },
+            '15-17': { percentil: '75-89', significado: 'Alto' },
+            '18-22': { percentil: '90-99', significado: 'Muy Alto' },
+        },
+        CCSS: {
+            '0-4': { percentil: '1-14', significado: 'Desinterés' },
+            '5-7': { percentil: '15-29', significado: 'Bajo' },
+            '8-9': { percentil: '30-39', significado: 'Promedio Bajo' },
+            '10-14': { percentil: '40-60', significado: 'Indeciso' },
+            '15-16': { percentil: '61-74', significado: 'Promedio Alto' },
+            '17-19': { percentil: '75-89', significado: 'Alto' },
+            '20-22': { percentil: '90-99', significado: 'Muy Alto' },
+        },
+        CCNA: {
+            '0-3': { percentil: '1-14', significado: 'Desinterés' },
+            '4-5': { percentil: '15-29', significado: 'Bajo' },
+            '6-7': { percentil: '30-39', significado: 'Promedio Bajo' },
+            '8-12': { percentil: '40-60', significado: 'Indeciso' },
+            '13-14': { percentil: '61-74', significado: 'Promedio Alto' },
+            '15-17': { percentil: '75-89', significado: 'Alto' },
+            '18-22': { percentil: '90-99', significado: 'Muy Alto' },
+        },
+        CCCO: {
+            '0-2': { percentil: '1-14', significado: 'Desinterés' },
+            '3-4': { percentil: '15-29', significado: 'Bajo' },
+            '5-6': { percentil: '30-39', significado: 'Promedio Bajo' },
+            '7-11': { percentil: '40-60', significado: 'Indeciso' },
+            '12-13': { percentil: '61-74', significado: 'Promedio Alto' },
+            '14-16': { percentil: '75-89', significado: 'Alto' },
+            '17-22': { percentil: '90-99', significado: 'Muy Alto' },
+        },
+        ARTE: {
+            '0-2': { percentil: '1-14', significado: 'Desinterés' },
+            '3-4': { percentil: '15-29', significado: 'Bajo' },
+            '5-6': { percentil: '30-39', significado: 'Promedio Bajo' },
+            '7-11': { percentil: '40-60', significado: 'Indeciso' },
+            '12-13': { percentil: '61-74', significado: 'Promedio Alto' },
+            '14-16': { percentil: '75-89', significado: 'Alto' },
+            '17-22': { percentil: '90-99', significado: 'Muy Alto' },
+        },
+        BURO: {
+            '0-4': { percentil: '1-14', significado: 'Desinterés' },
+            '5-7': { percentil: '15-29', significado: 'Bajo' },
+            '8-9': { percentil: '30-39', significado: 'Promedio Bajo' },
+            '10-14': { percentil: '40-60', significado: 'Indeciso' },
+            '15-16': { percentil: '61-74', significado: 'Promedio Alto' },
+            '17-19': { percentil: '75-89', significado: 'Alto' },
+            '20-22': { percentil: '90-99', significado: 'Muy Alto' },
+        },
+        CCEP: {
+            '0-2': { percentil: '1-14', significado: 'Desinterés' },
+            '3-5': { percentil: '15-29', significado: 'Bajo' },
+            '6-7': { percentil: '30-39', significado: 'Promedio Bajo' },
+            '8-12': { percentil: '40-60', significado: 'Indeciso' },
+            '13-14': { percentil: '61-74', significado: 'Promedio Alto' },
+            '15-17': { percentil: '75-89', significado: 'Alto' },
+            '18-22': { percentil: '90-99', significado: 'Muy Alto' },
+        },
+        IIAA: {
+            '0-2': { percentil: '1-14', significado: 'Desinterés' },
+            '3-4': { percentil: '15-29', significado: 'Bajo' },
+            '5-6': { percentil: '30-39', significado: 'Promedio Bajo' },
+            '7-9': { percentil: '40-60', significado: 'Indeciso' },
+            '10-12': { percentil: '61-74', significado: 'Promedio Alto' },
+            '13-15': { percentil: '75-89', significado: 'Alto' },
+            '16-22': { percentil: '90-99', significado: 'Muy Alto' },
+        },
+        FINA: {
+            '0-2': { percentil: '1-14', significado: 'Desinterés' },
+            '3-5': { percentil: '15-29', significado: 'Bajo' },
+            '6-7': { percentil: '30-39', significado: 'Promedio Bajo' },
+            '8-12': { percentil: '40-60', significado: 'Indeciso' },
+            '13-14': { percentil: '61-74', significado: 'Promedio Alto' },
+            '15-17': { percentil: '75-89', significado: 'Alto' },
+            '18-22': { percentil: '90-99', significado: 'Muy Alto' },
+        },
+        LING: {
+            '0-2': { percentil: '1-14', significado: 'Desinterés' },
+            '3-5': { percentil: '15-29', significado: 'Bajo' },
+            '6-7': { percentil: '30-39', significado: 'Promedio Bajo' },
+            '8-12': { percentil: '40-60', significado: 'Indeciso' },
+            '13-14': { percentil: '61-74', significado: 'Promedio Alto' },
+            '15-17': { percentil: '75-89', significado: 'Alto' },
+            '18-22': { percentil: '90-99', significado: 'Muy Alto' },
+        },
+        JURI: {
+            '0-2': { percentil: '1-14', significado: 'Desinterés' },
+            '3-4': { percentil: '15-29', significado: 'Bajo' },
+            '5-6': { percentil: '30-39', significado: 'Promedio Bajo' },
+            '7-11': { percentil: '40-60', significado: 'Indeciso' },
+            '12-13': { percentil: '61-74', significado: 'Promedio Alto' },
+            '14-16': { percentil: '75-89', significado: 'Alto' },
+            '17-22': { percentil: '90-99', significado: 'Muy Alto' },
+        }
+    };
+
+    const cuadroVarones = {
+        CCFM: {
+            '0-4': { percentil: '1-14', significado: 'Desinterés' },
+            '5-7': { percentil: '15-29', significado: 'Bajo' },
+            '8-9': { percentil: '30-39', significado: 'Promedio Bajo' },
+            '10-13': { percentil: '40-60', significado: 'Indeciso' },
+            '14-15': { percentil: '61-74', significado: 'Promedio Alto' },
+            '16-17': { percentil: '75-89', significado: 'Alto' },
+            '18-22': { percentil: '90-99', significado: 'Muy Alto' },
+        },
+        CCSS: {
+            '0-3': { percentil: '1-14', significado: 'Desinterés' },
+            '4-6': { percentil: '15-29', significado: 'Bajo' },
+            '7-8': { percentil: '30-39', significado: 'Promedio Bajo' },
+            '9-12': { percentil: '40-60', significado: 'Indeciso' },
+            '13-14': { percentil: '61-74', significado: 'Promedio Alto' },
+            '15-16': { percentil: '75-89', significado: 'Alto' },
+            '17-22': { percentil: '90-99', significado: 'Muy Alto' },
+        },
+        CCNA: {
+            '0-4': { percentil: '1-14', significado: 'Desinterés' },
+            '5-7': { percentil: '15-29', significado: 'Bajo' },
+            '8-9': { percentil: '30-39', significado: 'Promedio Bajo' },
+            '10-13': { percentil: '40-60', significado: 'Indeciso' },
+            '14-15': { percentil: '61-74', significado: 'Promedio Alto' },
+            '16-18': { percentil: '75-89', significado: 'Alto' },
+            '19-22': { percentil: '90-99', significado: 'Muy Alto' },
+        },
+        CCCO: {
+            '0-2': { percentil: '1-14', significado: 'Desinterés' },
+            '3-4': { percentil: '15-29', significado: 'Bajo' },
+            '5-6': { percentil: '30-39', significado: 'Promedio Bajo' },
+            '7-10': { percentil: '40-60', significado: 'Indeciso' },
+            '11-13': { percentil: '61-74', significado: 'Promedio Alto' },
+            '14-17': { percentil: '75-89', significado: 'Alto' },
+            '18-22': { percentil: '90-99', significado: 'Muy Alto' },
+        },
+        ARTE: {
+            '0-2': { percentil: '1-14', significado: 'Desinterés' },
+            '3-4': { percentil: '15-29', significado: 'Bajo' },
+            '5-6': { percentil: '30-39', significado: 'Promedio Bajo' },
+            '7-10': { percentil: '40-60', significado: 'Indeciso' },
+            '11-14': { percentil: '61-74', significado: 'Promedio Alto' },
+            '15-17': { percentil: '75-89', significado: 'Alto' },
+            '18-22': { percentil: '90-99', significado: 'Muy Alto' },
+        },
+        BURO: {
+            '0-3': { percentil: '1-14', significado: 'Desinterés' },
+            '4-5': { percentil: '15-29', significado: 'Bajo' },
+            '6-7': { percentil: '30-39', significado: 'Promedio Bajo' },
+            '8-11': { percentil: '40-60', significado: 'Indeciso' },
+            '12-13': { percentil: '61-74', significado: 'Promedio Alto' },
+            '14-16': { percentil: '75-89', significado: 'Alto' },
+            '17-22': { percentil: '90-99', significado: 'Muy Alto' },
+        },
+        CCEP: {
+            '0-3': { percentil: '1-14', significado: 'Desinterés' },
+            '4-5': { percentil: '15-29', significado: 'Bajo' },
+            '6-7': { percentil: '30-39', significado: 'Promedio Bajo' },
+            '8-12': { percentil: '40-60', significado: 'Indeciso' },
+            '13-14': { percentil: '61-74', significado: 'Promedio Alto' },
+            '15-17': { percentil: '75-89', significado: 'Alto' },
+            '18-22': { percentil: '90-99', significado: 'Muy Alto' },
+        },
+        IIAA: {
+            '0-3': { percentil: '1-14', significado: 'Desinterés' },
+            '4-5': { percentil: '15-29', significado: 'Bajo' },
+            '6-7': { percentil: '30-39', significado: 'Promedio Bajo' },
+            '8-12': { percentil: '40-60', significado: 'Indeciso' },
+            '13-14': { percentil: '61-74', significado: 'Promedio Alto' },
+            '15-17': { percentil: '75-89', significado: 'Alto' },
+            '18-22': { percentil: '90-99', significado: 'Muy Alto' },
+        },
+        FINA: {
+            '0-2': { percentil: '1-14', significado: 'Desinterés' },
+            '3-4': { percentil: '15-29', significado: 'Bajo' },
+            '5-6': { percentil: '30-39', significado: 'Promedio Bajo' },
+            '7-10': { percentil: '40-60', significado: 'Indeciso' },
+            '11-12': { percentil: '61-74', significado: 'Promedio Alto' },
+            '13-16': { percentil: '75-89', significado: 'Alto' },
+            '17-22': { percentil: '90-99', significado: 'Muy Alto' },
+        },
+        LING: {
+            '0-2': { percentil: '1-14', significado: 'Desinterés' },
+            '3-4': { percentil: '15-29', significado: 'Bajo' },
+            '5-6': { percentil: '30-39', significado: 'Promedio Bajo' },
+            '7-9': { percentil: '40-60', significado: 'Indeciso' },
+            '10-12': { percentil: '61-74', significado: 'Promedio Alto' },
+            '13-15': { percentil: '75-89', significado: 'Alto' },
+            '16-22': { percentil: '90-99', significado: 'Muy Alto' },
+        },
+        JURI: {
+            '0-2': { percentil: '1-14', significado: 'Desinterés' },
+            '3-4': { percentil: '15-29', significado: 'Bajo' },
+            '5-6': { percentil: '30-39', significado: 'Promedio Bajo' },
+            '7-10': { percentil: '40-60', significado: 'Indeciso' },
+            '11-13': { percentil: '61-74', significado: 'Promedio Alto' },
+            '14-16': { percentil: '75-89', significado: 'Alto' },
+            '17-22': { percentil: '90-99', significado: 'Muy Alto' },
+        }
+    };
+    
+    function obtenerPercentilYSignificado(genero, categoria, puntaje) {
+        console.log(`Datos recibidos - Género: ${genero}, Categoría: ${categoria}, Puntaje: ${puntaje}`);
+
+        if (!['Varon', 'Mujer'].includes(genero)) {
+            console.error(`Género no válido: ${genero}`);
+            return null;
+        }
+        if (!cuadroVarones[categoria] && !cuadroMujeres[categoria]) {
+            console.error(`Categoría no válida: ${categoria}`);
+            return null;
+        }
+        if (isNaN(puntaje)) {
+            console.error(`Puntaje no es un número: ${puntaje}`);
+            return null;
+        }
+    
+        let cuadro = genero === 'Varon' ? cuadroVarones : cuadroMujeres;
+        for (const rango in cuadro[categoria]) {
+            let [min, max] = rango.split('-').map(Number);
+            if (puntaje >= min && puntaje <= max) {
+                return cuadro[categoria][rango];
+            }
+        }
+    
+        console.error(`No se encontró un rango para el puntaje ${puntaje} en la categoría ${categoria}`);
+        return null; // En caso de no encontrar un rango adecuado
+    }
+    
+    
     // Inicializa un objeto para contar las respuestas por categoría
     const conteoCategorias = {
         "VERA": 0,
@@ -1443,6 +1685,58 @@ document.addEventListener("DOMContentLoaded", function() {
             formData.append(`horaCita[${index}]`, selectHora ? selectHora.value : '');
         });
 
+        let generoSeleccionado = document.getElementById('generoSeleccionado').value;
+        if (!generoSeleccionado) {
+            alert("Por favor, selecciona un género antes de continuar.");
+            return; // Detiene la ejecución de la función si no se ha seleccionado un género
+        }
+        console.log("Género al calcular: ", generoSeleccionado);
+
+        let puntajeCCFM = calcularCCFM();
+        let resultadoCCFM = obtenerPercentilYSignificado(generoSeleccionado, 'CCFM', puntajeCCFM);
+        console.log(`CCFM - Percentil: ${resultadoCCFM.percentil}, Significado: ${resultadoCCFM.significado}`);
+    
+        let puntajeCCSS = calcularCCSS();
+        let resultadoCCSS = obtenerPercentilYSignificado(generoSeleccionado, 'CCSS', puntajeCCSS);
+        console.log(`CCSS - Percentil: ${resultadoCCSS.percentil}, Significado: ${resultadoCCSS.significado}`);
+    
+        let puntajeCCNA = calcularCCNA();
+        let resultadoCCNA = obtenerPercentilYSignificado(generoSeleccionado, 'CCNA', puntajeCCNA);
+        console.log(`CCNA - Percentil: ${resultadoCCNA.percentil}, Significado: ${resultadoCCNA.significado}`);
+    
+        let puntajeCCCO = calcularCCCO();
+        let resultadoCCCO = obtenerPercentilYSignificado(generoSeleccionado, 'CCCO', puntajeCCCO);
+        console.log(`CCCO - Percentil: ${resultadoCCCO.percentil}, Significado: ${resultadoCCCO.significado}`);
+    
+        let puntajeARTE = calcularARTE();
+        let resultadoARTE = obtenerPercentilYSignificado(generoSeleccionado, 'ARTE', puntajeARTE);
+        console.log(`ARTE - Percentil: ${resultadoARTE.percentil}, Significado: ${resultadoARTE.significado}`);
+    
+        let puntajeBURO = calcularBURO();
+        let resultadoBURO = obtenerPercentilYSignificado(generoSeleccionado, 'BURO', puntajeBURO);
+        console.log(`BURO - Percentil: ${resultadoBURO.percentil}, Significado: ${resultadoBURO.significado}`);
+    
+        let puntajeCCEP = calcularCCEP();
+        let resultadoCCEP = obtenerPercentilYSignificado(generoSeleccionado, 'CCEP', puntajeCCEP);
+        console.log(`CCEP - Percentil: ${resultadoCCEP.percentil}, Significado: ${resultadoCCEP.significado}`);
+    
+        let puntajeIIAA = calcularIIAA();
+        let resultadoIIAA = obtenerPercentilYSignificado(generoSeleccionado, 'IIAA', puntajeIIAA);
+        console.log(`IIAA - Percentil: ${resultadoIIAA.percentil}, Significado: ${resultadoIIAA.significado}`);
+    
+        let puntajeFINA = calcularFINA();
+        let resultadoFINA = obtenerPercentilYSignificado(generoSeleccionado, 'FINA', puntajeFINA);
+        console.log(`FINA - Percentil: ${resultadoFINA.percentil}, Significado: ${resultadoFINA.significado}`);
+    
+        let puntajeLING = calcularLING();
+        let resultadoLING = obtenerPercentilYSignificado(generoSeleccionado, 'LING', puntajeLING);
+        console.log(`LING - Percentil: ${resultadoLING.percentil}, Significado: ${resultadoLING.significado}`);
+    
+        let puntajeJURI = calcularJURI();
+        let resultadoJURI = obtenerPercentilYSignificado(generoSeleccionado, 'JURI', puntajeJURI);
+        console.log(`JURI - Percentil: ${resultadoJURI.percentil}, Significado: ${resultadoJURI.significado}`);
+            
+
         const valorVera = calcularVera();
         const valorCons = calcularCons();
         const valorCCFM = calcularCCFM();
@@ -1478,6 +1772,20 @@ document.addEventListener("DOMContentLoaded", function() {
         formData.append('valorE', resultados.fila5);
         formData.append('valorA', resultados.fila6);
         formData.append('valorVacio', resultados.fila7);
+
+        formData.append('resultadoCCFM', JSON.stringify(resultadoCCFM));
+        formData.append('resultadoCCSS', JSON.stringify(resultadoCCSS));
+        formData.append('resultadoCCNA', JSON.stringify(resultadoCCNA));
+        formData.append('resultadoCCCO', JSON.stringify(resultadoCCCO));
+        formData.append('resultadoARTE', JSON.stringify(resultadoARTE));
+        formData.append('resultadoBURO', JSON.stringify(resultadoBURO));
+        formData.append('resultadoCCEP', JSON.stringify(resultadoCCEP));
+        formData.append('resultadoIIAA', JSON.stringify(resultadoIIAA));
+        formData.append('resultadoFINA', JSON.stringify(resultadoFINA));
+        formData.append('resultadoLING', JSON.stringify(resultadoLING));
+        formData.append('resultadoJURI', JSON.stringify(resultadoJURI));
+        
+
 
         console.log('Datos a enviar:', [...formData.entries()]);  
 

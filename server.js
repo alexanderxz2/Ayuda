@@ -79,6 +79,18 @@ function crearSeleccionCategoria(categoria, valor1, valor2, valor3) {
         ],
     });
 }
+function obtenerYProcesarResultados(categoria, req) {
+    const resultado = req.body[`resultado${categoria}`];
+    if (!resultado) return 'No Disponible';
+    try {
+        const resultadoParsed = JSON.parse(resultado);
+        return `Percentil: ${resultadoParsed.percentil}, Significado: ${resultadoParsed.significado}`;
+    } catch (e) {
+        console.error(`Error al procesar resultado para ${categoria}:`, e);
+        return 'Error en el procesamiento';
+    }
+}
+
 
 const obtenerValor = (campo, requestBody, defaultValue = 'N/A') => requestBody[campo] || defaultValue;
 
@@ -87,9 +99,22 @@ app.post('/procesar', upload, (req, res) => {
         console.log("Inicio de la función /procesar");
         console.log(req.body);
 
+        const resultadosCCFM = obtenerYProcesarResultados('CCFM', req);
+        const resultadosCCSS = obtenerYProcesarResultados('CCSS', req);
+        const resultadosCCNA = obtenerYProcesarResultados('CCNA', req);
+        const resultadosCCCO = obtenerYProcesarResultados('CCCO', req);
+        const resultadosARTE = obtenerYProcesarResultados('ARTE', req);
+        const resultadosBURO = obtenerYProcesarResultados('BURO', req);
+        const resultadosCCEP = obtenerYProcesarResultados('CCEP', req);
+        const resultadosIIAA = obtenerYProcesarResultados('IIAA', req);
+        const resultadosFINA = obtenerYProcesarResultados('FINA', req);
+        const resultadosLING = obtenerYProcesarResultados('LING', req);
+        const resultadosJURI = obtenerYProcesarResultados('JURI', req);
+
         const valorVera = obtenerValor('valorVera', req.body);
         const valorCons = obtenerValor('valorCons', req.body);
         const valorCCFM = obtenerValor('valorCCFM', req.body);
+        const valorCCSS = obtenerValor('valorCCSS', req.body);
         const valorCCNA = obtenerValor('valorCCNA', req.body);
         const valorCCCO = obtenerValor('valorCCCO', req.body);
         const valorARTE = obtenerValor('valorARTE', req.body);
@@ -99,6 +124,7 @@ app.post('/procesar', upload, (req, res) => {
         const valorFINA = obtenerValor('valorFINA', req.body);
         const valorLING = obtenerValor('valorLING', req.body);
         const valorJURI = obtenerValor('valorJURI', req.body);
+
         const fila1 = obtenerValor('valorR', req.body);
         const fila2 = obtenerValor('valorI', req.body);
         const fila3 = obtenerValor('valorS', req.body);
@@ -113,6 +139,21 @@ app.post('/procesar', upload, (req, res) => {
             crearSeleccionCategoria('Oficios', obtenerValor('oficio1', req.body), obtenerValor('oficio2', req.body), obtenerValor('oficio3', req.body)),
             crearSeleccionCategoria('Carreras', obtenerValor('carrera1', req.body), obtenerValor('carrera2', req.body), obtenerValor('carrera3', req.body)),
             crearSeleccionCategoria('Profesiones', obtenerValor('profesion1', req.body), obtenerValor('profesion2', req.body), obtenerValor('profesion3', req.body)),
+        ];
+
+        const seccionesResultados = [
+            crearResultado('Resultado CCFM', resultadosCCFM),
+            crearResultado('Resultado CCSS', resultadosCCSS),
+            crearResultado('Resultado CCNA', resultadosCCNA),
+            crearResultado('Resultado CCCO', resultadosCCCO),
+            crearResultado('Resultado ARTE', resultadosARTE),
+            crearResultado('Resultado BURO', resultadosBURO),
+            crearResultado('Resultado CCEP', resultadosCCEP),
+            crearResultado('Resultado IIAA', resultadosIIAA),
+            crearResultado('Resultado FINA', resultadosFINA),
+            crearResultado('Resultado LING', resultadosLING),
+            crearResultado('Resultado JURI', resultadosJURI),
+            // Agrega más si hay más categorías...
         ];
 
         let seccion = [
@@ -154,6 +195,7 @@ app.post('/procesar', upload, (req, res) => {
             crearResultado('Valor Vera', valorVera),
             crearResultado('Valor Cons', valorCons),
             crearResultado('Valor CCFM', valorCCFM),
+            crearResultado('Valor CCSS', valorCCSS),            
             crearResultado('Valor CCNA', valorCCNA),
             crearResultado('Valor CCCO', valorCCCO),
             crearResultado('Valor ARTE', valorARTE),
@@ -177,7 +219,7 @@ app.post('/procesar', upload, (req, res) => {
             description: "Documento generado desde el servidor",
             sections: [
                 {
-                children: [...seccion, ...seccionesEncuesta]                
+                children: [...seccion, ...seccionesEncuesta, ...seccionesResultados]                
             }
             ]
         });

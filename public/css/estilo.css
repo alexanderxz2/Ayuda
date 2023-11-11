@@ -423,8 +423,63 @@ img {
     margin-top: 10px;
 }
 
+
+
+/* Estilo para el botón Añadir Horario */
+#btnAgregarHorario {
+    background-color: #4A90E2; /* Azul suave */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 10px 0;
+    transition: background-color 0.3s;
+}
+
+#btnAgregarHorario:hover {
+    background-color: #3D7ABD; /* Un azul un poco más oscuro para el efecto hover */
+}
+
+/* Estilo para el botón Eliminar */
 .btnEliminarHorario {
-    margin-left: 10px;
+    background-color: #F5A623; /* Un tono naranja suave */
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.btnEliminarHorario:hover {
+    background-color: #E69019; /* Un naranja un poco más oscuro para el efecto hover */
+}
+
+/* Que nuevo  */
+
+.seleccion-genero {
+    margin: 10px 0;
+    text-align: center;
+}
+
+.botones-genero button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    color: #333;
+    font-size: 16px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.botones-genero button.active {
+    background-color: #4CAF50;
+    color: white;
 }
 
 

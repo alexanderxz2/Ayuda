@@ -3380,6 +3380,7 @@
             </div>
             <!-- ---------------------(Final)------------------------------------------------- -->
             <div class="seccion-preguntasPrego" id="seccion55" style="display: none;">
+                <input type="hidden" id="generoSeleccionado" value="">
                 <img id="imagenSeccion" src="images/sec7.png">
                 <h2 class="titulo-seccion">información para la cita</h2>  <!-- Título de la sección 1 -->
                 <!-- Primera columna -->
@@ -3427,9 +3428,14 @@
                     </div>
                 </div>
                 <button type="button" id="btnAgregarHorario">+ Añadir Horario</button>
-                
-
-
+                <div class="seleccion-genero">
+                    <h3>Selecciona tu género:</h3>
+                    <div class="botones-genero">
+                        <button type="button" class="btn-genero" data-value="Varon">Varón</button>
+                        <button type="button" class="btn-genero" data-value="Mujer">Mujer</button>
+                    </div>
+                    <input type="hidden" id="generoSeleccionado" name="genero">
+                </div>                
                 <div id="contenedorCapturaSegundo" style="visibility:hidden;">
                     <!-- Sección del gráfico -->
                     <div id="seccionGraficaSegundo" style="visibility:hidden;">
