@@ -688,7 +688,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
         const RESTA = (
             (estaSeleccionada("opcion26_N") - estaSeleccionada("opcion262_N")) +
-            (estaSeleccionada("opcion53_N") - estaSeleccionada("opcion264_N")) +
+            (estaSeleccionada("opcion52_N") - estaSeleccionada("opcion264_N")) +
             (estaSeleccionada("opcion79_N") - estaSeleccionada("opcion266_N")) +
             (estaSeleccionada("opcion104_N") - estaSeleccionada("opcion268_N")) +
             (estaSeleccionada("opcion130_N") - estaSeleccionada("opcion270_N")) +
