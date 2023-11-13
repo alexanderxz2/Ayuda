@@ -680,8 +680,8 @@ document.addEventListener("DOMContentLoaded", function() {
             (estaSeleccionada("opcion151_N") - estaSeleccionada("opcion271_N")) +
             (estaSeleccionada("opcion177_N") - estaSeleccionada("opcion273_N")) +
             (estaSeleccionada("opcion203_N") - estaSeleccionada("opcion275_N")) +
-            (estaSeleccionada("opcion229_N") - estaSeleccionada("opcion277_N")) +
-            (estaSeleccionada("opcion255_N") - estaSeleccionada("opcion279_N")) +
+            (estaSeleccionada("opcion231_N") - estaSeleccionada("opcion277_N")) +
+            (estaSeleccionada("opcion257_N") - estaSeleccionada("opcion279_N")) +
             (estaSeleccionada("opcion283_N") - estaSeleccionada("opcion1_N"))
         );
         
@@ -689,7 +689,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const RESTA = (
             (estaSeleccionada("opcion26_N") - estaSeleccionada("opcion262_N")) +
             (estaSeleccionada("opcion52_N") - estaSeleccionada("opcion264_N")) +
-            (estaSeleccionada("opcion79_N") - estaSeleccionada("opcion266_N")) +
+            (estaSeleccionada("opcion78_N") - estaSeleccionada("opcion266_N")) +
             (estaSeleccionada("opcion104_N") - estaSeleccionada("opcion268_N")) +
             (estaSeleccionada("opcion130_N") - estaSeleccionada("opcion270_N")) +
             (estaSeleccionada("opcion154_N") - estaSeleccionada("opcion272_N")) +
@@ -697,7 +697,7 @@ document.addEventListener("DOMContentLoaded", function() {
             (estaSeleccionada("opcion208_N") - estaSeleccionada("opcion276_N")) +
             (estaSeleccionada("opcion234_N") - estaSeleccionada("opcion278_N")) +
             (estaSeleccionada("opcion260_N") - estaSeleccionada("opcion280_N")) +
-            (estaSeleccionada("opcion286_N") - estaSeleccionada("opcion2_N"))
+            (estaSeleccionada("opcion285_N") - estaSeleccionada("opcion2_N"))
         );
     
         const CONS = SUMA - RESTA;
