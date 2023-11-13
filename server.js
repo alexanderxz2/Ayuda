@@ -49,22 +49,16 @@ function generarTextoDisponibilidad(horariosPorDia) {
   }
   
 
-function crearResultado(nombre, valor) {
+  function crearResultado(nombre, valor) {
     let resultadoTexto;
-
-    // Asegúrate de que 'valor' es un número antes de sumar
-    let valorNumerico = Number(valor);
-
     if (nombre === 'Valor Vera') {
-        resultadoTexto = `Valor: ${valorNumerico}. ` + (valorNumerico >= 6 ? 'La prueba no es verídica' : 'La prueba es verídica');
+        resultadoTexto = `Valor: ${valor}. ` + (valor >= 6 ? 'La prueba no es verídica' : 'La prueba es verídica');
     } else if (nombre === 'Valor Cons') {
-        // Sumar 11 al valor numérico
-        const valorModificado = valorNumerico + 11;
-        resultadoTexto = `Valor: ${valorNumerico}. ` + (valorModificado >= 6 ? 'La prueba no es consistente' : 'La prueba es consistente');
+        const valorModificado = valor + 11;
+        resultadoTexto = `Valor: ${valor}. ` + (valorModificado >= 6 ? 'La prueba no es consistente' : 'La prueba es consistente');
     } else {
-        resultadoTexto = valorNumerico.toString();
+        resultadoTexto = valor.toString();
     }
-
     return new Paragraph({
         children: [
             new TextRun({ text: nombre + ": ", bold: true, size: 32 }),
