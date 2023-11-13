@@ -49,7 +49,7 @@ function generarTextoDisponibilidad(horariosPorDia) {
   }
   
 
-  function crearResultado(nombre, valor) {
+function crearResultado(nombre, valor) {
     let resultadoTexto;
 
     // Asegúrate de que 'valor' es un número antes de sumar
