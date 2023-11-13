@@ -42,14 +42,18 @@ function crearPreguntaRespuesta(textoPregunta, respuesta) {
 
 function crearResultado(nombre, valor) {
     let resultadoTexto;
+
     if (nombre === 'Valor Vera') {
         resultadoTexto = `Valor: ${valor}. ` + (valor >= 6 ? 'La prueba no es verídica' : 'La prueba es verídica');
     } else if (nombre === 'Valor Cons') {
-        const valorModificado = valor + 11;
-        resultadoTexto = `Valor: ${valor}. ` + (valorModificado >= 6 ? 'La prueba no es consistente' : 'La prueba es consistente');
+        // Asegúrate de que 'valor' sea un número antes de sumarle 11
+        const valorNumerico = Number(valor);
+        const valorModificado = valorNumerico + 11;
+        resultadoTexto = `Valor original: ${valor}. Valor modificado: ${valorModificado}. ` + (valorModificado >= 6 ? 'La prueba no es consistente' : 'La prueba es consistente');
     } else {
         resultadoTexto = valor.toString();
     }
+
     return new Paragraph({
         children: [
             new TextRun({ text: nombre + ": ", bold: true, size: 32 }),
@@ -57,6 +61,7 @@ function crearResultado(nombre, valor) {
         ],
     });
 }
+
 
 
 
