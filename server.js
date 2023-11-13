@@ -47,9 +47,9 @@ function crearResultado(nombre, valor) {
         resultadoTexto = `Valor: ${valor}. ` + (valor >= 6 ? 'La prueba no es verídica' : 'La prueba es verídica');
     } else if (nombre === 'Valor Cons') {
         // Asegúrate de que 'valor' sea un número antes de sumarle 11
-        const valorNumerico = Number(valor);
-        const valorModificado = valorNumerico + 11;
-        resultadoTexto = `Valor original: ${valor}. Valor modificado: ${valorModificado}. ` + (valorModificado >= 6 ? 'La prueba no es consistente' : 'La prueba es consistente');
+        const valorOriginal = Number(valor);
+        const valorAbsoluto = Math.abs(valorOriginal);
+        resultadoTexto = `Valor original: ${valorOriginal}. Valor absoluto: ${valorAbsoluto}. ` + (valorAbsoluto >= 6 ? 'La prueba no es consistente' : 'La prueba es consistente');
     } else {
         resultadoTexto = valor.toString();
     }
