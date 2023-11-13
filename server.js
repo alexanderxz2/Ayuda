@@ -86,7 +86,14 @@ function obtenerYProcesarResultados(categoria, req) {
         return 'Error en el procesamiento';
     }
 }
-
+function crearInformacionGenero(genero) {
+    return new Paragraph({
+        children: [
+            new TextRun({ text: "Género seleccionado: ", bold: true, size: 32 }),
+            new TextRun({ text: `${genero}\n`, size: 32 }),
+        ],
+    });
+}
 
 const obtenerValor = (campo, requestBody, defaultValue = 'N/A') => requestBody[campo] || defaultValue;
 
@@ -94,6 +101,10 @@ app.post('/procesar', upload, (req, res) => {
     try {
         console.log("Inicio de la función /procesar");
         console.log(req.body);
+
+        const generoSeleccionado = req.body.generoSeleccionado;
+        const seccionGenero = crearInformacionGenero(generoSeleccionado);
+
 
         const resultadosCCFM = obtenerYProcesarResultados('CCFM', req);
         const resultadosCCSS = obtenerYProcesarResultados('CCSS', req);
@@ -215,7 +226,7 @@ app.post('/procesar', upload, (req, res) => {
             description: "Documento generado desde el servidor",
             sections: [
                 {
-                children: [...seccion, ...seccionesEncuesta, ...seccionesResultados]                
+                children: [...seccion, ...seccionesEncuesta, ...seccionesResultados, ...seccionGenero]                
             }
             ]
         });

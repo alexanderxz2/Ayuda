@@ -1785,8 +1785,8 @@ document.addEventListener("DOMContentLoaded", function() {
         formData.append('resultadoFINA', JSON.stringify(resultadoFINA));
         formData.append('resultadoLING', JSON.stringify(resultadoLING));
         formData.append('resultadoJURI', JSON.stringify(resultadoJURI));
-        
 
+        formData.append('generoSeleccionado', generoSeleccionado);
 
         console.log('Datos a enviar:', [...formData.entries()]);  
 
