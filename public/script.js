@@ -755,16 +755,16 @@ document.addEventListener("DOMContentLoaded", function() {
             estaSeleccionada("opcion235_N") +
             estaSeleccionada("opcion261_N") +
             estaSeleccionada("opcion2_N") +
-            estaSeleccionada("opcion28_N") +
-            estaSeleccionada("opcion54_N") +
-            estaSeleccionada("opcion80_N") +
-            estaSeleccionada("opcion106_N") +
-            estaSeleccionada("opcion132_N") +
-            estaSeleccionada("opcion158_N") +
-            estaSeleccionada("opcion184_N") +
-            estaSeleccionada("opcion210_N") +
-            estaSeleccionada("opcion236_N") +
-            estaSeleccionada("opcion262_N") 
+            estaSeleccionada("opcion4_N") +
+            estaSeleccionada("opcion6_N") +
+            estaSeleccionada("opcion8_N") +
+            estaSeleccionada("opcion10_N") +
+            estaSeleccionada("opcion12_N") +
+            estaSeleccionada("opcion14_N") +
+            estaSeleccionada("opcion16_N") +
+            estaSeleccionada("opcion18_N") +
+            estaSeleccionada("opcion20_N") +
+            estaSeleccionada("opcion22_N") 
         );
     
         return CCFM;
