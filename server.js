@@ -103,7 +103,7 @@ app.post('/procesar', upload, (req, res) => {
         console.log(req.body);
 
         const generoSeleccionado = req.body.generoSeleccionado;
-        const seccionGenero = crearInformacionGenero(generoSeleccionado);
+        let seccionGenero = crearInformacionGenero(generoSeleccionado);
 
 
         const resultadosCCFM = obtenerYProcesarResultados('CCFM', req);
