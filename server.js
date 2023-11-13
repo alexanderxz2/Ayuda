@@ -39,17 +39,8 @@ function crearPreguntaRespuesta(textoPregunta, respuesta) {
         ],
     });
 }
-function generarTextoDisponibilidad(horariosPorDia) {
-    return Object.entries(horariosPorDia).map(([dia, horarios]) => {
-      if (horarios.length > 0) {
-        return `${dia}: ${horarios.join(', ')}`; // Unimos los horarios con coma y espacio
-      }
-      return ''; // Si no hay horarios, no devolvemos nada para ese día
-    }).filter(texto => texto).join('\n'); // Filtramos los días sin horarios y unimos con un salto de línea
-  }
-  
 
-  function crearResultado(nombre, valor) {
+function crearResultado(nombre, valor) {
     let resultadoTexto;
     if (nombre === 'Valor Vera') {
         resultadoTexto = `Valor: ${valor}. ` + (valor >= 6 ? 'La prueba no es verídica' : 'La prueba es verídica');
