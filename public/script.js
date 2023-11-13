@@ -422,30 +422,30 @@ document.addEventListener("DOMContentLoaded", function() {
         "opcion50_N": "NULO", // j65
         "opcion51_N": "NULO", // j66
         "opcion52_N": "CONS", // j67
-        "opcion53_N": "CONS", // j68
+        "opcion53_N": "CCFM", // j68
         "opcion54_N": "CCFM", // j69
-        "opcion55_N": "CCFM", // j70
+        "opcion55_N": "CCSS", // j70
         "opcion56_N": "CCSS", // j71
-        "opcion57_N": "CCSS", // j72
+        "opcion57_N": "CCNA", // j72
         "opcion58_N": "CCNA", // j73
-        "opcion59_N": "CCNA", // j74
+        "opcion59_N": "CCCO", // j74
         "opcion60_N": "CCCO", // j75
-        "opcion61_N": "CCCO", // j76
+        "opcion61_N": "ARTE", // j76
         "opcion62_N": "ARTE", // j77
-        "opcion63_N": "ARTE", // j78
+        "opcion63_N": "BURO", // j78
         "opcion64_N": "BURO", // j79
-        "opcion65_N": "BURO", // j80
+        "opcion65_N": "CCEP", // j80
         "opcion66_N": "CCEP", // j81
-        "opcion67_N": "CCEP", // j82
+        "opcion67_N": "IIAA", // j82
         "opcion68_N": "IIAA", // j83
-        "opcion69_N": "IIAA", // j84
+        "opcion69_N": "FINA", // j84
         "opcion70_N": "FINA", // j85
-        "opcion71_N": "FINA", // j86
+        "opcion71_N": "LING", // j86
         "opcion72_N": "LING", // j87
-        "opcion73_N": "LING", // j88
+        "opcion73_N": "JURI", // j88
         "opcion74_N": "JURI", // j89
-        "opcion75_N": "JURI", // j90
-        "opcion76_N": "VERA", // j91
+        "opcion75_N": "VERA", // j90
+        "opcion76_N": "NULO", // j91
         "opcion77_N": "NULO", // j92
         "opcion78_N": "CONS", // j93
         "opcion79_N": "CCFM", // j94 //j95 no existe
