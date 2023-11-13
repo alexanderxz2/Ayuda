@@ -279,7 +279,7 @@ app.post('/procesar', upload, (req, res) => {
             const mailOptions = {
                 from: 'tuCorreo@gmail.com',
                 to: '13200125@ue.edu.pe',
-                subject: `Prueba Orientación Vocacional alumno ${codigoUsuario}`,
+                subject: `Prueba Orientación Vocacional ${nombreUsuario} ${codigoUsuario}`,
                 text: `Disponibilidad preferente del alumno: Días - ${textoDiasCita}; Horas - ${textoHorasCita}\nAdjunto encontrarás el informe generado.`,
                 attachments: [
                     {   // Adjunto del archivo DOCX
