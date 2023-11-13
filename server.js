@@ -55,8 +55,12 @@ function crearResultado(nombre, valor) {
     if (nombre === 'Valor Vera') {
         resultadoTexto = `Valor: ${valor}. ` + (valor >= 6 ? 'La prueba no es verídica' : 'La prueba es verídica');
     } else if (nombre === 'Valor Cons') {
+        // Primero modifica el valor
         const valorModificado = valor + 11;
-        resultadoTexto = `Valor: ${valor}. ` + (valorModificado >= 6 ? 'La prueba no es consistente' : 'La prueba es consistente');
+        // Luego verifica la consistencia con el valor modificado
+        const esConsistente = valorModificado < 6;
+        // Construye la cadena de texto basada en el valor modificado y su consistencia
+        resultadoTexto = `Valor modificado: ${valorModificado}. ` + (esConsistente ? 'La prueba es consistente' : 'La prueba no es consistente');
     } else {
         resultadoTexto = valor.toString();
     }
@@ -68,6 +72,7 @@ function crearResultado(nombre, valor) {
         ],
     });
 }
+
 
 function crearSeleccionCategoria(categoria, valor1, valor2, valor3) {
     return new Paragraph({
