@@ -49,20 +49,20 @@ function generarTextoDisponibilidad(horariosPorDia) {
   }
   
 
-function crearResultado(nombre, valor) {
+  function crearResultado(nombre, valor) {
     let resultadoTexto;
 
+    // Asegúrate de que 'valor' es un número antes de sumar
+    let valorNumerico = Number(valor);
+
     if (nombre === 'Valor Vera') {
-        resultadoTexto = `Valor: ${valor}. ` + (valor >= 6 ? 'La prueba no es verídica' : 'La prueba es verídica');
+        resultadoTexto = `Valor: ${valorNumerico}. ` + (valorNumerico >= 6 ? 'La prueba no es verídica' : 'La prueba es verídica');
     } else if (nombre === 'Valor Cons') {
-        // Primero modifica el valor
-        const valorModificado = valor + 11;
-        // Luego verifica la consistencia con el valor modificado
-        const esConsistente = valorModificado < 6;
-        // Construye la cadena de texto basada en el valor modificado y su consistencia
-        resultadoTexto = `Valor modificado: ${valorModificado}. ` + (esConsistente ? 'La prueba es consistente' : 'La prueba no es consistente');
+        // Sumar 11 al valor numérico
+        const valorModificado = valorNumerico + 11;
+        resultadoTexto = `Valor: ${valorNumerico}. ` + (valorModificado >= 6 ? 'La prueba no es consistente' : 'La prueba es consistente');
     } else {
-        resultadoTexto = valor.toString();
+        resultadoTexto = valorNumerico.toString();
     }
 
     return new Paragraph({
@@ -72,6 +72,7 @@ function crearResultado(nombre, valor) {
         ],
     });
 }
+
 
 
 function crearSeleccionCategoria(categoria, valor1, valor2, valor3) {
