@@ -124,7 +124,7 @@ app.post('/procesar', upload, (req, res) => {
         const fila6 = obtenerValor('valorA', req.body);
         const fila7 = obtenerValor('valorVacio', req.body);
 
-        const seccionesEncuesta = [
+        let seccionesEncuesta = [
             // Tus otras secciones aquí...
             // Añade aquí las nuevas secciones con las elecciones del usuario
             crearSeleccionCategoria('Oficios', obtenerValor('oficio1', req.body), obtenerValor('oficio2', req.body), obtenerValor('oficio3', req.body)),
