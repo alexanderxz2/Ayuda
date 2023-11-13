@@ -792,17 +792,17 @@ document.addEventListener("DOMContentLoaded", function() {
             estaSeleccionada("opcion211_N") +
             estaSeleccionada("opcion237_N") +
             estaSeleccionada("opcion263_N") +
-            estaSeleccionada("opcion4_N") +
+            estaSeleccionada("opcion28_N") +
             estaSeleccionada("opcion30_N") +
-            estaSeleccionada("opcion56_N") +
-            estaSeleccionada("opcion82_N") +
-            estaSeleccionada("opcion108_N") +
-            estaSeleccionada("opcion134_N") +
-            estaSeleccionada("opcion160_N") +
-            estaSeleccionada("opcion186_N") +
-            estaSeleccionada("opcion212_N") +
-            estaSeleccionada("opcion238_N") +
-            estaSeleccionada("opcion264_N") 
+            estaSeleccionada("opcion32_N") +
+            estaSeleccionada("opcion34_N") +
+            estaSeleccionada("opcion36_N") +
+            estaSeleccionada("opcion38_N") +
+            estaSeleccionada("opcion40_N") +
+            estaSeleccionada("opcion42_N") +
+            estaSeleccionada("opcion44_N") +
+            estaSeleccionada("opcion46_N") +
+            estaSeleccionada("opcion48_N") 
         );
     
         return CCSS;
@@ -830,17 +830,17 @@ document.addEventListener("DOMContentLoaded", function() {
             estaSeleccionada("opcion213_N") +
             estaSeleccionada("opcion239_N") +
             estaSeleccionada("opcion265_N") +
-            estaSeleccionada("opcion6_N") +
-            estaSeleccionada("opcion32_N") +
+            estaSeleccionada("opcion54_N") +
+            estaSeleccionada("opcion56_N") +
             estaSeleccionada("opcion58_N") +
-            estaSeleccionada("opcion84_N") +
-            estaSeleccionada("opcion110_N") +
-            estaSeleccionada("opcion136_N") +
-            estaSeleccionada("opcion162_N") +
-            estaSeleccionada("opcion188_N") +
-            estaSeleccionada("opcion214_N") +
-            estaSeleccionada("opcion240_N") +
-            estaSeleccionada("opcion266_N") 
+            estaSeleccionada("opcion60_N") +
+            estaSeleccionada("opcion62_N") +
+            estaSeleccionada("opcion64_N") +
+            estaSeleccionada("opcion66_N") +
+            estaSeleccionada("opcion68_N") +
+            estaSeleccionada("opcion70_N") +
+            estaSeleccionada("opcion72_N") +
+            estaSeleccionada("opcion74_N") 
         );
     
         return CCNA;
@@ -868,17 +868,17 @@ document.addEventListener("DOMContentLoaded", function() {
             estaSeleccionada("opcion215_N") +
             estaSeleccionada("opcion241_N") +
             estaSeleccionada("opcion267_N") +
-            estaSeleccionada("opcion8_N") +
-            estaSeleccionada("opcion34_N") +
-            estaSeleccionada("opcion60_N") +
+            estaSeleccionada("opcion80_N") +
+            estaSeleccionada("opcion82_N") +
+            estaSeleccionada("opcion84_N") +
             estaSeleccionada("opcion86_N") +
-            estaSeleccionada("opcion112_N") +
-            estaSeleccionada("opcion138_N") +
-            estaSeleccionada("opcion164_N") +
-            estaSeleccionada("opcion190_N") +
-            estaSeleccionada("opcion216_N") +
-            estaSeleccionada("opcion242_N") +
-            estaSeleccionada("opcion268_N") 
+            estaSeleccionada("opcion88_N") +
+            estaSeleccionada("opcion90_N") +
+            estaSeleccionada("opcion92_N") +
+            estaSeleccionada("opcion94_N") +
+            estaSeleccionada("opcion96_N") +
+            estaSeleccionada("opcion98_N") +
+            estaSeleccionada("opcion100_N") 
         );
     
         return CCCO;
@@ -906,17 +906,17 @@ document.addEventListener("DOMContentLoaded", function() {
             estaSeleccionada("opcion217_N") +
             estaSeleccionada("opcion243_N") +
             estaSeleccionada("opcion269_N") +
-            estaSeleccionada("opcion10_N") +
-            estaSeleccionada("opcion36_N") +
-            estaSeleccionada("opcion62_N") +
-            estaSeleccionada("opcion88_N") +
+            estaSeleccionada("opcion106_N") +
+            estaSeleccionada("opcion108_N") +
+            estaSeleccionada("opcion110_N") +
+            estaSeleccionada("opcion112_N") +
             estaSeleccionada("opcion114_N") +
-            estaSeleccionada("opcion140_N") +
-            estaSeleccionada("opcion166_N") +
-            estaSeleccionada("opcion192_N") +
-            estaSeleccionada("opcion218_N") +
-            estaSeleccionada("opcion244_N") +
-            estaSeleccionada("opcion270_N") 
+            estaSeleccionada("opcion116_N") +
+            estaSeleccionada("opcion118_N") +
+            estaSeleccionada("opcion120_N") +
+            estaSeleccionada("opcion122_N") +
+            estaSeleccionada("opcion124_N") +
+            estaSeleccionada("opcion126_N") 
         );
     
         return ARTE;
@@ -944,17 +944,17 @@ document.addEventListener("DOMContentLoaded", function() {
             estaSeleccionada("opcion219_N") +
             estaSeleccionada("opcion245_N") +
             estaSeleccionada("opcion271_N") +
-            estaSeleccionada("opcion12_N") +
-            estaSeleccionada("opcion38_N") +
-            estaSeleccionada("opcion64_N") +
-            estaSeleccionada("opcion90_N") +
-            estaSeleccionada("opcion116_N") +
+            estaSeleccionada("opcion132_N") +
+            estaSeleccionada("opcion134_N") +
+            estaSeleccionada("opcion136_N") +
+            estaSeleccionada("opcion138_N") +
+            estaSeleccionada("opcion140_N") +
             estaSeleccionada("opcion142_N") +
-            estaSeleccionada("opcion168_N") +
-            estaSeleccionada("opcion194_N") +
-            estaSeleccionada("opcion220_N") +
-            estaSeleccionada("opcion246_N") +
-            estaSeleccionada("opcion272_N") 
+            estaSeleccionada("opcion144_N") +
+            estaSeleccionada("opcion146_N") +
+            estaSeleccionada("opcion148_N") +
+            estaSeleccionada("opcion150_N") +
+            estaSeleccionada("opcion152_N") 
         );
     
         return BURO;
@@ -982,17 +982,17 @@ document.addEventListener("DOMContentLoaded", function() {
             estaSeleccionada("opcion221_N") +
             estaSeleccionada("opcion247_N") +
             estaSeleccionada("opcion273_N") +
-            estaSeleccionada("opcion14_N") +
-            estaSeleccionada("opcion40_N") +
-            estaSeleccionada("opcion66_N") +
-            estaSeleccionada("opcion92_N") +
-            estaSeleccionada("opcion118_N") +
-            estaSeleccionada("opcion144_N") +
+            estaSeleccionada("opcion158_N") +
+            estaSeleccionada("opcion160_N") +
+            estaSeleccionada("opcion162_N") +
+            estaSeleccionada("opcion164_N") +
+            estaSeleccionada("opcion166_N") +
+            estaSeleccionada("opcion168_N") +
             estaSeleccionada("opcion170_N") +
-            estaSeleccionada("opcion196_N") +
-            estaSeleccionada("opcion222_N") +
-            estaSeleccionada("opcion248_N") +
-            estaSeleccionada("opcion274_N") 
+            estaSeleccionada("opcion172_N") +
+            estaSeleccionada("opcion174_N") +
+            estaSeleccionada("opcion176_N") +
+            estaSeleccionada("opcion178_N") 
         );
     
         return CCEP;
@@ -1020,17 +1020,17 @@ document.addEventListener("DOMContentLoaded", function() {
             estaSeleccionada("opcion223_N") +
             estaSeleccionada("opcion249_N") +
             estaSeleccionada("opcion275_N") +
-            estaSeleccionada("opcion16_N") +
-            estaSeleccionada("opcion42_N") +
-            estaSeleccionada("opcion68_N") +
-            estaSeleccionada("opcion94_N") +
-            estaSeleccionada("opcion120_N") +
-            estaSeleccionada("opcion146_N") +
-            estaSeleccionada("opcion172_N") +
+            estaSeleccionada("opcion184_N") +
+            estaSeleccionada("opcion186_N") +
+            estaSeleccionada("opcion188_N") +
+            estaSeleccionada("opcion190_N") +
+            estaSeleccionada("opcion192_N") +
+            estaSeleccionada("opcion194_N") +
+            estaSeleccionada("opcion196_N") +
             estaSeleccionada("opcion198_N") +
-            estaSeleccionada("opcion224_N") +
-            estaSeleccionada("opcion250_N") +
-            estaSeleccionada("opcion276_N") 
+            estaSeleccionada("opcion200_N") +
+            estaSeleccionada("opcion202_N") +
+            estaSeleccionada("opcion204_N") 
         );
     
         return IIAA;
@@ -1058,17 +1058,17 @@ document.addEventListener("DOMContentLoaded", function() {
             estaSeleccionada("opcion225_N") +
             estaSeleccionada("opcion251_N") +
             estaSeleccionada("opcion277_N") +
-            estaSeleccionada("opcion18_N") +
-            estaSeleccionada("opcion44_N") +
-            estaSeleccionada("opcion70_N") +
-            estaSeleccionada("opcion96_N") +
-            estaSeleccionada("opcion122_N") +
-            estaSeleccionada("opcion148_N") +
-            estaSeleccionada("opcion174_N") +
-            estaSeleccionada("opcion200_N") +
+            estaSeleccionada("opcion210_N") +
+            estaSeleccionada("opcion212_N") +
+            estaSeleccionada("opcion214_N") +
+            estaSeleccionada("opcion216_N") +
+            estaSeleccionada("opcion218_N") +
+            estaSeleccionada("opcion220_N") +
+            estaSeleccionada("opcion222_N") +
+            estaSeleccionada("opcion224_N") +
             estaSeleccionada("opcion226_N") +
-            estaSeleccionada("opcion252_N") +
-            estaSeleccionada("opcion278_N") 
+            estaSeleccionada("opcion228_N") +
+            estaSeleccionada("opcion230_N") 
         );
     
         return FINA;
@@ -1096,17 +1096,17 @@ document.addEventListener("DOMContentLoaded", function() {
             estaSeleccionada("opcion227_N") +
             estaSeleccionada("opcion253_N") +
             estaSeleccionada("opcion279_N") +
-            estaSeleccionada("opcion20_N") +
-            estaSeleccionada("opcion46_N") +
-            estaSeleccionada("opcion72_N") +
-            estaSeleccionada("opcion98_N") +
-            estaSeleccionada("opcion124_N") +
-            estaSeleccionada("opcion150_N") +
-            estaSeleccionada("opcion176_N") +
-            estaSeleccionada("opcion202_N") +
-            estaSeleccionada("opcion228_N") +
+            estaSeleccionada("opcion236_N") +
+            estaSeleccionada("opcion238_N") +
+            estaSeleccionada("opcion240_N") +
+            estaSeleccionada("opcion242_N") +
+            estaSeleccionada("opcion244_N") +
+            estaSeleccionada("opcion246_N") +
+            estaSeleccionada("opcion248_N") +
+            estaSeleccionada("opcion250_N") +
+            estaSeleccionada("opcion252_N") +
             estaSeleccionada("opcion254_N") +
-            estaSeleccionada("opcion280_N") 
+            estaSeleccionada("opcion256_N") 
         );
     
         return LING;
@@ -1134,16 +1134,16 @@ document.addEventListener("DOMContentLoaded", function() {
             estaSeleccionada("opcion229_N") +
             estaSeleccionada("opcion255_N") +
             estaSeleccionada("opcion281_N") +
-            estaSeleccionada("opcion22_N") +
-            estaSeleccionada("opcion48_N") +
-            estaSeleccionada("opcion74_N") +
-            estaSeleccionada("opcion100_N") +
-            estaSeleccionada("opcion126_N") +
-            estaSeleccionada("opcion152_N") +
-            estaSeleccionada("opcion178_N") +
-            estaSeleccionada("opcion204_N") +
-            estaSeleccionada("opcion230_N") +
-            estaSeleccionada("opcion256_N") +
+            estaSeleccionada("opcion262_N") +
+            estaSeleccionada("opcion264_N") +
+            estaSeleccionada("opcion266_N") +
+            estaSeleccionada("opcion268_N") +
+            estaSeleccionada("opcion270_N") +
+            estaSeleccionada("opcion272_N") +
+            estaSeleccionada("opcion274_N") +
+            estaSeleccionada("opcion276_N") +
+            estaSeleccionada("opcion278_N") +
+            estaSeleccionada("opcion280_N") +
             estaSeleccionada("opcion282_N") 
         );
     
