@@ -173,6 +173,10 @@ app.post('/procesar', upload, (req, res) => {
     try {
         console.log("Inicio de la función /procesar");
         console.log(req.body);
+
+        const imagenData = req.body.imagenData;
+        const imagenDataNueva = req.body.imagenDataNueva;  // Recibe los datos de la nueva imagen
+        
         const imagenBuffer = Buffer.from(imagenData.split(',')[1], 'base64');
         const imagenBufferNueva = Buffer.from(imagenDataNueva.split(',')[1], 'base64');  // Convierte la nueva imagen
 
@@ -181,8 +185,7 @@ app.post('/procesar', upload, (req, res) => {
         const parrafoImagenCASM = crearImagenCASM(doc, imagenBufferNueva);
 
 
-        const imagenData = req.body.imagenData;
-        const imagenDataNueva = req.body.imagenDataNueva;  // Recibe los datos de la nueva imagen
+
 
         
         const generoSeleccionado = req.body.generoSeleccionado;
