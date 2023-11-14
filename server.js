@@ -255,6 +255,10 @@ app.post('/procesar', upload, (req, res) => {
                         crearSeparador(),
                         ...seccionHoland,
                         crearSeparador(),
+                        new Paragraph({
+                            children: [new ImageRun({ data: imagenData, transformation: { width: 600, height: 300 } })],
+                        }),
+                        crearSeparador(),
                         crearSubtitulo("Resultados CASM"),
                         crearSeparador(),
                         ...seccionCASM,
@@ -262,6 +266,10 @@ app.post('/procesar', upload, (req, res) => {
                         crearSubtitulo("Resultados Descriptivos CASM"),
                         crearSeparador(),
                         ...seccionesResultados,
+                        crearSeparador(),
+                        new Paragraph({
+                            children: [new ImageRun({ data: imagenDataNueva, transformation: { width: 600, height: 300 } })],
+                        }),
                         crearSeparador(),
                         crearSubtitulo("Resultado Tabla"),
                         crearSeparador(),
@@ -275,10 +283,10 @@ app.post('/procesar', upload, (req, res) => {
         const imagenDataNueva = Buffer.from(req.body.imagenDataNueva.split(",")[1], 'base64');
     
         const imageParagraph = new Paragraph({
-            children: [new ImageRun({ data: imagenData, transformation: { width: 400, height: 300 } })],
+            children: [new ImageRun({ data: imagenData, transformation: { width: 600, height: 300 } })],
         });
         const imageNuevaParagraph = new Paragraph({
-            children: [new ImageRun({ data: imagenDataNueva, transformation: { width: 400, height: 300 } })],
+            children: [new ImageRun({ data: imagenDataNueva, transformation: { width: 600, height: 300 } })],
         });
         doc.addSection({ children: [imageParagraph, imageNuevaParagraph] });
 
