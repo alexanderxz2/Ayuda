@@ -36,6 +36,9 @@ function crearTitulo(titulo) {
         ],
     });
 }
+
+
+
 function crearSeparador() {
     return new Paragraph({
         children: [
@@ -43,6 +46,7 @@ function crearSeparador() {
         ],
     });
 }
+
 function crearPreguntaRespuesta(textoPregunta, respuesta) {
     return new Paragraph({
         children: [
@@ -215,7 +219,7 @@ app.post('/procesar', upload, (req, res) => {
             crearPreguntaRespuesta("Con una visión de negocio y de acuerdo a tus habilidades ¿Qué consideras es lo que el mundo necesita?", obtenerValor('necesidadMundo', req.body)),
         ];
 
-
+            
         const imageParagraph = new Paragraph({
             children: [new ImageRun({ data: imagenData, transformation: { width: 600, height: 300 } })],
         });
@@ -223,7 +227,8 @@ app.post('/procesar', upload, (req, res) => {
             children: [new ImageRun({ data: imagenDataNueva, transformation: { width: 600, height: 300 } })],
         });
 
-        seccion.push(imageParagraph, imageNuevaParagraph);
+        seccionHoland.push(imageParagraph);
+        seccionesResultados.push(imageNuevaParagraph);
 
 
         let seccionHoland = [
@@ -283,15 +288,6 @@ app.post('/procesar', upload, (req, res) => {
             ]
         });
 
-        const imagenData = Buffer.from(req.body.imagenData.split(",")[1], 'base64');
-        const imagenDataNueva = Buffer.from(req.body.imagenDataNueva.split(",")[1], 'base64');
-
-        const imageParagraph = new Paragraph({
-            children: [new ImageRun({ data: imagenData, transformation: { width: 600, height: 300 } })],
-        });
-        const imageNuevaParagraph = new Paragraph({
-            children: [new ImageRun({ data: imagenDataNueva, transformation: { width: 600, height: 300 } })],
-        });
 
 
         doc.addSection({ children: [imageParagraph, imageNuevaParagraph] });
@@ -316,10 +312,12 @@ app.post('/procesar', upload, (req, res) => {
         const nombreUsuario = obtenerValor('nombre', req.body) !== 'N/A' ? obtenerValor('nombre', req.body) : 'SinNombre';
         const nombreArchivo = `Resultados (${codigoUsuario}) ${nombreUsuario}.docx`;
         const filename = path.join(__dirname, 'descargas', nombreArchivo);
+
         Packer.toBuffer(doc).then(buffer => {
             fs.writeFileSync(filename, buffer);
             
             const imagenHorario = req.files && req.files.length > 0 ? req.files[0] : null;
+
             
             const imagenData = req.body.imagenData;
             const imagenDataNueva = req.body.imagenDataNueva;  // Recibe los datos de la nueva imagen
@@ -333,6 +331,7 @@ app.post('/procesar', upload, (req, res) => {
             const imagenBufferNueva = Buffer.from(imagenDataNueva.split(',')[1], 'base64');  // Convierte la nueva imagen
             console.log(imagenBuffer.length);  // Verificar el tamaño del buffer de imagen
             console.log(imagenBufferNueva.length);  // Verificar el tamaño del buffer de nueva imagen
+
             const imageParagraph = new Paragraph({
                 children: [new ImageRun({ data: imagenData, transformation: { width: 400, height: 300 } })],
             });
