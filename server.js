@@ -45,6 +45,14 @@ function crearTitulo(titulo) {
     });
 }
 
+function crearSeparador() {
+    return new Paragraph({
+        children: [
+            new TextRun({ text: '\n' }) // Un párrafo con un salto de línea para separar secciones
+        ],
+    });
+}
+
 function crearPreguntaRespuesta(textoPregunta, respuesta) {
     return new Paragraph({
         children: [
@@ -267,15 +275,24 @@ app.post('/procesar', upload, (req, res) => {
                     children: [
                         crearTitulo("Test Orientación Vocacional"),
                         crearSubtitulo("Datos Personales"),
+                        crearSeparador(),
                         ...seccion, 
                         ...seccionGenero,
+                        crearSeparador(),
                         crearSubtitulo("Resultados Holand"),
+                        crearSeparador(),
                         ...seccionHoland,
+                        crearSeparador(),
                         crearSubtitulo("Resultados CASM"),
+                        crearSeparador(),
                         ...seccionCASM,
+                        crearSeparador(),
                         crearSubtitulo("Resultados Descriptivos CASM"),
+                        crearSeparador(),
                         ...seccionesResultados,
+                        crearSeparador(),
                         crearSubtitulo("Resultado Tabla"),
+                        crearSeparador(),
                         ...seccionesEncuesta
                     ]                
                 }
