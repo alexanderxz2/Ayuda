@@ -3,8 +3,9 @@ const multer  = require('multer');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
-const { Document, Packer, Paragraph, TextRun } = require("docx");
+const { Document, Packer, Paragraph, TextRun, AlignmentType } = require("docx");
 const nodemailer = require('nodemailer');
+
 
 const storage = multer.memoryStorage(); // Esto guarda los datos en memoria
 const upload = multer({ storage: storage }).array('imagenHorario', 1);
@@ -281,7 +282,6 @@ app.post('/procesar', upload, (req, res) => {
                         ...seccionesResultados,
                         crearSubtitulo("Resultado Tabla"),
                         ...seccionesEncuesta
-
                     ]                
                 }
             ]
