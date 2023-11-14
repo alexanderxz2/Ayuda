@@ -140,6 +140,16 @@
                     },
                     legend: {
                         display: false   // Esto oculta la leyenda
+                    },
+                    datalabels: {
+                        align: 'end',
+                        anchor: 'end',
+                        formatter: (value, context) => {
+                            return value; // Muestra el valor de la barra
+                        },
+                        font: {
+                            weight: 'bold'
+                        }
                     }
                 },
                 scales: {
@@ -161,7 +171,8 @@
                         }
                     }
                 }
-            }
+            },
+            plugins: [ChartDataLabels] // Asegúrate de incluir el plugin ChartDataLabels
         });
     }
     function capturarImagen() {
