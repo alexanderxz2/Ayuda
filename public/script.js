@@ -101,7 +101,6 @@
             data: {
                 labels: ['R', 'I', 'S', 'C', 'E', 'A'],
                 datasets: [{
-                    label: 'Número de respuestas',
                     data: [fila1, fila2, fila3, fila4, fila5, fila6],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.6)',
@@ -122,7 +121,6 @@
                     borderWidth: 1
                 }, {
                     type: 'line',
-                    label: 'Conexión',
                     data: [fila1, fila2, fila3, fila4, fila5, fila6],
                     fill: false,
                     borderColor: 'rgba(75, 192, 192, 1)',

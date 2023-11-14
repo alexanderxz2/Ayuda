@@ -246,7 +246,7 @@ app.post('/procesar', upload, (req, res) => {
             children: [new ImageRun({ data: imagenDataNueva, transformation: { width: 600, height: 300 } })],
         });
 
-        seccionHoland.push(imageNuevaParagraph);
+        seccionesResultados.push(imageNuevaParagraph);
 
         let seccionesEncuesta = [
             // Tus otras secciones aquí...
