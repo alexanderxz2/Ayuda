@@ -227,10 +227,6 @@ app.post('/procesar', upload, (req, res) => {
             children: [new ImageRun({ data: imagenDataNueva, transformation: { width: 600, height: 300 } })],
         });
 
-        seccionHoland.push(imageParagraph);
-        seccionesResultados.push(imageNuevaParagraph);
-
-
         let seccionHoland = [
             crearResultado('R', fila1),
             crearResultado('I', fila2),
@@ -255,6 +251,9 @@ app.post('/procesar', upload, (req, res) => {
             crearResultado('Valor LING', valorLING),
             crearResultado('Valor JURI', valorJURI),
         ];
+        seccionHoland.push(imageParagraph);
+        seccionesResultados.push(imageNuevaParagraph);
+
         const doc = new Document({
             creator: "TuNombre",
             title: "Formulario",
