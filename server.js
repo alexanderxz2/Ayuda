@@ -174,11 +174,6 @@ app.post('/procesar', upload, (req, res) => {
         console.log("Inicio de la función /procesar");
         console.log(req.body);
 
-        const seccionGraficas = [
-            crearImagen(imagenBuffer), // Gráfica Holland
-            crearImagen(imagenBufferNueva) // Gráfica CASM
-        ];
-
         const generoSeleccionado = req.body.generoSeleccionado;
         const seccionGenero = [crearInformacionGenero(generoSeleccionado)];
 
