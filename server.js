@@ -30,15 +30,31 @@ app.use(bodyParser.text({ limit: '10mb', type: 'text/plain' }));
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
+function crearTitulo(titulo) {
+    return new Paragraph({
+        text: titulo,
+        alignment: AlignmentType.CENTER,
+        heading: HeadingLevel.TITLE,
+        children: [
+            new TextRun({
+                text: titulo,
+                bold: true,
+                size: 48,  // tamaño grande para el título
+            }),
+        ],
+    });
+}
 
 function crearPreguntaRespuesta(textoPregunta, respuesta) {
     return new Paragraph({
         children: [
-            new TextRun({ text: textoPregunta, bold: true, size: 32 }),  // tamaño de fuente aumentado
-            new TextRun({ text: `\n${respuesta}\n`, size: 32 }),  // tamaño de fuente aumentado y respuesta en una nueva línea
+            new TextRun({ text: textoPregunta, bold: true, size: 32 }), 
+            new TextRun({ text: `\n${respuesta}` }), // Quitar el salto de línea de aquí
+            new TextRun({ text: '\n\n', size: 32 }), // Agregar un salto de línea adicional
         ],
     });
 }
+
 
 function crearResultado(nombre, valor) {
     let resultadoTexto;
@@ -75,17 +91,37 @@ function crearSeleccionCategoria(categoria, valor1, valor2, valor3) {
         ],
     });
 }
+
+function crearSubtitulo(subtitulo) {
+    return new Paragraph({
+        text: subtitulo,
+        alignment: AlignmentType.CENTER,
+        heading: HeadingLevel.HEADING_2,
+        children: [
+            new TextRun({
+                text: subtitulo,
+                bold: true,
+                size: 36,  // tamaño más pequeño que el título principal
+            }),
+        ],
+    });
+}
+
+
 function obtenerYProcesarResultados(categoria, req) {
     const resultado = req.body[`resultado${categoria}`];
     if (!resultado) return 'No Disponible';
     try {
         const resultadoParsed = JSON.parse(resultado);
-        return `Percentil: ${resultadoParsed.percentil}, Significado: ${resultadoParsed.significado}`;
+        // Añadir un salto de línea entre 'Percentil' y 'Significado'
+        return `Percentil: ${resultadoParsed.percentil}\nSignificado: ${resultadoParsed.significado}`;
     } catch (e) {
         console.error(`Error al procesar resultado para ${categoria}:`, e);
         return 'Error en el procesamiento';
     }
 }
+
+
 function crearInformacionGenero(genero) {
     return new Paragraph({
         children: [
@@ -199,6 +235,18 @@ app.post('/procesar', upload, (req, res) => {
             crearPreguntaRespuesta("¿Qué actividad te gustaría realizar o consideras que haces bien?", obtenerValor('actividadGustaria', req.body)),
             crearPreguntaRespuesta("¿Crees que esa actividad es rentable o que alguien te podría pagar por hacerla?", obtenerValor('actividadRentable', req.body)),
             crearPreguntaRespuesta("Con una visión de negocio y de acuerdo a tus habilidades ¿Qué consideras es lo que el mundo necesita?", obtenerValor('necesidadMundo', req.body)),
+        ];
+        let seccionHoland = [
+            crearResultado('R', fila1),
+            crearResultado('I', fila2),
+            crearResultado('S', fila3),
+            crearResultado('C', fila4),
+            crearResultado('E', fila5),
+            crearResultado('A', fila6),
+            crearResultado('Vacio', fila7),
+        ];
+
+        let seccionCASM = [
             crearResultado('Valor Vera', valorVera),
             crearResultado('Valor Cons', valorCons),
             crearResultado('Valor CCFM', valorCCFM),
@@ -212,22 +260,30 @@ app.post('/procesar', upload, (req, res) => {
             crearResultado('Valor FINA', valorFINA),
             crearResultado('Valor LING', valorLING),
             crearResultado('Valor JURI', valorJURI),
-            crearResultado('R', fila1),
-            crearResultado('I', fila2),
-            crearResultado('S', fila3),
-            crearResultado('C', fila4),
-            crearResultado('E', fila5),
-            crearResultado('A', fila6),
-            crearResultado('Vacio', fila7)
         ];
+
         const doc = new Document({
             creator: "TuNombre",
             title: "Formulario",
             description: "Documento generado desde el servidor",
             sections: [
                 {
-                children: [...seccion, ...seccionesEncuesta, ...seccionesResultados, ...seccionGenero]                
-            }
+                    children: [
+                        crearTitulo("Test Orientación Vocacional"),
+                        crearSubtitulo("Datos Personales"),
+                        ...seccion, 
+                        ...seccionGenero,
+                        crearSubtitulo("Resultados Holand"),
+                        ...seccionHoland,
+                        crearSubtitulo("Resultados CASM"),
+                        ...seccionCASM,
+                        crearSubtitulo("Resultados Descriptivos CASM"),
+                        ...seccionesResultados,
+                        crearSubtitulo("Resultado Tabla"),
+                        ...seccionesEncuesta
+
+                    ]                
+                }
             ]
         });
         const diasCita = obtenerValor('diasCita', req.body) || [];
