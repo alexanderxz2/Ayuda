@@ -262,6 +262,7 @@ app.post('/procesar', upload, (req, res) => {
                 {
                     children: [
                         crearTitulo("Test Orientación Vocacional"),
+                        crearSeparador(),
                         crearSubtitulo("Datos Personales"),
                         crearSeparador(),
                         ...seccion, 
@@ -287,9 +288,7 @@ app.post('/procesar', upload, (req, res) => {
             ]
         });
 
-
-
-        doc.addSection({ children: [imageParagraph, imageNuevaParagraph] });
+        //doc.addSection({ children: [imageParagraph, imageNuevaParagraph] });
 
         const diasCita = obtenerValor('diasCita', req.body) || [];
         const horasCita = obtenerValor('horaCita', req.body) || [];
