@@ -139,7 +139,7 @@
                         }
                     },
                     legend: {
-                        display: true  // Esto oculta la leyenda
+                        display: false   // Esto oculta la leyenda
                     }
                 },
                 scales: {
