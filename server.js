@@ -174,6 +174,9 @@ app.post('/procesar', upload, (req, res) => {
         console.log("Inicio de la función /procesar");
         console.log(req.body);
 
+        const parrafoImagenHolland = crearImagenHolland(imagenBuffer); // Usa el buffer de la imagen Holland
+        const parrafoImagenCASM = crearImagenCASM(imagenBufferNueva);
+
         const generoSeleccionado = req.body.generoSeleccionado;
         const seccionGenero = [crearInformacionGenero(generoSeleccionado)];
 
@@ -315,13 +318,13 @@ app.post('/procesar', upload, (req, res) => {
                         crearSeparador(),
                         ...seccionHoland,
                         crearSeparador(),
-                        crearImagenHolland(imagenBufferHolland),
+                        crearImagenHolland(imagenBuffer),
                         crearSeparador(),
                         crearSubtitulo("Resultados CASM"),
                         crearSeparador(),
                         ...seccionCASM,
                         crearSeparador(),
-                        crearImagenCASM(imagenBufferCASM),
+                        crearImagenCASM(imagenBufferNueva),
                         crearSeparador(),
                         crearSubtitulo("Resultados Descriptivos CASM"),
                         crearSeparador(),
