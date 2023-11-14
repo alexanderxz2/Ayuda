@@ -3,7 +3,7 @@ const multer  = require('multer');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
-const { Document, Packer, Paragraph, TextRun, AlignmentType } = require("docx");
+const { Document, Packer, Paragraph, TextRun, AlignmentType, HeadingLevel, ImageRun } = require("docx");
 const nodemailer = require('nodemailer');
 
 
