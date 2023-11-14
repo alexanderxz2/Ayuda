@@ -46,10 +46,10 @@ function crearTitulo(titulo) {
 }
 
 function crearImagenHolland(doc, imagenBufferHolland) {
-    const imagenHolland = Media.addImage(doc, imagenBufferHolland);
-    return new Paragraph({
+    const imagenHolland = docx.Media.addImage(doc, imagenBufferHolland);
+    return new docx.Paragraph({
         children: [
-            new ImageRun({
+            new docx.ImageRun({
                 data: imagenHolland,
                 transformation: {
                     width: 320, 
@@ -60,11 +60,12 @@ function crearImagenHolland(doc, imagenBufferHolland) {
     });
 }
 
+
 function crearImagenCASM(doc, imagenBufferCASM) {
-    const imagenCASM = Media.addImage(doc, imagenBufferCASM);
-    return new Paragraph({
+    const imagenCASM = docx.Media.addImage(doc, imagenBufferCASM);
+    return new docx.Paragraph({
         children: [
-            new ImageRun({
+            new docx.ImageRun({
                 data: imagenCASM,
                 transformation: {
                     width: 320,
