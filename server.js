@@ -37,15 +37,14 @@ function crearTitulo(titulo) {
     });
 }
 
-function agregarImagenADocumento(doc, imagePath) {
-    const image = fs.readFileSync(imagePath); // Lee la imagen desde un archivo
+function agregarImagenADocumento(doc, imageDataBuffer) {
     const imageParagraph = new Paragraph({
         children: [
             new ImageRun({
-                data: image,
+                data: imageDataBuffer,
                 transformation: {
-                    width: 400, // Ancho de la imagen en puntos
-                    height: 300, // Alto de la imagen en puntos
+                    width: 400, // Ajusta según sea necesario
+                    height: 300, // Ajusta según sea necesario
                 },
             }),
         ],
@@ -308,9 +307,9 @@ app.post('/procesar', upload, (req, res) => {
         const nombreArchivo = `Resultados (${codigoUsuario}) ${nombreUsuario}.docx`;
         const filename = path.join(__dirname, 'descargas', nombreArchivo);
 
-        agregarImagenADocumento(doc, 'ruta/a/imagenData.png'); // Ruta a imagenData
-        agregarImagenADocumento(doc, 'ruta/a/imagenDataNueva.png');
-        
+        agregarImagenADocumento(doc, imagenData); 
+        agregarImagenADocumento(doc, imagenDataNueva);
+
         Packer.toBuffer(doc).then(buffer => {
             fs.writeFileSync(filename, buffer);
             
