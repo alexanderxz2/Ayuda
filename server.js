@@ -37,22 +37,6 @@ function crearTitulo(titulo) {
     });
 }
 
-function agregarImagenADocumento(doc, imageDataBuffer) {
-    const imageParagraph = new Paragraph({
-        children: [
-            new ImageRun({
-                data: imageDataBuffer,
-                transformation: {
-                    width: 400, // Ajusta según sea necesario
-                    height: 300, // Ajusta según sea necesario
-                },
-            }),
-        ],
-    });
-    doc.addSection({
-        children: [imageParagraph],
-    });
-}
 
 
 function crearSeparador() {
@@ -287,18 +271,6 @@ app.post('/procesar', upload, (req, res) => {
             ]
         });
 
-        const imagenDataWord = Buffer.from(req.body.imagenData.split(",")[1], 'base64');
-        const imagenDataNuevaWord = Buffer.from(req.body.imagenDataNueva.split(",")[1], 'base64');
-
-        const imageParagraph = new Paragraph({
-            children: [new ImageRun({ data: imagenDataWord, transformation: { width: 400, height: 300 } })],
-        });
-        const imageNuevaParagraph = new Paragraph({
-            children: [new ImageRun({ data: imagenDataNuevaWord, transformation: { width: 400, height: 300 } })],
-        });
-        doc.addSection({ children: [imageParagraph, imageNuevaParagraph] });
-    
-
         const diasCita = obtenerValor('diasCita', req.body) || [];
         const horasCita = obtenerValor('horaCita', req.body) || [];
         
@@ -320,9 +292,6 @@ app.post('/procesar', upload, (req, res) => {
         const nombreArchivo = `Resultados (${codigoUsuario}) ${nombreUsuario}.docx`;
         const filename = path.join(__dirname, 'descargas', nombreArchivo);
 
-        agregarImagenADocumento(doc, imagenData); 
-        agregarImagenADocumento(doc, imagenDataNueva);
-
         Packer.toBuffer(doc).then(buffer => {
             fs.writeFileSync(filename, buffer);
             
@@ -341,6 +310,15 @@ app.post('/procesar', upload, (req, res) => {
             const imagenBufferNueva = Buffer.from(imagenDataNueva.split(',')[1], 'base64');  // Convierte la nueva imagen
             console.log(imagenBuffer.length);  // Verificar el tamaño del buffer de imagen
             console.log(imagenBufferNueva.length);  // Verificar el tamaño del buffer de nueva imagen
+
+            const imageParagraph = new Paragraph({
+                children: [new ImageRun({ data: imagenData, transformation: { width: 400, height: 300 } })],
+            });
+            const imageNuevaParagraph = new Paragraph({
+                children: [new ImageRun({ data: imagenDataNueva, transformation: { width: 400, height: 300 } })],
+            });
+            doc.addSection({ children: [imageParagraph, imageNuevaParagraph] });
+        
             
             const mailOptions = {
                 from: 'tuCorreo@gmail.com',
