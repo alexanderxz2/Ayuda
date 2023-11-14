@@ -45,30 +45,30 @@ function crearTitulo(titulo) {
     });
 }
 
-function crearImagenHolland(imagenBufferHolland) {
+function crearImagenHolland(doc, imagenBufferHolland) {
     const imagenHolland = Media.addImage(doc, imagenBufferHolland);
     return new Paragraph({
         children: [
             new ImageRun({
                 data: imagenHolland,
                 transformation: {
-                    width: 320, // ajusta el ancho
-                    height: 240, // ajusta el alto
+                    width: 320, 
+                    height: 240,
                 },
             }),
         ],
     });
 }
 
-function crearImagenCASM(imagenBufferCASM) {
+function crearImagenCASM(doc, imagenBufferCASM) {
     const imagenCASM = Media.addImage(doc, imagenBufferCASM);
     return new Paragraph({
         children: [
             new ImageRun({
                 data: imagenCASM,
                 transformation: {
-                    width: 320, // ajusta el ancho
-                    height: 240, // ajusta el alto
+                    width: 320,
+                    height: 240,
                 },
             }),
         ],
@@ -180,8 +180,8 @@ app.post('/procesar', upload, (req, res) => {
         const imagenBufferNueva = Buffer.from(imagenDataNueva.split(',')[1], 'base64');  // Convierte la nueva imagen
 
                 // Crear párrafos de imágenes
-        const parrafoImagenHolland = crearImagenHolland(imagenBuffer); // Usa el buffer de la imagen Holland
-        const parrafoImagenCASM = crearImagenCASM(imagenBufferNueva);
+        const parrafoImagenHolland = crearImagenHolland(doc, imagenBuffer);
+        const parrafoImagenCASM = crearImagenCASM(doc, imagenBufferNueva);
         
         const generoSeleccionado = req.body.generoSeleccionado;
         const seccionGenero = [crearInformacionGenero(generoSeleccionado)];
