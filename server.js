@@ -3,16 +3,11 @@ const multer  = require('multer');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
-const { Document, Packer, Paragraph, TextRun, AlignmentType, HeadingLevel, ImageRun ,Media} = require("docx");
+const { Document, Packer, Paragraph, TextRun, AlignmentType, HeadingLevel, ImageRun } = require("docx");
 const nodemailer = require('nodemailer');
-
-
 const storage = multer.memoryStorage(); // Esto guarda los datos en memoria
 const upload = multer({ storage: storage }).array('imagenHorario', 1);
-
 const app = express();
-
-
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -20,14 +15,11 @@ const transporter = nodemailer.createTransport({
         pass: 'Jinkasama023'
     }
 });
-
 // Define el middleware al principio
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use('/descargas', express.static(path.join(__dirname, 'descargas')));
 app.use(bodyParser.text({ limit: '10mb', type: 'text/plain' }));
-
-
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
@@ -44,39 +36,6 @@ function crearTitulo(titulo) {
         ],
     });
 }
-
-function crearImagenHolland(doc, imagenBufferHolland) {
-    const imagenHolland = docx.Media.addImage(doc, imagenBufferHolland);
-    return new docx.Paragraph({
-        children: [
-            new docx.ImageRun({
-                data: imagenHolland,
-                transformation: {
-                    width: 320, 
-                    height: 240,
-                },
-            }),
-        ],
-    });
-}
-
-
-function crearImagenCASM(doc, imagenBufferCASM) {
-    const imagenCASM = docx.Media.addImage(doc, imagenBufferCASM);
-    return new docx.Paragraph({
-        children: [
-            new docx.ImageRun({
-                data: imagenCASM,
-                transformation: {
-                    width: 320,
-                    height: 240,
-                },
-            }),
-        ],
-    });
-}
-
-
 
 function crearSeparador() {
     return new Paragraph({
@@ -95,11 +54,8 @@ function crearPreguntaRespuesta(textoPregunta, respuesta) {
         ],
     });
 }
-
-
 function crearResultado(nombre, valor) {
     let resultadoTexto;
-
     if (nombre === 'Valor Vera') {
         resultadoTexto = `Valor: ${valor}. ` + (valor >= 6 ? 'La prueba no es verídica' : 'La prueba es verídica');
     } else if (nombre === 'Valor Cons') {
@@ -110,7 +66,6 @@ function crearResultado(nombre, valor) {
     } else {
         resultadoTexto = valor.toString();
     }
-
     return new Paragraph({
         children: [
             new TextRun({ text: nombre + ": ", bold: true, size: 32 }),
@@ -118,8 +73,6 @@ function crearResultado(nombre, valor) {
         ],
     });
 }
-
-
 function crearSeleccionCategoria(categoria, valor1, valor2, valor3) {
     return new Paragraph({
         children: [
@@ -130,7 +83,6 @@ function crearSeleccionCategoria(categoria, valor1, valor2, valor3) {
         ],
     });
 }
-
 function crearSubtitulo(subtitulo) {
     return new Paragraph({
         alignment: AlignmentType.CENTER,
@@ -144,7 +96,6 @@ function crearSubtitulo(subtitulo) {
         ],
     });
 }
-
 function obtenerYProcesarResultados(categoria, req) {
     const resultado = req.body[`resultado${categoria}`];
     if (!resultado) return 'No Disponible';
@@ -157,8 +108,6 @@ function obtenerYProcesarResultados(categoria, req) {
         return 'Error en el procesamiento';
     }
 }
-
-
 function crearInformacionGenero(genero) {
     return new Paragraph({
         children: [
@@ -167,35 +116,13 @@ function crearInformacionGenero(genero) {
         ],
     });
 }
-
 const obtenerValor = (campo, requestBody, defaultValue = 'N/A') => requestBody[campo] || defaultValue;
-
 app.post('/procesar', upload, (req, res) => {
     try {
         console.log("Inicio de la función /procesar");
         console.log(req.body);
-
-        const imagenData = req.body.imagenData;
-        const imagenDataNueva = req.body.imagenDataNueva;  // Recibe los datos de la nueva imagen
-
-        let imagenBuffer, imagenBufferNueva;
-        if (typeof imagenData === 'string') {
-            imagenBuffer = Buffer.from(imagenData.split(',')[1], 'base64');
-        }
-
-        if (typeof imagenDataNueva === 'string') {
-            imagenBufferNueva = Buffer.from(imagenDataNueva.split(',')[1], 'base64');
-        }
-        
-        //const imagenBuffer = Buffer.from(imagenData.split(',')[1], 'base64');
-        //const imagenBufferNueva = Buffer.from(imagenDataNueva.split(',')[1], 'base64');  // Convierte la nueva imagen
-
-                // Crear párrafos de imágenes
-        
         const generoSeleccionado = req.body.generoSeleccionado;
         const seccionGenero = [crearInformacionGenero(generoSeleccionado)];
-
-
         const resultadosCCFM = obtenerYProcesarResultados('CCFM', req);
         const resultadosCCSS = obtenerYProcesarResultados('CCSS', req);
         const resultadosCCNA = obtenerYProcesarResultados('CCNA', req);
@@ -207,7 +134,6 @@ app.post('/procesar', upload, (req, res) => {
         const resultadosFINA = obtenerYProcesarResultados('FINA', req);
         const resultadosLING = obtenerYProcesarResultados('LING', req);
         const resultadosJURI = obtenerYProcesarResultados('JURI', req);
-
         const valorVera = obtenerValor('valorVera', req.body);
         const valorCons = obtenerValor('valorCons', req.body);
         const valorCCFM = obtenerValor('valorCCFM', req.body);
@@ -221,7 +147,6 @@ app.post('/procesar', upload, (req, res) => {
         const valorFINA = obtenerValor('valorFINA', req.body);
         const valorLING = obtenerValor('valorLING', req.body);
         const valorJURI = obtenerValor('valorJURI', req.body);
-
         const fila1 = obtenerValor('valorR', req.body);
         const fila2 = obtenerValor('valorI', req.body);
         const fila3 = obtenerValor('valorS', req.body);
@@ -229,7 +154,6 @@ app.post('/procesar', upload, (req, res) => {
         const fila5 = obtenerValor('valorE', req.body);
         const fila6 = obtenerValor('valorA', req.body);
         const fila7 = obtenerValor('valorVacio', req.body);
-
         let seccionesEncuesta = [
             // Tus otras secciones aquí...
             // Añade aquí las nuevas secciones con las elecciones del usuario
@@ -237,7 +161,6 @@ app.post('/procesar', upload, (req, res) => {
             crearSeleccionCategoria('Carreras', obtenerValor('carrera1', req.body), obtenerValor('carrera2', req.body), obtenerValor('carrera3', req.body)),
             crearSeleccionCategoria('Profesiones', obtenerValor('profesion1', req.body), obtenerValor('profesion2', req.body), obtenerValor('profesion3', req.body)),
         ];
-
         const seccionesResultados = [
             crearResultado('Resultado CCFM', resultadosCCFM),
             crearResultado('Resultado CCSS', resultadosCCSS),
@@ -252,7 +175,6 @@ app.post('/procesar', upload, (req, res) => {
             crearResultado('Resultado JURI', resultadosJURI),
             // Agrega más si hay más categorías...
         ];
-
         let seccion = [
             crearPreguntaRespuesta("Nombre", obtenerValor('nombre', req.body)),
             crearPreguntaRespuesta("Código", obtenerValor('codigo', req.body)),
@@ -299,7 +221,6 @@ app.post('/procesar', upload, (req, res) => {
             crearResultado('A', fila6),
             crearResultado('Vacio', fila7),
         ];
-
         let seccionCASM = [
             crearResultado('Valor Vera', valorVera),
             crearResultado('Valor Cons', valorCons),
@@ -315,7 +236,6 @@ app.post('/procesar', upload, (req, res) => {
             crearResultado('Valor LING', valorLING),
             crearResultado('Valor JURI', valorJURI),
         ];
-
         const doc = new Document({
             creator: "TuNombre",
             title: "Formulario",
@@ -333,11 +253,9 @@ app.post('/procesar', upload, (req, res) => {
                         crearSeparador(),
                         ...seccionHoland,
                         crearSeparador(),
-                        crearSeparador(),
                         crearSubtitulo("Resultados CASM"),
                         crearSeparador(),
                         ...seccionCASM,
-                        crearSeparador(),
                         crearSeparador(),
                         crearSubtitulo("Resultados Descriptivos CASM"),
                         crearSeparador(),
@@ -350,18 +268,6 @@ app.post('/procesar', upload, (req, res) => {
                 }
             ]
         });
-
-
-        if (imagenBuffer) {
-            const parrafoImagenHolland = crearImagenHolland(doc, imagenBuffer);
-            doc.sections[0].children.push(parrafoImagenHolland);
-        }
-
-        if (imagenBufferNueva) {
-            const parrafoImagenCASM = crearImagenCASM(doc, imagenBufferNueva);
-            doc.sections[0].children.push(parrafoImagenCASM);
-        }
-        
         const diasCita = obtenerValor('diasCita', req.body) || [];
         const horasCita = obtenerValor('horaCita', req.body) || [];
         
@@ -377,27 +283,26 @@ app.post('/procesar', upload, (req, res) => {
             return hora; // Dado que ya son AM o PM, no necesitas procesarlas más.
         }).join(', ');
         
+        
         const codigoUsuario = obtenerValor('codigo', req.body) !== 'N/A' ? obtenerValor('codigo', req.body) : 'SinCodigo';
         const nombreUsuario = obtenerValor('nombre', req.body) !== 'N/A' ? obtenerValor('nombre', req.body) : 'SinNombre';
         const nombreArchivo = `Resultados (${codigoUsuario}) ${nombreUsuario}.docx`;
-
         const filename = path.join(__dirname, 'descargas', nombreArchivo);
-
         Packer.toBuffer(doc).then(buffer => {
             fs.writeFileSync(filename, buffer);
             
             const imagenHorario = req.files && req.files.length > 0 ? req.files[0] : null;
             
-
-
+            const imagenData = req.body.imagenData;
+            const imagenDataNueva = req.body.imagenDataNueva;  // Recibe los datos de la nueva imagen
             console.log(imagenData);  // Verificar los datos de la imagen recibidos
             console.log(imagenDataNueva);  // Verificar los datos de la nueva imagen recibidos
-
             console.log(imagenData.split(','));  // Verificar la división de la Data URL
             console.log(imagenDataNueva.split(','));  // Verificar la división de la nueva Data URL
             
             // Convertir la Data URL a un Buffer
-
+            const imagenBuffer = Buffer.from(imagenData.split(',')[1], 'base64');
+            const imagenBufferNueva = Buffer.from(imagenDataNueva.split(',')[1], 'base64');  // Convierte la nueva imagen
             console.log(imagenBuffer.length);  // Verificar el tamaño del buffer de imagen
             console.log(imagenBufferNueva.length);  // Verificar el tamaño del buffer de nueva imagen
             
@@ -429,7 +334,6 @@ app.post('/procesar', upload, (req, res) => {
                     } : undefined
                 ].filter(Boolean)
             };
-
             transporter.sendMail(mailOptions, (error, info) => {
                 if (error) {
                     console.error('Error al enviar el correo:', error);
@@ -439,24 +343,19 @@ app.post('/procesar', upload, (req, res) => {
                     res.json({ redirectUrl: '/' });
                 }
             });
-
         }).catch(error => {
             console.error("Error al generar el archivo DOCX:", error);
             res.status(500).send("Error al generar el archivo DOCX.");
         });
-
     } catch (error) {
         console.error("Error general al procesar el formulario:", error);
         res.status(500).send("Error al procesar el formulario.");
     }
 });
-
 app.listen(process.env.PORT || 3000, () => {
     console.log('Servidor corriendo en http://localhost:' + (process.env.PORT || 3000));
 });
-
 app.use((err, req, res, next) => {
     console.error(err.stack); 
     res.status(500).send('Algo salió mal!');
 });
-
