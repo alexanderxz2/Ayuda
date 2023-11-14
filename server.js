@@ -177,6 +177,10 @@ app.post('/procesar', upload, (req, res) => {
             crearResultado('Resultado JURI', resultadosJURI),
             // Agrega más si hay más categorías...
         ];
+
+        const imagenData = Buffer.from(req.body.imagenData.split(",")[1], 'base64');
+        const imagenDataNueva = Buffer.from(req.body.imagenDataNueva.split(",")[1], 'base64');
+
         let seccion = [
             crearPreguntaRespuesta("Nombre", obtenerValor('nombre', req.body)),
             crearPreguntaRespuesta("Código", obtenerValor('codigo', req.body)),
@@ -214,6 +218,18 @@ app.post('/procesar', upload, (req, res) => {
             crearPreguntaRespuesta("¿Crees que esa actividad es rentable o que alguien te podría pagar por hacerla?", obtenerValor('actividadRentable', req.body)),
             crearPreguntaRespuesta("Con una visión de negocio y de acuerdo a tus habilidades ¿Qué consideras es lo que el mundo necesita?", obtenerValor('necesidadMundo', req.body)),
         ];
+
+            
+        const imageParagraph = new Paragraph({
+            children: [new ImageRun({ data: imagenData, transformation: { width: 600, height: 300 } })],
+        });
+        const imageNuevaParagraph = new Paragraph({
+            children: [new ImageRun({ data: imagenDataNueva, transformation: { width: 600, height: 300 } })],
+        });
+
+        seccion.push(imageParagraph, imageNuevaParagraph);
+
+
         let seccionHoland = [
             crearResultado('R', fila1),
             crearResultado('I', fila2),
@@ -271,15 +287,8 @@ app.post('/procesar', upload, (req, res) => {
             ]
         });
 
-        const imagenData = Buffer.from(req.body.imagenData.split(",")[1], 'base64');
-        const imagenDataNueva = Buffer.from(req.body.imagenDataNueva.split(",")[1], 'base64');
-    
-        const imageParagraph = new Paragraph({
-            children: [new ImageRun({ data: imagenData, transformation: { width: 600, height: 300 } })],
-        });
-        const imageNuevaParagraph = new Paragraph({
-            children: [new ImageRun({ data: imagenDataNueva, transformation: { width: 600, height: 300 } })],
-        });
+
+
         doc.addSection({ children: [imageParagraph, imageNuevaParagraph] });
 
         const diasCita = obtenerValor('diasCita', req.body) || [];
