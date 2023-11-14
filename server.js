@@ -3,7 +3,7 @@ const multer  = require('multer');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
-const { Document, Packer, Paragraph, TextRun, AlignmentType, HeadingLevel, ImageRun } = require("docx");
+const { Document, Packer, Paragraph, TextRun, AlignmentType, HeadingLevel, ImageRun ,Media} = require("docx");
 const nodemailer = require('nodemailer');
 
 
@@ -44,6 +44,38 @@ function crearTitulo(titulo) {
         ],
     });
 }
+
+function crearImagenHolland(imagenBufferHolland) {
+    const imagenHolland = Media.addImage(doc, imagenBufferHolland);
+    return new Paragraph({
+        children: [
+            new ImageRun({
+                data: imagenHolland,
+                transformation: {
+                    width: 320, // ajusta el ancho
+                    height: 240, // ajusta el alto
+                },
+            }),
+        ],
+    });
+}
+
+function crearImagenCASM(imagenBufferCASM) {
+    const imagenCASM = Media.addImage(doc, imagenBufferCASM);
+    return new Paragraph({
+        children: [
+            new ImageRun({
+                data: imagenCASM,
+                transformation: {
+                    width: 320, // ajusta el ancho
+                    height: 240, // ajusta el alto
+                },
+            }),
+        ],
+    });
+}
+
+
 
 function crearSeparador() {
     return new Paragraph({
@@ -141,6 +173,11 @@ app.post('/procesar', upload, (req, res) => {
     try {
         console.log("Inicio de la función /procesar");
         console.log(req.body);
+
+        const seccionGraficas = [
+            crearImagen(imagenBuffer), // Gráfica Holland
+            crearImagen(imagenBufferNueva) // Gráfica CASM
+        ];
 
         const generoSeleccionado = req.body.generoSeleccionado;
         const seccionGenero = [crearInformacionGenero(generoSeleccionado)];
@@ -283,9 +320,13 @@ app.post('/procesar', upload, (req, res) => {
                         crearSeparador(),
                         ...seccionHoland,
                         crearSeparador(),
+                        crearImagenHolland(imagenBufferHolland),
+                        crearSeparador(),
                         crearSubtitulo("Resultados CASM"),
                         crearSeparador(),
                         ...seccionCASM,
+                        crearSeparador(),
+                        crearImagenCASM(imagenBufferCASM),
                         crearSeparador(),
                         crearSubtitulo("Resultados Descriptivos CASM"),
                         crearSeparador(),
@@ -313,10 +354,6 @@ app.post('/procesar', upload, (req, res) => {
             return hora; // Dado que ya son AM o PM, no necesitas procesarlas más.
         }).join(', ');
         
-
-
-        
-
         const codigoUsuario = obtenerValor('codigo', req.body) !== 'N/A' ? obtenerValor('codigo', req.body) : 'SinCodigo';
         const nombreUsuario = obtenerValor('nombre', req.body) !== 'N/A' ? obtenerValor('nombre', req.body) : 'SinNombre';
         const nombreArchivo = `Resultados (${codigoUsuario}) ${nombreUsuario}.docx`;
