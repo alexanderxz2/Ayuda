@@ -33,7 +33,6 @@ app.get('/', (req, res) => {
 });
 function crearTitulo(titulo) {
     return new Paragraph({
-        text: titulo,
         alignment: AlignmentType.CENTER,
         heading: HeadingLevel.TITLE,
         children: [
@@ -49,9 +48,9 @@ function crearTitulo(titulo) {
 function crearPreguntaRespuesta(textoPregunta, respuesta) {
     return new Paragraph({
         children: [
-            new TextRun({ text: textoPregunta, bold: true, size: 32 }), 
-            new TextRun({ text: `\n${respuesta}` }), // Quitar el salto de línea de aquí
-            new TextRun({ text: '\n\n', size: 32 }), // Agregar un salto de línea adicional
+            new TextRun({ text: textoPregunta, bold: true, size: 32 }),
+            new TextRun({ text: '\n' }), // Inserta un salto de línea aquí
+            new TextRun({ text: respuesta, size: 32 }), // Asegúrate de que la respuesta esté en el mismo tamaño de fuente
         ],
     });
 }
@@ -80,8 +79,6 @@ function crearResultado(nombre, valor) {
 }
 
 
-
-
 function crearSeleccionCategoria(categoria, valor1, valor2, valor3) {
     return new Paragraph({
         children: [
@@ -95,7 +92,6 @@ function crearSeleccionCategoria(categoria, valor1, valor2, valor3) {
 
 function crearSubtitulo(subtitulo) {
     return new Paragraph({
-        text: subtitulo,
         alignment: AlignmentType.CENTER,
         heading: HeadingLevel.HEADING_2,
         children: [
@@ -107,7 +103,6 @@ function crearSubtitulo(subtitulo) {
         ],
     });
 }
-
 
 function obtenerYProcesarResultados(categoria, req) {
     const resultado = req.body[`resultado${categoria}`];
