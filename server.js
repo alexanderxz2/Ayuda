@@ -286,6 +286,19 @@ app.post('/procesar', upload, (req, res) => {
                 }
             ]
         });
+
+        const imagenDataWord = Buffer.from(req.body.imagenData.split(",")[1], 'base64');
+        const imagenDataNuevaWord = Buffer.from(req.body.imagenDataNueva.split(",")[1], 'base64');
+
+        const imageParagraph = new Paragraph({
+            children: [new ImageRun({ data: imagenDataWord, transformation: { width: 400, height: 300 } })],
+        });
+        const imageNuevaParagraph = new Paragraph({
+            children: [new ImageRun({ data: imagenDataNuevaWord, transformation: { width: 400, height: 300 } })],
+        });
+        doc.addSection({ children: [imageParagraph, imageNuevaParagraph] });
+    
+
         const diasCita = obtenerValor('diasCita', req.body) || [];
         const horasCita = obtenerValor('horaCita', req.body) || [];
         
@@ -314,6 +327,7 @@ app.post('/procesar', upload, (req, res) => {
             fs.writeFileSync(filename, buffer);
             
             const imagenHorario = req.files && req.files.length > 0 ? req.files[0] : null;
+
             
             const imagenData = req.body.imagenData;
             const imagenDataNueva = req.body.imagenDataNueva;  // Recibe los datos de la nueva imagen
