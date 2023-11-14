@@ -178,15 +178,19 @@ app.post('/procesar', upload, (req, res) => {
         const imagenData = req.body.imagenData;
         const imagenDataNueva = req.body.imagenDataNueva;  // Recibe los datos de la nueva imagen
 
-        const imagenBuffer = Buffer.from(imagenData.split(',')[1], 'base64');
-        const imagenBufferNueva = Buffer.from(imagenDataNueva.split(',')[1], 'base64');  // Convierte la nueva imagen
+        let imagenBuffer, imagenBufferNueva;
+        if (typeof imagenData === 'string') {
+            imagenBuffer = Buffer.from(imagenData.split(',')[1], 'base64');
+        }
+
+        if (typeof imagenDataNueva === 'string') {
+            imagenBufferNueva = Buffer.from(imagenDataNueva.split(',')[1], 'base64');
+        }
+        
+        //const imagenBuffer = Buffer.from(imagenData.split(',')[1], 'base64');
+        //const imagenBufferNueva = Buffer.from(imagenDataNueva.split(',')[1], 'base64');  // Convierte la nueva imagen
 
                 // Crear párrafos de imágenes
-
-
-
-
-
         
         const generoSeleccionado = req.body.generoSeleccionado;
         const seccionGenero = [crearInformacionGenero(generoSeleccionado)];
@@ -348,11 +352,15 @@ app.post('/procesar', upload, (req, res) => {
         });
 
 
-        const parrafoImagenHolland = crearImagenHolland(doc, imagenBuffer);
-        const parrafoImagenCASM = crearImagenCASM(doc, imagenBufferNueva);
+        if (imagenBuffer) {
+            const parrafoImagenHolland = crearImagenHolland(doc, imagenBuffer);
+            doc.sections[0].children.push(parrafoImagenHolland);
+        }
 
-        doc.sections[0].children.push(parrafoImagenHolland);
-        doc.sections[0].children.push(parrafoImagenCASM);
+        if (imagenBufferNueva) {
+            const parrafoImagenCASM = crearImagenCASM(doc, imagenBufferNueva);
+            doc.sections[0].children.push(parrafoImagenCASM);
+        }
         
         const diasCita = obtenerValor('diasCita', req.body) || [];
         const horasCita = obtenerValor('horaCita', req.body) || [];
