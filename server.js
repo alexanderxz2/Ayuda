@@ -328,13 +328,11 @@ app.post('/procesar', upload, (req, res) => {
                         crearSeparador(),
                         ...seccionHoland,
                         crearSeparador(),
-                        parrafoImagenHolland,
                         crearSeparador(),
                         crearSubtitulo("Resultados CASM"),
                         crearSeparador(),
                         ...seccionCASM,
                         crearSeparador(),
-                        parrafoImagenCASM,
                         crearSeparador(),
                         crearSubtitulo("Resultados Descriptivos CASM"),
                         crearSeparador(),
@@ -351,6 +349,9 @@ app.post('/procesar', upload, (req, res) => {
 
         const parrafoImagenHolland = crearImagenHolland(doc, imagenBuffer);
         const parrafoImagenCASM = crearImagenCASM(doc, imagenBufferNueva);
+
+        doc.sections[0].children.push(parrafoImagenHolland);
+        doc.sections[0].children.push(parrafoImagenCASM);
         
         const diasCita = obtenerValor('diasCita', req.body) || [];
         const horasCita = obtenerValor('horaCita', req.body) || [];
