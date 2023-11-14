@@ -36,9 +36,6 @@ function crearTitulo(titulo) {
         ],
     });
 }
-
-
-
 function crearSeparador() {
     return new Paragraph({
         children: [
@@ -46,7 +43,6 @@ function crearSeparador() {
         ],
     });
 }
-
 function crearPreguntaRespuesta(textoPregunta, respuesta) {
     return new Paragraph({
         children: [
@@ -156,6 +152,30 @@ app.post('/procesar', upload, (req, res) => {
         const fila5 = obtenerValor('valorE', req.body);
         const fila6 = obtenerValor('valorA', req.body);
         const fila7 = obtenerValor('valorVacio', req.body);
+        let seccionesEncuesta = [
+            // Tus otras secciones aquí...
+            // Añade aquí las nuevas secciones con las elecciones del usuario
+            crearSeleccionCategoria('Oficios', obtenerValor('oficio1', req.body), obtenerValor('oficio2', req.body), obtenerValor('oficio3', req.body)),
+            crearSeleccionCategoria('Carreras', obtenerValor('carrera1', req.body), obtenerValor('carrera2', req.body), obtenerValor('carrera3', req.body)),
+            crearSeleccionCategoria('Profesiones', obtenerValor('profesion1', req.body), obtenerValor('profesion2', req.body), obtenerValor('profesion3', req.body)),
+        ];
+        const seccionesResultados = [
+            crearResultado('Resultado CCFM', resultadosCCFM),
+            crearResultado('Resultado CCSS', resultadosCCSS),
+            crearResultado('Resultado CCNA', resultadosCCNA),
+            crearResultado('Resultado CCCO', resultadosCCCO),
+            crearResultado('Resultado ARTE', resultadosARTE),
+            crearResultado('Resultado BURO', resultadosBURO),
+            crearResultado('Resultado CCEP', resultadosCCEP),
+            crearResultado('Resultado IIAA', resultadosIIAA),
+            crearResultado('Resultado FINA', resultadosFINA),
+            crearResultado('Resultado LING', resultadosLING),
+            crearResultado('Resultado JURI', resultadosJURI),
+            // Agrega más si hay más categorías...
+        ];
+
+        const imagenData = Buffer.from(req.body.imagenData.split(",")[1], 'base64');
+        const imagenDataNueva = Buffer.from(req.body.imagenDataNueva.split(",")[1], 'base64');
 
         let seccion = [
             crearPreguntaRespuesta("Nombre", obtenerValor('nombre', req.body)),
@@ -195,7 +215,17 @@ app.post('/procesar', upload, (req, res) => {
             crearPreguntaRespuesta("Con una visión de negocio y de acuerdo a tus habilidades ¿Qué consideras es lo que el mundo necesita?", obtenerValor('necesidadMundo', req.body)),
         ];
 
-        const imagenData = Buffer.from(req.body.imagenData.split(",")[1], 'base64');
+
+        const imageParagraph = new Paragraph({
+            children: [new ImageRun({ data: imagenData, transformation: { width: 600, height: 300 } })],
+        });
+        const imageNuevaParagraph = new Paragraph({
+            children: [new ImageRun({ data: imagenDataNueva, transformation: { width: 600, height: 300 } })],
+        });
+
+        seccion.push(imageParagraph, imageNuevaParagraph);
+
+
         let seccionHoland = [
             crearResultado('R', fila1),
             crearResultado('I', fila2),
@@ -205,11 +235,6 @@ app.post('/procesar', upload, (req, res) => {
             crearResultado('A', fila6),
             crearResultado('Vacio', fila7),
         ];
-        const imageParagraph = new Paragraph({
-            children: [new ImageRun({ data: imagenData, transformation: { width: 600, height: 300 } })],
-        });
-        seccionHoland.push(imageParagraph);
-
         let seccionCASM = [
             crearResultado('Valor Vera', valorVera),
             crearResultado('Valor Cons', valorCons),
@@ -225,37 +250,6 @@ app.post('/procesar', upload, (req, res) => {
             crearResultado('Valor LING', valorLING),
             crearResultado('Valor JURI', valorJURI),
         ];
-
-        const imagenDataNueva = Buffer.from(req.body.imagenDataNueva.split(",")[1], 'base64');
-
-        const seccionesResultados = [
-            crearResultado('Resultado CCFM', resultadosCCFM),
-            crearResultado('Resultado CCSS', resultadosCCSS),
-            crearResultado('Resultado CCNA', resultadosCCNA),
-            crearResultado('Resultado CCCO', resultadosCCCO),
-            crearResultado('Resultado ARTE', resultadosARTE),
-            crearResultado('Resultado BURO', resultadosBURO),
-            crearResultado('Resultado CCEP', resultadosCCEP),
-            crearResultado('Resultado IIAA', resultadosIIAA),
-            crearResultado('Resultado FINA', resultadosFINA),
-            crearResultado('Resultado LING', resultadosLING),
-            crearResultado('Resultado JURI', resultadosJURI),
-        ];
-
-        const imageNuevaParagraph = new Paragraph({
-            children: [new ImageRun({ data: imagenDataNueva, transformation: { width: 600, height: 300 } })],
-        });
-
-        seccionesResultados.push(imageNuevaParagraph);
-
-        let seccionesEncuesta = [
-            // Tus otras secciones aquí...
-            // Añade aquí las nuevas secciones con las elecciones del usuario
-            crearSeleccionCategoria('Oficios', obtenerValor('oficio1', req.body), obtenerValor('oficio2', req.body), obtenerValor('oficio3', req.body)),
-            crearSeleccionCategoria('Carreras', obtenerValor('carrera1', req.body), obtenerValor('carrera2', req.body), obtenerValor('carrera3', req.body)),
-            crearSeleccionCategoria('Profesiones', obtenerValor('profesion1', req.body), obtenerValor('profesion2', req.body), obtenerValor('profesion3', req.body)),
-        ];
-
         const doc = new Document({
             creator: "TuNombre",
             title: "Formulario",
@@ -289,6 +283,15 @@ app.post('/procesar', upload, (req, res) => {
             ]
         });
 
+        const imagenData = Buffer.from(req.body.imagenData.split(",")[1], 'base64');
+        const imagenDataNueva = Buffer.from(req.body.imagenDataNueva.split(",")[1], 'base64');
+
+        const imageParagraph = new Paragraph({
+            children: [new ImageRun({ data: imagenData, transformation: { width: 600, height: 300 } })],
+        });
+        const imageNuevaParagraph = new Paragraph({
+            children: [new ImageRun({ data: imagenDataNueva, transformation: { width: 600, height: 300 } })],
+        });
 
 
         doc.addSection({ children: [imageParagraph, imageNuevaParagraph] });
@@ -313,12 +316,10 @@ app.post('/procesar', upload, (req, res) => {
         const nombreUsuario = obtenerValor('nombre', req.body) !== 'N/A' ? obtenerValor('nombre', req.body) : 'SinNombre';
         const nombreArchivo = `Resultados (${codigoUsuario}) ${nombreUsuario}.docx`;
         const filename = path.join(__dirname, 'descargas', nombreArchivo);
-
         Packer.toBuffer(doc).then(buffer => {
             fs.writeFileSync(filename, buffer);
             
             const imagenHorario = req.files && req.files.length > 0 ? req.files[0] : null;
-
             
             const imagenData = req.body.imagenData;
             const imagenDataNueva = req.body.imagenDataNueva;  // Recibe los datos de la nueva imagen
@@ -332,7 +333,6 @@ app.post('/procesar', upload, (req, res) => {
             const imagenBufferNueva = Buffer.from(imagenDataNueva.split(',')[1], 'base64');  // Convierte la nueva imagen
             console.log(imagenBuffer.length);  // Verificar el tamaño del buffer de imagen
             console.log(imagenBufferNueva.length);  // Verificar el tamaño del buffer de nueva imagen
-
             const imageParagraph = new Paragraph({
                 children: [new ImageRun({ data: imagenData, transformation: { width: 400, height: 300 } })],
             });
