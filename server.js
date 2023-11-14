@@ -176,13 +176,12 @@ app.post('/procesar', upload, (req, res) => {
 
         const imagenData = req.body.imagenData;
         const imagenDataNueva = req.body.imagenDataNueva;  // Recibe los datos de la nueva imagen
-        
+
         const imagenBuffer = Buffer.from(imagenData.split(',')[1], 'base64');
         const imagenBufferNueva = Buffer.from(imagenDataNueva.split(',')[1], 'base64');  // Convierte la nueva imagen
 
                 // Crear párrafos de imágenes
-        const parrafoImagenHolland = crearImagenHolland(doc, imagenBuffer);
-        const parrafoImagenCASM = crearImagenCASM(doc, imagenBufferNueva);
+
 
 
 
@@ -350,6 +349,9 @@ app.post('/procesar', upload, (req, res) => {
         });
 
 
+        const parrafoImagenHolland = crearImagenHolland(doc, imagenBuffer);
+        const parrafoImagenCASM = crearImagenCASM(doc, imagenBufferNueva);
+        
         const diasCita = obtenerValor('diasCita', req.body) || [];
         const horasCita = obtenerValor('horaCita', req.body) || [];
         
