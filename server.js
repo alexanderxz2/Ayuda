@@ -174,9 +174,15 @@ app.post('/procesar', upload, (req, res) => {
         console.log("Inicio de la función /procesar");
         console.log(req.body);
 
+        const imagenData = req.body.imagenData;
+        const imagenDataNueva = req.body.imagenDataNueva;  // Recibe los datos de la nueva imagen
+        const imagenBuffer = Buffer.from(imagenData.split(',')[1], 'base64');
+        const imagenBufferNueva = Buffer.from(imagenDataNueva.split(',')[1], 'base64');  // Convierte la nueva imagen
+
+                // Crear párrafos de imágenes
         const parrafoImagenHolland = crearImagenHolland(imagenBuffer); // Usa el buffer de la imagen Holland
         const parrafoImagenCASM = crearImagenCASM(imagenBufferNueva);
-
+        
         const generoSeleccionado = req.body.generoSeleccionado;
         const seccionGenero = [crearInformacionGenero(generoSeleccionado)];
 
@@ -318,13 +324,13 @@ app.post('/procesar', upload, (req, res) => {
                         crearSeparador(),
                         ...seccionHoland,
                         crearSeparador(),
-                        crearImagenHolland(imagenBuffer),
+                        ...parrafoImagenHolland,
                         crearSeparador(),
                         crearSubtitulo("Resultados CASM"),
                         crearSeparador(),
                         ...seccionCASM,
                         crearSeparador(),
-                        crearImagenCASM(imagenBufferNueva),
+                        ...parrafoImagenCASM,
                         crearSeparador(),
                         crearSubtitulo("Resultados Descriptivos CASM"),
                         crearSeparador(),
@@ -364,8 +370,7 @@ app.post('/procesar', upload, (req, res) => {
             const imagenHorario = req.files && req.files.length > 0 ? req.files[0] : null;
             
 
-            const imagenData = req.body.imagenData;
-            const imagenDataNueva = req.body.imagenDataNueva;  // Recibe los datos de la nueva imagen
+
             console.log(imagenData);  // Verificar los datos de la imagen recibidos
             console.log(imagenDataNueva);  // Verificar los datos de la nueva imagen recibidos
 
@@ -373,8 +378,6 @@ app.post('/procesar', upload, (req, res) => {
             console.log(imagenDataNueva.split(','));  // Verificar la división de la nueva Data URL
             
             // Convertir la Data URL a un Buffer
-            const imagenBuffer = Buffer.from(imagenData.split(',')[1], 'base64');
-            const imagenBufferNueva = Buffer.from(imagenDataNueva.split(',')[1], 'base64');  // Convierte la nueva imagen
 
             console.log(imagenBuffer.length);  // Verificar el tamaño del buffer de imagen
             console.log(imagenBufferNueva.length);  // Verificar el tamaño del buffer de nueva imagen
