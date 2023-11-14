@@ -271,6 +271,17 @@ app.post('/procesar', upload, (req, res) => {
             ]
         });
 
+        const imagenData = Buffer.from(req.body.imagenData.split(",")[1], 'base64');
+        const imagenDataNueva = Buffer.from(req.body.imagenDataNueva.split(",")[1], 'base64');
+    
+        const imageParagraph = new Paragraph({
+            children: [new ImageRun({ data: imagenData, transformation: { width: 400, height: 300 } })],
+        });
+        const imageNuevaParagraph = new Paragraph({
+            children: [new ImageRun({ data: imagenDataNueva, transformation: { width: 400, height: 300 } })],
+        });
+        doc.addSection({ children: [imageParagraph, imageNuevaParagraph] });
+
         const diasCita = obtenerValor('diasCita', req.body) || [];
         const horasCita = obtenerValor('horaCita', req.body) || [];
         
