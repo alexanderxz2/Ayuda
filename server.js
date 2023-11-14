@@ -255,10 +255,6 @@ app.post('/procesar', upload, (req, res) => {
                         crearSeparador(),
                         ...seccionHoland,
                         crearSeparador(),
-                        new Paragraph({
-                            children: [new ImageRun({ data: imagenData, transformation: { width: 600, height: 300 } })],
-                        }),
-                        crearSeparador(),
                         crearSubtitulo("Resultados CASM"),
                         crearSeparador(),
                         ...seccionCASM,
@@ -266,10 +262,6 @@ app.post('/procesar', upload, (req, res) => {
                         crearSubtitulo("Resultados Descriptivos CASM"),
                         crearSeparador(),
                         ...seccionesResultados,
-                        crearSeparador(),
-                        new Paragraph({
-                            children: [new ImageRun({ data: imagenDataNueva, transformation: { width: 600, height: 300 } })],
-                        }),
                         crearSeparador(),
                         crearSubtitulo("Resultado Tabla"),
                         crearSeparador(),
