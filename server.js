@@ -36,39 +36,95 @@ function crearTitulo(titulo) {
         ],
     });
 }
-
 function crearTablaPersonalidad() {
-    const filas = [
-        crearFilaTabla("Realista: Prefiere actividades físicas que requieren habilidades, fuerza, coordinación, etc.", "Tímido: Auténtico, persistente, estable, conformista y práctico.", "Mecánico: Operador de perforadoras, agricultor"),
-        crearFilaTabla("Intelectual: Prefiere actividades de pensar, organizar y comprender", "Analítico: Original, curioso, independiente.", "Biólogo: Economista, matemático, reportero."),
-        crearFilaTabla("Social: Prefiere actividades que ayudan a formar a otros", "Sociable: Amigable, cooperativo, comprensivo.", "Trabajador social: Profesor, asesor, psicólogo clínico."),
-        crearFilaTabla("Convencional: Prefiere actividades ordenadas, definidas y reglamentadas.", "Conformista: Eficiente, práctico, poco imaginativo e inflexible.", "Contador: Gerente de empresa, cajero de banco, archivista."),
-        crearFilaTabla("Emprendedor: Prefiere actividades verbales que ofrecen la posibilidad de influir en los demás y adquirir poder.", "Autoconfianza: Ambicioso, con energía, dominante.", "Abogado: Corredor de bienes raíces, especialista en relaciones públicas, gerente de una pequeña empresa."),
-        crearFilaTabla("Artístico: Prefiere actividades ambiguas y poco sistemáticas que permiten la expresión creativa", "Imaginativo: Desordenado, idealista, emotivo, poco práctico.", "Pintor: músico, Escritor, decorador de interiores.")        
-    ];
-    return new Table({
-        width: { size: 100, type: WidthType.PERCENTAGE },  // Asegúrate de que la tabla use el 100% del ancho disponible
-        rows: filas,
-        layout: TableLayoutType.AUTOFIT // Esta línea asegura que la tabla se ajuste al contenido
-    });
-}
-
-function crearFilaTabla(tipo, caracteristicas, ocupaciones) {
-    return new TableRow({
+    // Reemplazo de la función de tabla por un párrafo simple
+    return new Paragraph({
         children: [
-            new TableCell({
-                width: { size: 3000, type: WidthType.DXA },  // Ajusta el ancho aquí
-                children: [new Paragraph(tipo)],
+            new TextRun({
+                text: "Perfil de Personalidad y Ocupaciones Congruentes",
+                bold: true,
+                size: 32
             }),
-            new TableCell({
-                width: { size: 3000, type: WidthType.DXA },
-                children: [new Paragraph(caracteristicas)],
+            new TextRun({ text: "\n\n" }), // Espacio entre título y contenido
+            new TextRun({
+                text: "Tipo: Realista\n",
+                bold: true,
+                size: 28
             }),
-            new TableCell({
-                width: { size: 3000, type: WidthType.DXA },
-                children: [new Paragraph(ocupaciones)],
+            new TextRun({
+                text: "Características de personalidad: Auténtico, persistente, estable, conformista y práctico.\n",
+                size: 24
             }),
-        ],
+            new TextRun({
+                text: "Ocupaciones congruentes: Operador de perforadoras, agricultor.\n\n",
+                size: 24
+            }),
+            new TextRun({
+                text: "Tipo: Intelectual\n",
+                bold: true,
+                size: 28
+            }),
+            new TextRun({
+                text: "Características de personalidad: Original, curioso, independiente.\n",
+                size: 24
+            }),
+            new TextRun({
+                text: "Ocupaciones congruentes: Biólogo, economista, matemático, reportero.\n\n",
+                size: 24
+            }),
+            new TextRun({
+                text: "Tipo: Social\n",
+                bold: true,
+                size: 28
+            }),
+            new TextRun({
+                text: "Características de personalidad: Sociable, amigable, cooperativo, comprensivo.\n",
+                size: 24
+            }),
+            new TextRun({
+                text: "Ocupaciones congruentes: Trabajador social, profesor, asesor, psicólogo clínico.\n\n",
+                size: 24
+            }),
+            new TextRun({
+                text: "Tipo: Convencional\n",
+                bold: true,
+                size: 28
+            }),
+            new TextRun({
+                text: "Características de personalidad: Eficiente, práctico, poco imaginativo, inflexible.\n",
+                size: 24
+            }),
+            new TextRun({
+                text: "Ocupaciones congruentes: Contador, gerente de empresa, cajero de banco, archivista.\n\n",
+                size: 24
+            }),
+            new TextRun({
+                text: "Tipo: Emprendedor\n",
+                bold: true,
+                size: 28
+            }),
+            new TextRun({
+                text: "Características de personalidad: Autoconfianza, ambicioso, con energía, dominante.\n",
+                size: 24
+            }),
+            new TextRun({
+                text: "Ocupaciones congruentes: Abogado, corredor de bienes raíces, especialista en relaciones públicas, gerente de una pequeña empresa.\n\n",
+                size: 24
+            }),
+            new TextRun({
+                text: "Tipo: Artístico\n",
+                bold: true,
+                size: 28
+            }),
+            new TextRun({
+                text: "Características de personalidad: Imaginativo, desordenado, idealista, emotivo, poco práctico.\n",
+                size: 24
+            }),
+            new TextRun({
+                text: "Ocupaciones congruentes: Pintor, músico, escritor, decorador de interiores.\n\n",
+                size: 24
+            }),
+        ]
     });
 }
 
@@ -79,29 +135,6 @@ function crearSeparador() {
         ],
     });
 }
-
-function crearTablaSimple() {
-    const filas = [
-        new TableRow({
-            children: [
-                new TableCell({ children: [new Paragraph("Celda 1")] }),
-                new TableCell({ children: [new Paragraph("Celda 2")] })
-            ]
-        }),
-        new TableRow({
-            children: [
-                new TableCell({ children: [new Paragraph("Celda 3")] }),
-                new TableCell({ children: [new Paragraph("Celda 4")] })
-            ]
-        })
-    ];
-
-    return new Table({
-        rows: filas,
-        width: { size: 100, type: WidthType.PERCENTAGE }
-    });
-}
-
 
 function crearPreguntaRespuesta(textoPregunta, respuesta) {
     return new Paragraph({
@@ -351,7 +384,6 @@ app.post('/procesar', upload, (req, res) => {
                         ...seccionesEncuesta,
                         crearSeparador(),
                         crearTablaPersonalidad(),
-                        crearTablaSimple()
                     ]                
                 }
             ]
