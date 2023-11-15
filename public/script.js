@@ -267,6 +267,8 @@ document.addEventListener("DOMContentLoaded", function() {
         input.addEventListener('input', function() {
             if (/[^a-zA-Z\sáéíóúÁÉÍÓÚüÜñÑ]/.test(this.value)) {
                 // Manejo del error: puedes mostrar un mensaje o limpiar el campo
+                console.error('El texto no debe contener números.');
+
                 this.value = '';
             }
         });
@@ -276,6 +278,8 @@ document.addEventListener("DOMContentLoaded", function() {
         input.addEventListener('input', function() {
             if (/\D/.test(this.value)) { // \D coincide con cualquier cosa que no sea un número
                 // Manejo del error: puedes mostrar un mensaje o limpiar el campo
+                console.error('El código solo debe contener números.');
+
                 this.value = '';
             }
         });
@@ -284,7 +288,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Aplicar la validación mejorada a todos los campos de entrada relevantes
     const textInputs = document.querySelectorAll('input[type="text"]');
     textInputs.forEach(validarTextoMejorado);
-    
+     
     const numberInputs = document.querySelectorAll('input[type="codigoesan"]');
     numberInputs.forEach(validarNumeroMejorado);
     
