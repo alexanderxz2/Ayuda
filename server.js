@@ -777,8 +777,6 @@ app.post('/procesar', upload, (req, res) => {
                         crearSeparador(),
                         crearSeparador(),
                         crearSeparador(),
-                        crearSeparador(),
-                        crearSeparador(),
                         crearSubtitulo("Resultados Descriptivos CASM"),
                         crearSeparador(),
                         ...seccionesResultados,
