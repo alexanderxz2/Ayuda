@@ -1277,6 +1277,16 @@ document.addEventListener("DOMContentLoaded", function() {
                     },
                     legend: {
                         display: false  // Esto oculta la leyenda
+                    },
+                    datalabels: {
+                        align: 'end',
+                        anchor: 'end',
+                        formatter: (value, context) => {
+                            return value; // Muestra el valor de la barra
+                        },
+                        font: {
+                            weight: 'bold'
+                        }
                     }
                 },
                 scales: {
@@ -1299,7 +1309,8 @@ document.addEventListener("DOMContentLoaded", function() {
                         }
                     }
                 }
-            }
+            },
+            plugins: [ChartDataLabels] // Asegúrate de incluir el plugin ChartDataLabels
         });
     }
     const cuadroMujeres = {
