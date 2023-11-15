@@ -119,7 +119,7 @@
                         'rgba(255, 159, 64, 1)'
                     ],
                     borderWidth: 1,
-                    datalabels: false // Desactiva datalabels para este dataset
+                    datalabels: true // Desactiva datalabels para este dataset
                 }, {
                     type: 'line',
                     data: [fila1, fila2, fila3, fila4, fila5, fila6],
@@ -127,7 +127,8 @@
                     borderColor: 'rgba(75, 192, 192, 1)',
                     backgroundColor: 'rgba(75, 192, 192, 1)',
                     pointBackgroundColor: 'rgba(75, 192, 192, 1)',
-                    pointBorderColor: 'rgba(75, 192, 192, 1)'
+                    pointBorderColor: 'rgba(75, 192, 192, 1)',
+                    datalabels: false // Desactiva datalabels para el dataset de línea
                 }]
             },
             options: {
