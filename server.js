@@ -702,8 +702,9 @@ app.post('/procesar', upload, (req, res) => {
             // Agrega más si hay más categorías...
         ];
 
-        const imagenData = Buffer.from(req.body.imagenData.split(",")[1], 'base64');
-        const imagenDataNueva = Buffer.from(req.body.imagenDataNueva.split(",")[1], 'base64');
+        //const imagenData = Buffer.from(req.body.imagenData.split(",")[1], 'base64');
+        //const imagenDataNueva = Buffer.from(req.body.imagenDataNueva.split(",")[1], 'base64');
+        
 
         let seccion = [
             crearPreguntaRespuesta("Nombre", obtenerValor('nombre', req.body)),
@@ -744,12 +745,12 @@ app.post('/procesar', upload, (req, res) => {
         ];
 
             
-        const imageParagraph = new Paragraph({
-            children: [new ImageRun({ data: imagenData, transformation: { width: 600, height: 300 } })],
-        });
-        const imageNuevaParagraph = new Paragraph({
-            children: [new ImageRun({ data: imagenDataNueva, transformation: { width: 600, height: 300 } })],
-        });
+        // const imageParagraph = new Paragraph({
+        //    children: [new ImageRun({ data: imagenData, transformation: { width: 600, height: 300 } })],
+        //});
+        //const imageNuevaParagraph = new Paragraph({
+        //    children: [new ImageRun({ data: imagenDataNueva, transformation: { width: 600, height: 300 } })],
+        ///});
 
         let seccionHoland = [
             crearResultado('R', fila1),
@@ -775,8 +776,8 @@ app.post('/procesar', upload, (req, res) => {
             crearResultado('Valor LING', valorLING),
             crearResultado('Valor JURI', valorJURI),
         ];
-        seccionHoland.push(imageParagraph);
-        seccionCASM.push(imageNuevaParagraph);
+        //seccionHoland.push(imageParagraph);
+        //seccionCASM.push(imageNuevaParagraph);
 
         const doc = new Document({
             creator: "TuNombre",
