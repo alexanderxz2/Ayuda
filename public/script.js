@@ -12,10 +12,6 @@
     function validarNumero(input) {
         input.value = input.value.replace(/[^\d]/g, '');
     }
-  
-    function validarTexto(input) {
-        input.value = input.value.replace(/[^a-zA-Z\sáéíóúÁÉÍÓÚüÜñÑ]/g, '');
-    }
 
     function calcularTotales() {
         // Inicializar contadores para cada fila
@@ -270,6 +266,25 @@ document.addEventListener("DOMContentLoaded", function() {
     const inputs = Array.from(formulario.querySelectorAll('input, textarea, select'));
     // -------------------------------------------------
     restoreFormState(formulario);
+    function validarTextoMejorado(input) {
+        input.addEventListener('input', function() {
+            this.value = this.value.replace(/[^a-zA-Z\sáéíóúÁÉÍÓÚüÜñÑ]/g, '');
+        });
+    }
+
+    // Enhanced number validation
+    function validarNumeroMejorado(input) {
+        input.addEventListener('input', function() {
+            this.value = this.value.replace(/[^\d]/g, '');
+        });
+    }
+
+    // Apply the enhanced validation to all relevant input fields
+    const textInputs = document.querySelectorAll('input[type="text"]');
+    textInputs.forEach(validarTextoMejorado);
+
+    const numberInputs = document.querySelectorAll('input[type="number"]');
+    numberInputs.forEach(validarNumeroMejorado);
 
 
     // Restaurar el estado del formulario desde Local Storage
