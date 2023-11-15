@@ -285,7 +285,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const textInputs = document.querySelectorAll('input[type="text"]');
     textInputs.forEach(validarTextoMejorado);
     
-    const numberInputs = document.querySelectorAll('input[type="number"]');
+    const numberInputs = document.querySelectorAll('input[type="codigoesan"]');
     numberInputs.forEach(validarNumeroMejorado);
     
 
