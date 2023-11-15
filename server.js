@@ -351,9 +351,7 @@ app.post('/procesar', upload, (req, res) => {
                         ...seccionesEncuesta,
                         crearSeparador(),
                         crearTablaPersonalidad(),
-                        crearTablaSimple(),
-                        // Asegúrate de que esta línea esté en el lugar correcto
-
+                        crearTablaSimple()
                     ]                
                 }
             ]
