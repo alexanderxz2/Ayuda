@@ -9,9 +9,6 @@
         }
     }
     
-    function validarNumero(input) {
-        input.value = input.value.replace(/[^\d]/g, '');
-    }
 
     function calcularTotales() {
         // Inicializar contadores para cada fila
@@ -299,6 +296,15 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
     }
+    document.querySelectorAll('input[type=text]').forEach(function(input) {
+        input.addEventListener('input', validarTextoMejorado);
+    });
+
+    document.querySelectorAll('input[type=number]').forEach(function(input) {
+        input.addEventListener('input', validarNumeroMejorado);
+    });
+    
+    
     document.querySelectorAll('.btn-genero').forEach(button => {
         button.addEventListener('click', function() {
             document.querySelectorAll('.btn-genero').forEach(btn => btn.classList.remove('active'));
