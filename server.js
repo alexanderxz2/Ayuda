@@ -163,6 +163,194 @@ function crearTipoArtistico() {
     });
 }
 
+function crearCCFM() {
+    return new Paragraph({
+        children: [
+            new TextRun({
+                text: "CIENCIAS FÍSICO - MATEMÁTICAS (CCFM)",
+                bold: true,
+                size: 28
+            }),
+            new TextRun({
+                text: "\nPresenta actividades relacionadas con el interés técnico y matemático, investigación de la energía, reparación de objetos mecánicos, y manejo de máquinas y herramientas.",
+                size: 24
+            }),
+            new TextRun({ text: "\n" })
+        ],
+    });
+}
+
+function crearCCSS() {
+    return new Paragraph({
+        children: [
+            new TextRun({
+                text: "CIENCIAS SOCIALES (CC.SS.)",
+                bold: true,
+                size: 28
+            }),
+            new TextRun({
+                text: "\nPresenta actividades relacionadas con el bienestar social, formación educativa, y fortalecimiento de lazos sociales.",
+                size: 24
+            }),
+            new TextRun({ text: "\n" })
+        ],
+    });
+}
+
+function crearCCNA() {
+    return new Paragraph({
+        children: [
+            new TextRun({
+                text: "CIENCIAS NATURALES (CCNA)",
+                bold: true,
+                size: 28
+            }),
+            new TextRun({
+                text: "\nActividades de experimentación y manipulación en campos como anatomía, fisiología, química, agricultura y zootecnia.",
+                size: 24
+            }),
+            new TextRun({ text: "\n" })
+        ],
+    });
+}
+
+function crearCCCO() {
+    return new Paragraph({
+        children: [
+            new TextRun({
+                text: "CIENCIAS DE LA COMUNICACIÓN (CCCO)",
+                bold: true,
+                size: 28
+            }),
+            new TextRun({
+                text: "\nEnfocadas en la búsqueda y transmisión objetiva de información, incluyendo redacción de crónicas, reportajes fotográficos, y publicidad.",
+                size: 24
+            }),
+            new TextRun({ text: "\n" })
+        ],
+    });
+}
+
+function crearArte() {
+    return new Paragraph({
+        children: [
+            new TextRun({
+                text: "ARTES (ARTE)",
+                bold: true,
+                size: 28
+            }),
+            new TextRun({
+                text: "\nActividades creativas como dibujo, canto, baile, diseño, pintura, y decoración, enfocadas en la armonía y composición artística.",
+                size: 24
+            }),
+            new TextRun({ text: "\n" })
+        ],
+    });
+}
+
+function crearBuro() {
+    return new Paragraph({
+        children: [
+            new TextRun({
+                text: "BUROCRACIA (BURO)",
+                bold: true,
+                size: 28
+            }),
+            new TextRun({
+                text: "\nInvolucra actividades como catalogación y clasificación de material, gestión de información y atención en oficinas y centros comerciales.",
+                size: 24
+            }),
+            new TextRun({ text: "\n" })
+        ],
+    });
+}
+
+function crearCCEP() {
+    return new Paragraph({
+        children: [
+            new TextRun({
+                text: "CIENCIAS ECONÓMICAS POLÍTICAS (CCEP)",
+                bold: true,
+                size: 28
+            }),
+            new TextRun({
+                text: "\nEstudio de economía y política, incluyendo temas como oferta y demanda, formas de gobierno, y análisis cuantitativo de datos.",
+                size: 24
+            }),
+            new TextRun({ text: "\n" })
+        ],
+    });
+}
+
+function crearIIAA() {
+    return new Paragraph({
+        children: [
+            new TextRun({
+                text: "INSTITUTOS ARMADOS (IIAA)",
+                bold: true,
+                size: 28
+            }),
+            new TextRun({
+                text: "\nRelacionado con la vida militar, manejo y conservación de armamento, y cumplimiento de órdenes en Fuerzas Policiales y Armadas.",
+                size: 24
+            }),
+            new TextRun({ text: "\n" })
+        ],
+    });
+}
+
+function crearFina() {
+    return new Paragraph({
+        children: [
+            new TextRun({
+                text: "FINANZAS (FINA)",
+                bold: true,
+                size: 28
+            }),
+            new TextRun({
+                text: "\nActividades vinculadas a la contabilidad, organización de presupuestos, y gestión financiera en empresas e industrias.",
+                size: 24
+            }),
+            new TextRun({ text: "\n" })
+        ],
+    });
+}
+
+function crearLing() {
+    return new Paragraph({
+        children: [
+            new TextRun({
+                text: "LINGÜÍSTICA (LING)",
+                bold: true,
+                size: 28
+            }),
+            new TextRun({
+                text: "\nEstudio y traducción de idiomas, literatura, escritura creativa, incluyendo poesía y prosa.",
+                size: 24
+            }),
+            new TextRun({ text: "\n" })
+        ],
+    });
+}
+
+function crearJuri() {
+    return new Paragraph({
+        children: [
+            new TextRun({
+                text: "JURISPRUDENCIA (JURI)",
+                bold: true,
+                size: 28
+            }),
+            new TextRun({
+                text: "\nEnfocado en el estudio legal, defensa en tribunales, análisis legislativo, y asesoramiento jurídico.",
+                size: 24
+            }),
+            new TextRun({ text: "\n" })
+        ],
+    });
+}
+
+
 
 function crearSeparador() {
     return new Paragraph({
@@ -413,6 +601,10 @@ app.post('/procesar', upload, (req, res) => {
                         crearSubtitulo("Resultado Tabla"),
                         crearSeparador(),
                         ...seccionesEncuesta,
+                        crearSeparador(),
+                        crearSeparador(),
+                        crearSubtitulo("Información para prueba Holland"),
+                        crearSeparador(),
                         crearSubtitulo("Perfil de Personalidad y Ocupaciones Congruentes"),
                         crearSeparador(),
                         crearTipoRealista(),
@@ -426,6 +618,32 @@ app.post('/procesar', upload, (req, res) => {
                         crearTipoEmprendedor(),
                         crearSeparador(),
                         crearTipoArtistico(),
+                        crearSeparador(),
+                        crearSubtitulo("Información para prueba CASM"),
+                        crearSeparador(),
+                        crearSubtitulo("Perfil de Personalidad y Ocupaciones Congruentes"),
+                        crearSeparador(),
+                        crearCCFM(),
+                        crearSeparador(),
+                        crearCCSS(),
+                        crearSeparador(),
+                        crearCCNA(),
+                        crearSeparador(),
+                        crearCCCO(),
+                        crearSeparador(),
+                        crearArte(),
+                        crearSeparador(),
+                        crearBuro(),
+                        crearSeparador(),
+                        crearCCEP(),
+                        crearSeparador(),
+                        crearIIAA(),
+                        crearSeparador(),
+                        crearFina(),
+                        crearSeparador(),
+                        crearLing(),
+                        crearSeparador(),
+                        crearJuri(),
                     ]                
                 }
             ]
