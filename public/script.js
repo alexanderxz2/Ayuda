@@ -296,13 +296,8 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
     }
-    document.querySelectorAll('input[type=text]').forEach(function(input) {
-        input.addEventListener('input', validarTextoMejorado);
-    });
-
-    document.querySelectorAll('input[type=number]').forEach(function(input) {
-        input.addEventListener('input', validarNumeroMejorado);
-    });
+    document.querySelectorAll('input[type=text]').forEach(validarTextoMejorado);
+    document.querySelectorAll('input[type=number]').forEach(validarNumeroMejorado);
     
     
     document.querySelectorAll('.btn-genero').forEach(button => {
