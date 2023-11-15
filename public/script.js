@@ -738,6 +738,54 @@ document.addEventListener("DOMContentLoaded", function() {
         
         return CONS;
     }
+    function calcularConsVerdadero() {
+        function estaSeleccionada(id) {
+            const elemento = document.getElementById(id);
+            if (elemento) {
+                return elemento.checked ? 1 : 0;
+            } else {
+                console.error(`Elemento con id ${id} no encontrado`);
+                return 0;
+            }
+        }
+    
+        function calcularInconsistencia(opcion1A, opcion1B, opcion2A, opcion2B) {
+            const seleccion1 = estaSeleccionada(opcion1A) || estaSeleccionada(opcion1B);
+            const seleccion2 = estaSeleccionada(opcion2A) || estaSeleccionada(opcion2B);
+            return (seleccion1 !== seleccion2) ? 1 : 0;
+        }
+    
+        const inconsistencias = [
+            calcularInconsistencia("opcion25_N", "opcion26_N", "opcion261_N", "opcion262_N"),
+            // Repetir para cada par de ítems, por ejemplo:
+            calcularInconsistencia("opcion51_N", "opcion52_N", "opcion263_N", "opcion264_N"),
+            // Continuar con los demás pares
+            calcularInconsistencia("opcion77_N", "opcion78_N", "opcion265_N", "opcion266_N"),
+
+            calcularInconsistencia("opcion103_N", "opcion104_N", "opcion267_N", "opcion268_N"),
+
+            calcularInconsistencia("opcion129_N", "opcion130_N", "opcion269_N", "opcion270_N"),
+
+            calcularInconsistencia("opcion155_N", "opcion156_N", "opcion271_N", "opcion272_N"),
+
+            calcularInconsistencia("opcion181_N", "opcion182_N", "opcion273_N", "opcion274_N"),
+
+            calcularInconsistencia("opcion207_N", "opcion208_N", "opcion275_N", "opcion276_N"),
+
+            calcularInconsistencia("opcion233_N", "opcion234_N", "opcion277_N", "opcion278_N"),
+
+            calcularInconsistencia("opcion259_N", "opcion260_N", "opcion279_N", "opcion280_N"),
+
+            calcularInconsistencia("opcion285_N", "opcion286_N", "opcion1_N", "opcion2_N"),
+
+        ];
+    
+        // Sumar todas las inconsistencias
+        const totalInconsistencia = inconsistencias.reduce((total, actual) => total + actual, 0);
+    
+        return totalInconsistencia;
+    }
+    
     function calcularVera() {
         function estaSeleccionada(id) {
             const elemento = document.getElementById(id);
@@ -758,9 +806,9 @@ document.addEventListener("DOMContentLoaded", function() {
             estaSeleccionada("opcion143_N") +
             estaSeleccionada("opcion179_N") +
             estaSeleccionada("opcion205_N") +
-            estaSeleccionada("opcion131_N") +
-            estaSeleccionada("opcion157_N") +
-            estaSeleccionada("opcion183_N")
+            estaSeleccionada("opcion231_N") +
+            estaSeleccionada("opcion257_N") +
+            estaSeleccionada("opcion283_N")
         );
     
         return VERA;
@@ -1185,7 +1233,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     function realizarCalculos() {
         const valorVera = calcularVera();
-        const valorCons = calcularCons();
+        const valorCons = calcularConsVerdadero();
         const valorCCFM = calcularCCFM();
         const valorCCSS = calcularCCSS();
         const valorCCNA = calcularCCNA();
@@ -1784,7 +1832,7 @@ document.addEventListener("DOMContentLoaded", function() {
             
 
         const valorVera = calcularVera();
-        const valorCons = calcularCons();
+        const valorCons = calcularConsVerdadero();
         const valorCCFM = calcularCCFM();
         const valorCCSS = calcularCCSS();
         const valorCCNA = calcularCCNA();
