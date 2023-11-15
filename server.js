@@ -530,18 +530,6 @@ function crearSeparador() {
     });
 }
 
-function crearSaltoDePagina() {
-    return new Paragraph({
-        children: [
-            new TextRun({
-                text: "\f", // El carácter de control de formulario ASCII se usa para el salto de página
-                break: 1 // Este es un salto de línea opcional para asegurar la separación
-            })
-        ],
-    });
-}
-
-
 function crearPreguntaRespuesta(textoPregunta, respuesta) {
     return new Paragraph({
         children: [
@@ -776,7 +764,14 @@ app.post('/procesar', upload, (req, res) => {
                         ...seccionCASM,
                         crearSeparador(),
                         crearSeparador(),
-                        crearSaltoDePagina(),
+                        crearSeparador(),
+                        crearSeparador(),
+                        crearSeparador(),
+                        crearSeparador(),
+                        crearSeparador(),
+                        crearSeparador(),
+                        crearSeparador(),
+                        crearSeparador(),
                         crearSubtitulo("Resultados Descriptivos CASM"),
                         crearSeparador(),
                         ...seccionesResultados,
