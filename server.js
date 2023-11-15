@@ -37,100 +37,104 @@ function crearTitulo(titulo) {
     });
 }
 function crearTablaPersonalidad() {
-    // Reemplazo de la función de tabla por un párrafo simple
-    return new Paragraph({
-        children: [
-            new Paragraph({ text: "\n" }), // Salto de línea
-            new Paragraph({
-                text: "Tipo: Realista",
-                bold: true,
-                size: 28
-            }),
-            new Paragraph({
-                text: "Características de personalidad: Auténtico, persistente, estable, conformista y práctico.",
-                size: 24
-            }),
-            new Paragraph({
-                text: "Ocupaciones congruentes: Operador de perforadoras, agricultor.",
-                size: 24
-            }),
-            new Paragraph({ text: "\n" }), // Salto de línea
+    return [
+        // Tipo Realista
+        new Paragraph({
+            text: "Tipo: Realista",
+            bold: true,
+            size: 28
+        }),
+        new Paragraph({
+            text: "Características de personalidad: Auténtico, persistente, estable, conformista y práctico.",
+            size: 24
+        }),
+        new Paragraph({
+            text: "Ocupaciones congruentes: Operador de perforadoras, agricultor.",
+            size: 24
+        }),
+        new Paragraph({ text: "\n" }), // Salto de línea
 
-            new TextRun({
-                text: "Tipo: Intelectual\n",
-                bold: true,
-                size: 28
-            }),
-            new TextRun({
-                text: "Características de personalidad: Original, curioso, independiente.\n",
-                size: 24
-            }),
-            new TextRun({
-                text: "Ocupaciones congruentes: Biólogo, economista, matemático, reportero.\n\n",
-                size: 24
-            }),
-            new TextRun({ text: "\n\n" }), // Espacio entre título y contenido
+        // Tipo Intelectual
+        new Paragraph({
+            text: "Tipo: Intelectual",
+            bold: true,
+            size: 28
+        }),
+        new Paragraph({
+            text: "Características de personalidad: Original, curioso, independiente.",
+            size: 24
+        }),
+        new Paragraph({
+            text: "Ocupaciones congruentes: Biólogo, economista, matemático, reportero.",
+            size: 24
+        }),
+        new Paragraph({ text: "\n" }),
 
-            new TextRun({
-                text: "Tipo: Social\n",
-                bold: true,
-                size: 28
-            }),
-            new TextRun({
-                text: "Características de personalidad: Sociable, amigable, cooperativo, comprensivo.\n",
-                size: 24
-            }),
-            new TextRun({
-                text: "Ocupaciones congruentes: Trabajador social, profesor, asesor, psicólogo clínico.\n\n",
-                size: 24
-            }),
-            new TextRun({ text: "\n\n" }), // Espacio entre título y contenido
+        // Tipo Social
+        new Paragraph({
+            text: "Tipo: Social",
+            bold: true,
+            size: 28
+        }),
+        new Paragraph({
+            text: "Características de personalidad: Sociable, amigable, cooperativo, comprensivo.",
+            size: 24
+        }),
+        new Paragraph({
+            text: "Ocupaciones congruentes: Trabajador social, profesor, asesor, psicólogo clínico.",
+            size: 24
+        }),
+        new Paragraph({ text: "\n" }),
 
-            new TextRun({
-                text: "Tipo: Convencional\n",
-                bold: true,
-                size: 28
-            }),
-            new TextRun({
-                text: "Características de personalidad: Eficiente, práctico, poco imaginativo, inflexible.\n",
-                size: 24
-            }),
-            new TextRun({
-                text: "Ocupaciones congruentes: Contador, gerente de empresa, cajero de banco, archivista.\n\n",
-                size: 24
-            }),
-            new TextRun({ text: "\n\n" }), // Espacio entre título y contenido
+        // Tipo Convencional
+        new Paragraph({
+            text: "Tipo: Convencional",
+            bold: true,
+            size: 28
+        }),
+        new Paragraph({
+            text: "Características de personalidad: Eficiente, práctico, poco imaginativo, inflexible.",
+            size: 24
+        }),
+        new Paragraph({
+            text: "Ocupaciones congruentes: Contador, gerente de empresa, cajero de banco, archivista.",
+            size: 24
+        }),
+        new Paragraph({ text: "\n" }),
 
-            new TextRun({
-                text: "Tipo: Emprendedor\n",
-                bold: true,
-                size: 28
-            }),
-            new TextRun({
-                text: "Características de personalidad: Autoconfianza, ambicioso, con energía, dominante.\n",
-                size: 24
-            }),
-            new TextRun({
-                text: "Ocupaciones congruentes: Abogado, corredor de bienes raíces, especialista en relaciones públicas, gerente de una pequeña empresa.\n\n",
-                size: 24
-            }),
-            new Paragraph({ text: "\n" }), // Salto de línea
+        // Tipo Emprendedor
+        new Paragraph({
+            text: "Tipo: Emprendedor",
+            bold: true,
+            size: 28
+        }),
+        new Paragraph({
+            text: "Características de personalidad: Autoconfianza, ambicioso, con energía, dominante.",
+            size: 24
+        }),
+        new Paragraph({
+            text: "Ocupaciones congruentes: Abogado, corredor de bienes raíces, especialista en relaciones públicas, gerente de una pequeña empresa.",
+            size: 24
+        }),
+        new Paragraph({ text: "\n" }),
 
-            new Paragraph({
-                text: "Tipo: Artístico",
-                bold: true,
-                size: 28
-            }),
-            new Paragraph({
-                text: "Características de personalidad: Imaginativo, desordenado, idealista, emotivo, poco práctico.",
-                size: 24
-            }),
-            new Paragraph({
-                text: "Ocupaciones congruentes: Pintor, músico, escritor, decorador de interiores.",
-                size: 24
-            }),
-        ]
-    });
+        // Tipo Artístico
+        new Paragraph({
+            text: "Tipo: Artístico",
+            bold: true,
+            size: 28
+        }),
+        new Paragraph({
+            text: "Características de personalidad: Imaginativo, desordenado, idealista, emotivo, poco práctico.",
+            size: 24
+        }),
+        new Paragraph({
+            text: "Ocupaciones congruentes: Pintor, músico, escritor, decorador de interiores.",
+            size: 24
+        }),
+        new Paragraph({ text: "\n" }),
+        // Agregar más tipos si son necesarios
+    ];
 }
 
 function crearSeparador() {
@@ -349,9 +353,7 @@ app.post('/procesar', upload, (req, res) => {
         seccionHoland.push(imageParagraph);
         seccionesResultados.push(imageNuevaParagraph);
 
-        const tablaPersonalidad = crearTablaPersonalidad();
         seccionesEncuesta.push(new Paragraph({ text: "Perfil de Personalidad y Ocupaciones Congruentes", heading: HeadingLevel.HEADING_1 }));
-        seccionesEncuesta.push(tablaPersonalidad);
 
 
         const doc = new Document({
