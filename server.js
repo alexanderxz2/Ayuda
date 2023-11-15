@@ -3,7 +3,7 @@ const multer  = require('multer');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
-const { Document, Packer, Paragraph, TextRun, AlignmentType, HeadingLevel, ImageRun } = require("docx");
+const { Document, Table, TableRow, TableCell, Packer, Paragraph, TextRun, AlignmentType, HeadingLevel, ImageRun } = require("docx");
 const nodemailer = require('nodemailer');
 const storage = multer.memoryStorage(); // Esto guarda los datos en memoria
 const upload = multer({ storage: storage }).array('imagenHorario', 1);
@@ -37,7 +37,33 @@ function crearTitulo(titulo) {
     });
 }
 
+function crearTablaPersonalidad() {
+    const filas = [
+        crearFilaTabla("Realista: Prefiere actividades físicas que requieren habilidades, fuerza, coordinación, etc.", "Tímido: Auténtico, persistente, estable, conformista y práctico.", "Mecánico: Operador de perforadoras, agricultor"),
+        crearFilaTabla("Intelectual: Prefiere actividades de pensar, organizar y comprender", "Analítico: Original, curioso, independiente.", "Biólogo: Economista, matemático, reportero."),
+        crearFilaTabla("Social: Prefiere actividades que ayudan a formar a otros", "Sociable: Amigable, cooperativo, comprensivo.", "Trabajador social: Profesor, asesor, psicólogo clínico."),
+        crearFilaTabla("Convencional: Prefiere actividades ordenadas, definidas y reglamentadas.", "Conformista: Eficiente, práctico, poco imaginativo e inflexible.", "Contador: Gerente de empresa, cajero de banco, archivista."),
+        crearFilaTabla("Emprendedor: Prefiere actividades verbales que ofrecen la posibilidad de influir en los demás y adquirir poder.", "Autoconfianza: Ambicioso, con energía, dominante.", "Abogado: Corredor de bienes raíces, especialista en relaciones públicas, gerente de una pequeña empresa."),
+        crearFilaTabla("Artístico: Prefiere actividades ambiguas y poco sistemáticas que permiten la expresión creativa", "Imaginativo: Desordenado, idealista, emotivo, poco práctico.", "Pintor: músico, Escritor, decorador de interiores.")        
+    ];
+    return new Table({ rows: filas });
+}
 
+function crearFilaTabla(tipo, caracteristicas, ocupaciones) {
+    return new TableRow({
+        children: [
+            new TableCell({
+                children: [new Paragraph(tipo)],
+            }),
+            new TableCell({
+                children: [new Paragraph(caracteristicas)],
+            }),
+            new TableCell({
+                children: [new Paragraph(ocupaciones)],
+            }),
+        ],
+    });
+}
 
 function crearSeparador() {
     return new Paragraph({
@@ -123,6 +149,7 @@ app.post('/procesar', upload, (req, res) => {
     try {
         console.log("Inicio de la función /procesar");
         console.log(req.body);
+
         const generoSeleccionado = req.body.generoSeleccionado;
         const seccionGenero = [crearInformacionGenero(generoSeleccionado)];
         const resultadosCCFM = obtenerYProcesarResultados('CCFM', req);
@@ -254,6 +281,11 @@ app.post('/procesar', upload, (req, res) => {
         seccionHoland.push(imageParagraph);
         seccionesResultados.push(imageNuevaParagraph);
 
+        const tablaPersonalidad = crearTablaPersonalidad();
+        seccionesEncuesta.push(new Paragraph({ text: "Perfil de Personalidad y Ocupaciones Congruentes", heading: HeadingLevel.HEADING_1 }));
+        seccionesEncuesta.push(tablaPersonalidad);
+
+
         const doc = new Document({
             creator: "TuNombre",
             title: "Formulario",
@@ -294,16 +326,16 @@ app.post('/procesar', upload, (req, res) => {
 
         //doc.addSection({ children: [imageParagraph, imageNuevaParagraph] });
 
-        let diasCita = obtenerValor('diasCita', req.body) || [];
-        let horasCita = obtenerValor('horaCita', req.body) || [];
+        const diasCita = obtenerValor('diasCita', req.body) || [];
+        const horasCita = obtenerValor('horaCita', req.body) || [];
         
         console.log('Días cita:', diasCita);
         console.log('Horas cita:', horasCita);
         
         // El resto de tu lógica de procesamiento...
         
-        let textoDiasCita = [...new Set(diasCita)].join(', ');
-        let textoHorasCita = [...new Set(horasCita)].map(hora => {
+        const textoDiasCita = [...new Set(diasCita)].join(', ');
+        const textoHorasCita = [...new Set(horasCita)].map(hora => {
             // Asegúrate de que cada hora es una cadena y tiene el formato esperado.
             // Aquí, no necesitas convertir el formato de la hora, solo asegúrate de que no es un valor duplicado.
             return hora; // Dado que ya son AM o PM, no necesitas procesarlas más.
@@ -347,7 +379,7 @@ app.post('/procesar', upload, (req, res) => {
                 from: 'tuCorreo@gmail.com',
                 to: '13200125@ue.edu.pe',
                 subject: `Prueba Orientación Vocacional ${nombreUsuario} ${codigoUsuario}`,
-                text: `Disponibilidad preferente del alumno: Días - ${textoDiasCita}; Horas - ${textoHorasCita}\nAdjunto encontrarás el informe generado.`,
+                text: `Disponibilidad preferente del alumno: Días - ${textoDiasCita}; Horas - ${textoHorasCita}\nDentro del archivo de Word se encuentran la información, los resultados y las gráficas.`,
                 attachments: [
                     {   // Adjunto del archivo DOCX
                         filename: path.basename(filename),
