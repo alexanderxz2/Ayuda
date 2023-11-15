@@ -144,6 +144,10 @@
                         display: false   // Esto oculta la leyenda
                     },
                     datalabels: {
+                        display: function(context) {
+                            // Solo muestra datalabels para el dataset de barras
+                            return context.datasetIndex === 0;
+                        },
                         align: 'end',
                         anchor: 'end',
                         formatter: (value, context) => {
