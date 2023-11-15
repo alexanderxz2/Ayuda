@@ -558,16 +558,40 @@ function crearResultado(nombre, valor) {
         ],
     });
 }
-function crearSeleccionCategoria(categoria, valor1, valor2, valor3) {
+// Función para el título de la categoría
+function crearTituloCategoria(categoria) {
     return new Paragraph({
         children: [
             new TextRun({ text: `${categoria}: `, bold: true, size: 24 }),
+        ],
+    });
+}
+
+// Funciones para cada elección
+function crearPrimeraEleccion(valor1) {
+    return new Paragraph({
+        children: [
             new TextRun({ text: `Primera Elección: ${valor1}, `, size: 24 }),
+        ],
+    });
+}
+
+function crearSegundaEleccion(valor2) {
+    return new Paragraph({
+        children: [
             new TextRun({ text: `Segunda Elección: ${valor2}, `, size: 24 }),
+        ],
+    });
+}
+
+function crearTerceraEleccion(valor3) {
+    return new Paragraph({
+        children: [
             new TextRun({ text: `Tercera Elección: ${valor3}\n`, size: 24 }),
         ],
     });
 }
+
 function crearSubtitulo(subtitulo) {
     return new Paragraph({
         alignment: AlignmentType.CENTER,
@@ -642,10 +666,26 @@ app.post('/procesar', upload, (req, res) => {
         const fila7 = obtenerValor('valorVacio', req.body);
         let seccionesEncuesta = [
             // Tus otras secciones aquí...
-            // Añade aquí las nuevas secciones con las elecciones del usuario
-            crearSeleccionCategoria('Oficios', obtenerValor('oficio1', req.body), obtenerValor('oficio2', req.body), obtenerValor('oficio3', req.body)),
-            crearSeleccionCategoria('Carreras', obtenerValor('carrera1', req.body), obtenerValor('carrera2', req.body), obtenerValor('carrera3', req.body)),
-            crearSeleccionCategoria('Profesiones', obtenerValor('profesion1', req.body), obtenerValor('profesion2', req.body), obtenerValor('profesion3', req.body)),
+            
+            // Secciones con las elecciones del usuario para Oficios
+            crearTituloCategoria('Oficios'),
+            crearPrimeraEleccion(obtenerValor('oficio1', req.body)),
+            crearSegundaEleccion(obtenerValor('oficio2', req.body)),
+            crearTerceraEleccion(obtenerValor('oficio3', req.body)),
+        
+            // Secciones con las elecciones del usuario para Carreras
+            crearTituloCategoria('Carreras'),
+            crearPrimeraEleccion(obtenerValor('carrera1', req.body)),
+            crearSegundaEleccion(obtenerValor('carrera2', req.body)),
+            crearTerceraEleccion(obtenerValor('carrera3', req.body)),
+        
+            // Secciones con las elecciones del usuario para Profesiones
+            crearTituloCategoria('Profesiones'),
+            crearPrimeraEleccion(obtenerValor('profesion1', req.body)),
+            crearSegundaEleccion(obtenerValor('profesion2', req.body)),
+            crearTerceraEleccion(obtenerValor('profesion3', req.body)),
+        
+            // Continúa con el resto de tu código...
         ];
         const seccionesResultados = [
             crearResultado('Resultado CCFM', resultadosCCFM),
