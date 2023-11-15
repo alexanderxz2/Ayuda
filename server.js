@@ -418,7 +418,7 @@ app.post('/procesar', upload, (req, res) => {
                         crearSeparador(),
                         crearSeparador(),
                         crearSeparador(),
-                        //crearTipoRealista(),
+                        crearTipoRealista(),
                         //crearTipoIntelectual(),
                         //crearTipoSocial(),
                         //crearTipoConvencional(),
