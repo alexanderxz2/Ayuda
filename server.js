@@ -843,7 +843,6 @@ app.post('/procesar', upload, (req, res) => {
                         crearSeparador(),
                         crearSeparador(),
                         crearSeparador(),
-                        crearSeparador(),
                         crearSubtitulo("Información para prueba Holland"),
                         crearSeparador(),
                         crearSubtitulo("Perfil de Personalidad y Ocupaciones Congruentes"),
