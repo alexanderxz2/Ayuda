@@ -119,7 +119,7 @@
                         'rgba(255, 159, 64, 1)'
                     ],
                     borderWidth: 1,
-                    datalabels: false // Desactiva datalabels para este dataset
+                    datalabels: true // Desactiva datalabels para este dataset
                 }, {
                     type: 'line',
                     data: [fila1, fila2, fila3, fila4, fila5, fila6],
@@ -1277,6 +1277,16 @@ document.addEventListener("DOMContentLoaded", function() {
                     },
                     legend: {
                         display: false  // Esto oculta la leyenda
+                    },
+                    datalabels: {
+                        align: 'end',
+                        anchor: 'end',
+                        formatter: (value, context) => {
+                            return value; // Muestra el valor de la barra
+                        },
+                        font: {
+                            weight: 'bold'
+                        }
                     }
                 },
                 scales: {
@@ -1299,7 +1309,8 @@ document.addEventListener("DOMContentLoaded", function() {
                         }
                     }
                 }
-            }
+            },
+            plugins: [ChartDataLabels] // Incluye el plugin ChartDataLabels
         });
     }
     const cuadroMujeres = {
