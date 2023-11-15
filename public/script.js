@@ -196,6 +196,35 @@
             console.error("No se pudo encontrar el canvas de la gráfica");
         }
     }
+    function recolectarDatos() {
+        const formData = new FormData();
+        const horariosIndividuales = document.querySelectorAll('.horario-individual');
+        const diasAgregados = new Set();
+        const horasAgregadas = new Set();
+    
+        horariosIndividuales.forEach((div, index) => {
+            const selectDia = div.querySelector(`select[id^="diasCita"]`);
+            const selectHora = div.querySelector(`select[id^="horaCita"]`);
+    
+            if (selectDia && selectHora) {
+                const dia = selectDia.value;
+                const hora = selectHora.value;
+    
+                // Verificar si el día y la hora ya fueron agregados
+                if (!diasAgregados.has(dia)) {
+                    formData.append(`diasCita[${index}]`, dia);
+                    diasAgregados.add(dia);
+                }
+    
+                if (!horasAgregadas.has(hora)) {
+                    formData.append(`horaCita[${index}]`, hora);
+                    horasAgregadas.add(hora);
+                }
+            }
+        });
+    
+        return formData;
+    }
     
 
     function chequearRespuestas(seccion) {
@@ -252,7 +281,7 @@
             }
         }
     }
-    
+
 document.addEventListener("DOMContentLoaded", function() {
     var contadorHorarios = 0;
     var maxHorarios = 3;
