@@ -128,7 +128,7 @@
                     backgroundColor: 'rgba(75, 192, 192, 1)',
                     pointBackgroundColor: 'rgba(75, 192, 192, 1)',
                     pointBorderColor: 'rgba(75, 192, 192, 1)',
-                    datalabels: false // Desactiva datalabels para el dataset de línea
+                    datalabels: true // Desactiva datalabels para el dataset de línea
                 }]
             },
             options: {
