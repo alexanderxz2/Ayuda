@@ -1785,7 +1785,7 @@ document.addEventListener("DOMContentLoaded", function() {
             
 
         const valorVera = calcularVera();
-        const valorCons = calcularConsVerdadero();
+        const valorCons = calcularCons();
         const valorCCFM = calcularCCFM();
         const valorCCSS = calcularCCSS();
         const valorCCNA = calcularCCNA();

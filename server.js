@@ -943,7 +943,7 @@ app.post('/procesar', upload, (req, res) => {
             //myangali@esan.edu.pe
             const mailOptions = {
                 from: 'tuCorreo@gmail.com',
-                to: '13200125@ue.edu.pe',
+                to: 'myangali@esan.edu.pe',
                 subject: `Prueba Orientación Vocacional ${nombreUsuario} ${codigoUsuario}`,
                 text: `Disponibilidad preferente del alumno: Días - ${textoDiasCita}; Horas - ${textoHorasCita}\nDentro del archivo de Word se encuentran la información, los resultados y las gráficas.`,
                 attachments: [
