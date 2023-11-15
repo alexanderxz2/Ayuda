@@ -40,22 +40,21 @@ function crearTablaPersonalidad() {
     // Reemplazo de la función de tabla por un párrafo simple
     return new Paragraph({
         children: [
-            new TextRun({ text: "\n\n" }), // Espacio entre título y contenido
-            new TextRun({
-                text: "Tipo: Realista\n",
+            new Paragraph({ text: "\n" }), // Salto de línea
+            new Paragraph({
+                text: "Tipo: Realista",
                 bold: true,
                 size: 28
             }),
-            new TextRun({ text: "\n\n" }), // Espacio entre título y contenido
-            new TextRun({
-                text: "Características de personalidad: Auténtico, persistente, estable, conformista y práctico.\n",
+            new Paragraph({
+                text: "Características de personalidad: Auténtico, persistente, estable, conformista y práctico.",
                 size: 24
             }),
-            new TextRun({
-                text: "Ocupaciones congruentes: Operador de perforadoras, agricultor.\n\n",
+            new Paragraph({
+                text: "Ocupaciones congruentes: Operador de perforadoras, agricultor.",
                 size: 24
             }),
-            new TextRun({ text: "\n\n" }), // Espacio entre título y contenido
+            new Paragraph({ text: "\n" }), // Salto de línea
 
             new TextRun({
                 text: "Tipo: Intelectual\n",
@@ -115,19 +114,19 @@ function crearTablaPersonalidad() {
                 text: "Ocupaciones congruentes: Abogado, corredor de bienes raíces, especialista en relaciones públicas, gerente de una pequeña empresa.\n\n",
                 size: 24
             }),
-            new TextRun({ text: "\n\n" }), // Espacio entre título y contenido
+            new Paragraph({ text: "\n" }), // Salto de línea
 
-            new TextRun({
-                text: "Tipo: Artístico\n",
+            new Paragraph({
+                text: "Tipo: Artístico",
                 bold: true,
                 size: 28
             }),
-            new TextRun({
-                text: "Características de personalidad: Imaginativo, desordenado, idealista, emotivo, poco práctico.\n",
+            new Paragraph({
+                text: "Características de personalidad: Imaginativo, desordenado, idealista, emotivo, poco práctico.",
                 size: 24
             }),
-            new TextRun({
-                text: "Ocupaciones congruentes: Pintor, músico, escritor, decorador de interiores.\n\n",
+            new Paragraph({
+                text: "Ocupaciones congruentes: Pintor, músico, escritor, decorador de interiores.",
                 size: 24
             }),
         ]
