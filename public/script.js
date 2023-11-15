@@ -297,7 +297,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
     document.querySelectorAll('input[type=text]').forEach(validarTextoMejorado);
-    document.querySelectorAll('input[type=number]').forEach(validarNumeroMejorado);
+    document.querySelectorAll('input[type=codigoesan]').forEach(validarNumeroMejorado);
     
     
     document.querySelectorAll('.btn-genero').forEach(button => {
