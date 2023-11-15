@@ -736,7 +736,7 @@ app.post('/procesar', upload, (req, res) => {
             crearResultado('Valor JURI', valorJURI),
         ];
         seccionHoland.push(imageParagraph);
-        seccionesResultados.push(imageNuevaParagraph);
+        seccionCASM.push(imageNuevaParagraph);
 
         const doc = new Document({
             creator: "TuNombre",
