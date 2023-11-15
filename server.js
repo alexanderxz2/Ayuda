@@ -379,7 +379,7 @@ app.post('/procesar', upload, (req, res) => {
         seccionHoland.push(imageParagraph);
         seccionesResultados.push(imageNuevaParagraph);
 
-        //seccionesEncuesta.push(new Paragraph({ text: "Perfil de Personalidad y Ocupaciones Congruentes", heading: HeadingLevel.HEADING_1 }));
+        seccionesEncuesta.push(new Paragraph({ text: "Perfil de Personalidad y Ocupaciones Congruentes", heading: HeadingLevel.HEADING_1 }));
 
 
         const doc = new Document({
