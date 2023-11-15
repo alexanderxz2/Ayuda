@@ -37,7 +37,7 @@ function crearTitulo(titulo) {
     });
 }
 
-function crearTipoRealista() {
+function Realista() {
     return new Paragraph({
         children: [
             new TextRun({
@@ -45,12 +45,16 @@ function crearTipoRealista() {
                 bold: true,
                 size: 28
             }),
+            new TextRun({ text: "\n" }) // Salto de línea
+        ],
+    });
+}
+
+function Realista1() {
+    return new Paragraph({
+        children: [
             new TextRun({
-                text: "\nCaracterísticas de personalidad: Auténtico, persistente, estable, conformista y práctico.",
-                size: 24
-            }),
-            new TextRun({
-                text: "\nOcupaciones congruentes: Operador de perforadoras, agricultor.",
+                text: "Prefiere actividades físicas que requieren habilidades, fuerza, coordinación, etc.",
                 size: 24
             }),
             new TextRun({ text: "\n" }) // Salto de línea
@@ -58,7 +62,31 @@ function crearTipoRealista() {
     });
 }
 
-function crearTipoIntelectual() {
+function Realista2() {
+    return new Paragraph({
+        children: [
+            new TextRun({
+                text: "Tímido, Auténtico, Persistente, Estable, Conformista y Práctico.",
+                size: 24
+            }),
+            new TextRun({ text: "\n" }) // Salto de línea
+        ],
+    });
+}
+
+function Realista3() {
+    return new Paragraph({
+        children: [
+            new TextRun({
+                text: "Mecánico, Operador de Perforadoras, Agricultor.",
+                size: 24
+            }),
+            new TextRun({ text: "\n" }) // Salto de línea
+        ],
+    });
+}
+
+function Intelectual() {
     return new Paragraph({
         children: [
             new TextRun({
@@ -66,12 +94,16 @@ function crearTipoIntelectual() {
                 bold: true,
                 size: 28
             }),
+            new TextRun({ text: "\n" })
+        ],
+    });
+}
+
+function Intelectual1() {
+    return new Paragraph({
+        children: [
             new TextRun({
-                text: "\nCaracterísticas de personalidad: Original, curioso, independiente.",
-                size: 24
-            }),
-            new TextRun({
-                text: "\nOcupaciones congruentes: Biólogo, economista, matemático, reportero.",
+                text: "Prefiere actividades de pensar, organizar y comprender.",
                 size: 24
             }),
             new TextRun({ text: "\n" })
@@ -79,7 +111,32 @@ function crearTipoIntelectual() {
     });
 }
 
-function crearTipoSocial() {
+function Intelectual2() {
+    return new Paragraph({
+        children: [
+            new TextRun({
+                text: "Analítico, Original, Curioso, Independiente.",
+                size: 24
+            }),
+            new TextRun({ text: "\n" })
+        ],
+    });
+}
+
+function Intelectual3() {
+    return new Paragraph({
+        children: [
+            new TextRun({
+                text: "Biólogo, Economista, Matemático, Reportero.",
+                size: 24
+            }),
+            new TextRun({ text: "\n" })
+        ],
+    });
+}
+
+
+function Social() {
     return new Paragraph({
         children: [
             new TextRun({
@@ -87,12 +144,16 @@ function crearTipoSocial() {
                 bold: true,
                 size: 28
             }),
+            new TextRun({ text: "\n" })
+        ],
+    });
+}
+
+function Social1() {
+    return new Paragraph({
+        children: [
             new TextRun({
-                text: "\nCaracterísticas de personalidad: Sociable, amigable, cooperativo, comprensivo.",
-                size: 24
-            }),
-            new TextRun({
-                text: "\nOcupaciones congruentes: Trabajador social, profesor, asesor, psicólogo clínico.",
+                text: "Prefiere actividades que ayudan a formar a otros.",
                 size: 24
             }),
             new TextRun({ text: "\n" })
@@ -100,7 +161,31 @@ function crearTipoSocial() {
     });
 }
 
-function crearTipoConvencional() {
+function Social2() {
+    return new Paragraph({
+        children: [
+            new TextRun({
+                text: "Sociable, Amigable, Cooperativo, Comprensivo.",
+                size: 24
+            }),
+            new TextRun({ text: "\n" })
+        ],
+    });
+}
+
+function Social3() {
+    return new Paragraph({
+        children: [
+            new TextRun({
+                text: "Trabajador Social, Profesor, Asesor, Psicólogo Clínico.",
+                size: 24
+            }),
+            new TextRun({ text: "\n" })
+        ],
+    });
+}
+
+function Convencional() {
     return new Paragraph({
         children: [
             new TextRun({
@@ -108,12 +193,16 @@ function crearTipoConvencional() {
                 bold: true,
                 size: 28
             }),
+            new TextRun({ text: "\n" })
+        ],
+    });
+}
+
+function Convencional1() {
+    return new Paragraph({
+        children: [
             new TextRun({
-                text: "\nCaracterísticas de personalidad: Eficiente, práctico, poco imaginativo, inflexible.",
-                size: 24
-            }),
-            new TextRun({
-                text: "\nOcupaciones congruentes: Contador, gerente de empresa, cajero de banco, archivista.",
+                text: "Prefiere actividades ordenadas, definidas y reglamentadas.",
                 size: 24
             }),
             new TextRun({ text: "\n" })
@@ -121,7 +210,31 @@ function crearTipoConvencional() {
     });
 }
 
-function crearTipoEmprendedor() {
+function Convencional2() {
+    return new Paragraph({
+        children: [
+            new TextRun({
+                text: "Conformista, Eficiente, Práctico, Poco Imaginativo, Inflexible.",
+                size: 24
+            }),
+            new TextRun({ text: "\n" })
+        ],
+    });
+}
+
+function Convencional3() {
+    return new Paragraph({
+        children: [
+            new TextRun({
+                text: "Contador, Gerente de Empresa, Cajero de Banco, Archivista.",
+                size: 24
+            }),
+            new TextRun({ text: "\n" })
+        ],
+    });
+}
+
+function Emprendedor() {
     return new Paragraph({
         children: [
             new TextRun({
@@ -129,12 +242,16 @@ function crearTipoEmprendedor() {
                 bold: true,
                 size: 28
             }),
+            new TextRun({ text: "\n" })
+        ],
+    });
+}
+
+function Emprendedor1() {
+    return new Paragraph({
+        children: [
             new TextRun({
-                text: "\nCaracterísticas de personalidad: Autoconfianza, ambicioso, con energía, dominante.",
-                size: 24
-            }),
-            new TextRun({
-                text: "\nOcupaciones congruentes: Abogado, corredor de bienes raíces, especialista en relaciones públicas, gerente de una pequeña empresa.",
+                text: "Prefiere actividades verbales que ofrecen la posibilidad de influir en los demás y adquirir poder.",
                 size: 24
             }),
             new TextRun({ text: "\n" })
@@ -142,7 +259,31 @@ function crearTipoEmprendedor() {
     });
 }
 
-function crearTipoArtistico() {
+function Emprendedor2() {
+    return new Paragraph({
+        children: [
+            new TextRun({
+                text: "Autoconfianza, Ambicioso, Energía, Dominante.",
+                size: 24
+            }),
+            new TextRun({ text: "\n" })
+        ],
+    });
+}
+
+function Emprendedor3() {
+    return new Paragraph({
+        children: [
+            new TextRun({
+                text: "Abogado, Corredor de Bienes Raíces, Especialista en Relaciones Públicas, Gerente de una Pequeña Empresa.",
+                size: 24
+            }),
+            new TextRun({ text: "\n" })
+        ],
+    });
+}
+
+function Artistico() {
     return new Paragraph({
         children: [
             new TextRun({
@@ -150,18 +291,47 @@ function crearTipoArtistico() {
                 bold: true,
                 size: 28
             }),
+            new TextRun({ text: "\n" })
+        ],
+    });
+}
+
+function Artistico1() {
+    return new Paragraph({
+        children: [
             new TextRun({
-                text: "\nCaracterísticas de personalidad: Imaginativo, desordenado, idealista, emotivo, poco práctico.",
-                size: 24
-            }),
-            new TextRun({
-                text: "\nOcupaciones congruentes: Pintor, músico, escritor, decorador de interiores.",
+                text: "Prefiere las actividades ambiguas y poco sistemáticas que permiten la expresión creativa.",
                 size: 24
             }),
             new TextRun({ text: "\n" })
         ],
     });
 }
+
+function Artistico2() {
+    return new Paragraph({
+        children: [
+            new TextRun({
+                text: "Imaginativo, Desordenado, Idealista, Emotivo, Poco Práctico.",
+                size: 24
+            }),
+            new TextRun({ text: "\n" })
+        ],
+    });
+}
+
+function Artistico3() {
+    return new Paragraph({
+        children: [
+            new TextRun({
+                text: "Pintor, Músico, Escritor, Decorador de Interiores.",
+                size: 24
+            }),
+            new TextRun({ text: "\n" })
+        ],
+    });
+}
+
 
 function crearCCFM() {
     return new Paragraph({
@@ -607,18 +777,36 @@ app.post('/procesar', upload, (req, res) => {
                         crearSeparador(),
                         crearSubtitulo("Perfil de Personalidad y Ocupaciones Congruentes"),
                         crearSeparador(),
-                        crearTipoRealista(),
+                        Realista(),
+                        Realista1(),
+                        Realista2(),
+                        Realista3(),
                         crearSeparador(),
-                        crearTipoIntelectual(),
+                        Intelectual(),
+                        Intelectual1(),
+                        Intelectual2(),
+                        Intelectual3(),
                         crearSeparador(),
-                        crearTipoSocial(),
+                        Social(),
+                        Social1(),
+                        Social2(),
+                        Social3(),
                         crearSeparador(),
-                        crearTipoConvencional(),
+                        Convencional(),
+                        Convencional1(),
+                        Convencional2(),
+                        Convencional3(),
                         crearSeparador(),
-                        crearTipoEmprendedor(),
+                        Emprendedor(),
+                        Emprendedor1(),
+                        Emprendedor2(),
+                        Emprendedor3(),
                         crearSeparador(),
-                        crearTipoArtistico(),
-                        crearSeparador(),
+                        Artistico(),
+                        Artistico1(),
+                        Artistico2(),
+                        Artistico3(),
+                        crearSeparador(),                        
                         crearSubtitulo("Información para prueba CASM"),
                         crearSeparador(),
                         crearSubtitulo("Perfil de Personalidad y Ocupaciones Congruentes"),
