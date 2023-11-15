@@ -53,12 +53,15 @@ function crearFilaTabla(tipo, caracteristicas, ocupaciones) {
     return new TableRow({
         children: [
             new TableCell({
+                width: { size: 3000, type: WidthType.DXA },  // Ajusta el ancho aquí
                 children: [new Paragraph(tipo)],
             }),
             new TableCell({
+                width: { size: 3000, type: WidthType.DXA },
                 children: [new Paragraph(caracteristicas)],
             }),
             new TableCell({
+                width: { size: 3000, type: WidthType.DXA },
                 children: [new Paragraph(ocupaciones)],
             }),
         ],
