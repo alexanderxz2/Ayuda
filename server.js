@@ -40,17 +40,13 @@ function crearTablaPersonalidad() {
     // Reemplazo de la función de tabla por un párrafo simple
     return new Paragraph({
         children: [
-            new TextRun({
-                text: "Perfil de Personalidad y Ocupaciones Congruentes",
-                bold: true,
-                size: 32
-            }),
             new TextRun({ text: "\n\n" }), // Espacio entre título y contenido
             new TextRun({
                 text: "Tipo: Realista\n",
                 bold: true,
                 size: 28
             }),
+            new TextRun({ text: "\n\n" }), // Espacio entre título y contenido
             new TextRun({
                 text: "Características de personalidad: Auténtico, persistente, estable, conformista y práctico.\n",
                 size: 24
@@ -59,6 +55,8 @@ function crearTablaPersonalidad() {
                 text: "Ocupaciones congruentes: Operador de perforadoras, agricultor.\n\n",
                 size: 24
             }),
+            new TextRun({ text: "\n\n" }), // Espacio entre título y contenido
+
             new TextRun({
                 text: "Tipo: Intelectual\n",
                 bold: true,
@@ -72,6 +70,8 @@ function crearTablaPersonalidad() {
                 text: "Ocupaciones congruentes: Biólogo, economista, matemático, reportero.\n\n",
                 size: 24
             }),
+            new TextRun({ text: "\n\n" }), // Espacio entre título y contenido
+
             new TextRun({
                 text: "Tipo: Social\n",
                 bold: true,
@@ -85,6 +85,8 @@ function crearTablaPersonalidad() {
                 text: "Ocupaciones congruentes: Trabajador social, profesor, asesor, psicólogo clínico.\n\n",
                 size: 24
             }),
+            new TextRun({ text: "\n\n" }), // Espacio entre título y contenido
+
             new TextRun({
                 text: "Tipo: Convencional\n",
                 bold: true,
@@ -98,6 +100,8 @@ function crearTablaPersonalidad() {
                 text: "Ocupaciones congruentes: Contador, gerente de empresa, cajero de banco, archivista.\n\n",
                 size: 24
             }),
+            new TextRun({ text: "\n\n" }), // Espacio entre título y contenido
+
             new TextRun({
                 text: "Tipo: Emprendedor\n",
                 bold: true,
@@ -111,6 +115,8 @@ function crearTablaPersonalidad() {
                 text: "Ocupaciones congruentes: Abogado, corredor de bienes raíces, especialista en relaciones públicas, gerente de una pequeña empresa.\n\n",
                 size: 24
             }),
+            new TextRun({ text: "\n\n" }), // Espacio entre título y contenido
+
             new TextRun({
                 text: "Tipo: Artístico\n",
                 bold: true,
@@ -382,6 +388,8 @@ app.post('/procesar', upload, (req, res) => {
                         crearSubtitulo("Resultado Tabla"),
                         crearSeparador(),
                         ...seccionesEncuesta,
+                        crearSeparador(),
+                        crearSeparador(),
                         crearSeparador(),
                         crearTablaPersonalidad(),
                     ]                
