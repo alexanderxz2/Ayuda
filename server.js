@@ -562,7 +562,7 @@ function crearResultado(nombre, valor) {
 function crearTituloCategoria(categoria) {
     return new Paragraph({
         children: [
-            new TextRun({ text: `${categoria}: `, bold: true, size: 24 }),
+            new TextRun({ text: `${categoria}: `, bold: true, size: 32 }),
         ],
     });
 }
@@ -571,7 +571,7 @@ function crearTituloCategoria(categoria) {
 function crearPrimeraEleccion(valor1) {
     return new Paragraph({
         children: [
-            new TextRun({ text: `Primera Elección: ${valor1}, `, size: 24 }),
+            new TextRun({ text: `Primera Elección: ${valor1}, `, size: 28 }),
         ],
     });
 }
@@ -579,7 +579,7 @@ function crearPrimeraEleccion(valor1) {
 function crearSegundaEleccion(valor2) {
     return new Paragraph({
         children: [
-            new TextRun({ text: `Segunda Elección: ${valor2}, `, size: 24 }),
+            new TextRun({ text: `Segunda Elección: ${valor2}, `, size: 28 }),
         ],
     });
 }
@@ -587,7 +587,7 @@ function crearSegundaEleccion(valor2) {
 function crearTerceraEleccion(valor3) {
     return new Paragraph({
         children: [
-            new TextRun({ text: `Tercera Elección: ${valor3}\n`, size: 24 }),
+            new TextRun({ text: `Tercera Elección: ${valor3}\n`, size: 28 }),
         ],
     });
 }
