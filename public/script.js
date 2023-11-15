@@ -269,7 +269,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 // Manejo del error: puedes mostrar un mensaje o limpiar el campo
                 alert('El texto no debe contener números.');
 
-                console.error('El texto no debe contener números.');
+                console.error('El texto no debe contener números ni caracteres especiales.');
 
                 this.value = '';
             }
@@ -282,7 +282,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 // Manejo del error: puedes mostrar un mensaje o limpiar el campo
                 alert('El código solo debe contener números.');
 
-                console.error('El código solo debe contener números.');
+                console.error('El código no debe contener texto ni caracteres especiales.');
 
                 this.value = '';
             }
