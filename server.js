@@ -46,7 +46,10 @@ function crearTablaPersonalidad() {
         crearFilaTabla("Emprendedor: Prefiere actividades verbales que ofrecen la posibilidad de influir en los demás y adquirir poder.", "Autoconfianza: Ambicioso, con energía, dominante.", "Abogado: Corredor de bienes raíces, especialista en relaciones públicas, gerente de una pequeña empresa."),
         crearFilaTabla("Artístico: Prefiere actividades ambiguas y poco sistemáticas que permiten la expresión creativa", "Imaginativo: Desordenado, idealista, emotivo, poco práctico.", "Pintor: músico, Escritor, decorador de interiores.")        
     ];
-    return new Table({ rows: filas });
+    return new Table({
+        width: { size: 100, type: WidthType.PERCENTAGE },  // Asegúrate de que la tabla use el 100% del ancho disponible
+        rows: filas,
+    });
 }
 
 function crearFilaTabla(tipo, caracteristicas, ocupaciones) {
@@ -321,7 +324,10 @@ app.post('/procesar', upload, (req, res) => {
                         crearSeparador(),
                         crearSubtitulo("Resultado Tabla"),
                         crearSeparador(),
-                        ...seccionesEncuesta
+                        ...seccionesEncuesta,
+                        crearSeparador(),
+                        crearTablaPersonalidad(),  // Asegúrate de que esta línea esté en el lugar correcto
+
                     ]                
                 }
             ]
