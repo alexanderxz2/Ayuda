@@ -80,6 +80,29 @@ function crearSeparador() {
     });
 }
 
+function crearTablaSimple() {
+    const filas = [
+        new TableRow({
+            children: [
+                new TableCell({ children: [new Paragraph("Celda 1")] }),
+                new TableCell({ children: [new Paragraph("Celda 2")] })
+            ]
+        }),
+        new TableRow({
+            children: [
+                new TableCell({ children: [new Paragraph("Celda 3")] }),
+                new TableCell({ children: [new Paragraph("Celda 4")] })
+            ]
+        })
+    ];
+
+    return new Table({
+        rows: filas,
+        width: { size: 100, type: WidthType.PERCENTAGE }
+    });
+}
+
+
 function crearPreguntaRespuesta(textoPregunta, respuesta) {
     return new Paragraph({
         children: [
@@ -327,7 +350,9 @@ app.post('/procesar', upload, (req, res) => {
                         crearSeparador(),
                         ...seccionesEncuesta,
                         crearSeparador(),
-                        crearTablaPersonalidad(),  // Asegúrate de que esta línea esté en el lugar correcto
+                        crearTablaPersonalidad(),
+                        crearTablaSimple(),
+                        // Asegúrate de que esta línea esté en el lugar correcto
 
                     ]                
                 }
