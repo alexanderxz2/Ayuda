@@ -252,17 +252,7 @@
             }
         }
     }
-    function recolectarDatos() {
-        const formData = new FormData();
-        const horariosIndividuales = document.querySelectorAll('.horario-individual');
-        horariosIndividuales.forEach((div) => {
-            const index = div.dataset.index; // Usa el índice asignado al div
-            const selectDia = div.querySelector(`#diasCita${index}`);
-            const selectHora = div.querySelector(`#horaCita${index}`);
-            formData.append(`diasCita[${index}]`, selectDia.value);
-            formData.append(`horaCita[${index}]`, selectHora.value);
-        });
-    }
+    
 document.addEventListener("DOMContentLoaded", function() {
     var contadorHorarios = 0;
     var maxHorarios = 3;
