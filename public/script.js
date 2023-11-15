@@ -265,23 +265,29 @@ document.addEventListener("DOMContentLoaded", function() {
     restoreFormState(formulario);
     function validarTextoMejorado(input) {
         input.addEventListener('input', function() {
-            this.value = this.value.replace(/[^a-zA-Z\sáéíóúÁÉÍÓÚüÜñÑ]/g, '');
+            if (/[^a-zA-Z\sáéíóúÁÉÍÓÚüÜñÑ]/.test(this.value)) {
+                // Manejo del error: puedes mostrar un mensaje o limpiar el campo
+                this.value = '';
+            }
         });
     }
-
-    // Enhanced number validation
+    
     function validarNumeroMejorado(input) {
         input.addEventListener('input', function() {
-            this.value = this.value.replace(/[^\d]/g, '');
+            if (/\D/.test(this.value)) { // \D coincide con cualquier cosa que no sea un número
+                // Manejo del error: puedes mostrar un mensaje o limpiar el campo
+                this.value = '';
+            }
         });
     }
-
-    // Apply the enhanced validation to all relevant input fields
+    
+    // Aplicar la validación mejorada a todos los campos de entrada relevantes
     const textInputs = document.querySelectorAll('input[type="text"]');
     textInputs.forEach(validarTextoMejorado);
-
+    
     const numberInputs = document.querySelectorAll('input[type="number"]');
     numberInputs.forEach(validarNumeroMejorado);
+    
 
 
     // Restaurar el estado del formulario desde Local Storage
