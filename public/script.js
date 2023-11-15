@@ -198,33 +198,28 @@
     }
     function recolectarDatos() {
         const formData = new FormData();
-        const horariosIndividuales = document.querySelectorAll('.horario-individual');
-        const diasAgregados = new Set();
-        const horasAgregadas = new Set();
+        const diasSeleccionados = new Set();
+        const horasSeleccionadas = new Set();
     
-        horariosIndividuales.forEach((div, index) => {
-            const selectDia = div.querySelector(`select[id^="diasCita"]`);
-            const selectHora = div.querySelector(`select[id^="horaCita"]`);
+        document.querySelectorAll('select[id^="diasCita"]').forEach(select => {
+            if (select.value) diasSeleccionados.add(select.value);
+        });
     
-            if (selectDia && selectHora) {
-                const dia = selectDia.value;
-                const hora = selectHora.value;
+        document.querySelectorAll('select[id^="horaCita"]').forEach(select => {
+            if (select.value) horasSeleccionadas.add(select.value);
+        });
     
-                // Verificar si el día y la hora ya fueron agregados
-                if (!diasAgregados.has(dia)) {
-                    formData.append(`diasCita[${index}]`, dia);
-                    diasAgregados.add(dia);
-                }
+        Array.from(diasSeleccionados).forEach((dia, index) => {
+            formData.append(`diasCita[${index}]`, dia);
+        });
     
-                if (!horasAgregadas.has(hora)) {
-                    formData.append(`horaCita[${index}]`, hora);
-                    horasAgregadas.add(hora);
-                }
-            }
+        Array.from(horasSeleccionadas).forEach((hora, index) => {
+            formData.append(`horaCita[${index}]`, hora);
         });
     
         return formData;
     }
+    
     
 
     function chequearRespuestas(seccion) {
