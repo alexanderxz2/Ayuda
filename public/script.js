@@ -752,8 +752,16 @@ document.addEventListener("DOMContentLoaded", function() {
         function calcularInconsistencia(opcion1A, opcion1B, opcion2A, opcion2B) {
             const seleccion1 = estaSeleccionada(opcion1A) || estaSeleccionada(opcion1B);
             const seleccion2 = estaSeleccionada(opcion2A) || estaSeleccionada(opcion2B);
-            return (seleccion1 !== seleccion2) ? 1 : 0;
+            const inconsistencia = (seleccion1 !== seleccion2) ? 1 : 0;
+        
+            // Agregar un log si hay inconsistencia
+            if (inconsistencia) {
+                console.log(`Inconsistencia detectada entre: ${opcion1A}/${opcion1B} y ${opcion2A}/${opcion2B}`);
+            }
+        
+            return inconsistencia;
         }
+        
     
         const inconsistencias = [
             calcularInconsistencia("opcion25_N", "opcion26_N", "opcion261_N", "opcion262_N"),
