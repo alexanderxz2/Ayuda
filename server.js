@@ -49,6 +49,7 @@ function crearTablaPersonalidad() {
     return new Table({
         width: { size: 100, type: WidthType.PERCENTAGE },  // Asegúrate de que la tabla use el 100% del ancho disponible
         rows: filas,
+        layout: TableLayoutType.AUTOFIT // Esta línea asegura que la tabla se ajuste al contenido
     });
 }
 
