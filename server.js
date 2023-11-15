@@ -380,9 +380,6 @@ app.post('/procesar', upload, (req, res) => {
         seccionHoland.push(imageParagraph);
         seccionesResultados.push(imageNuevaParagraph);
 
-        seccionesEncuesta.push(new Paragraph({ text: "Perfil de Personalidad y Ocupaciones Congruentes", heading: HeadingLevel.HEADING_1 }));
-
-
         const doc = new Document({
             creator: "TuNombre",
             title: "Formulario",
@@ -416,15 +413,19 @@ app.post('/procesar', upload, (req, res) => {
                         crearSubtitulo("Resultado Tabla"),
                         crearSeparador(),
                         ...seccionesEncuesta,
-                        crearSeparador(),
-                        crearSeparador(),
+                        crearSubtitulo("Perfil de Personalidad y Ocupaciones Congruentes"),
                         crearSeparador(),
                         crearTipoRealista(),
-                        //crearTipoIntelectual(),
-                        //crearTipoSocial(),
-                        //crearTipoConvencional(),
-                        //crearTipoEmprendedor(),
-                        //crearTipoArtistico(),
+                        crearSeparador(),
+                        crearTipoIntelectual(),
+                        crearSeparador(),
+                        crearTipoSocial(),
+                        crearSeparador(),
+                        crearTipoConvencional(),
+                        crearSeparador(),
+                        crearTipoEmprendedor(),
+                        crearSeparador(),
+                        crearTipoArtistico(),
                     ]                
                 }
             ]
