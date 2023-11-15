@@ -294,16 +294,16 @@ app.post('/procesar', upload, (req, res) => {
 
         //doc.addSection({ children: [imageParagraph, imageNuevaParagraph] });
 
-        const diasCita = obtenerValor('diasCita', req.body) || [];
-        const horasCita = obtenerValor('horaCita', req.body) || [];
+        let diasCita = obtenerValor('diasCita', req.body) || [];
+        let horasCita = obtenerValor('horaCita', req.body) || [];
         
         console.log('Días cita:', diasCita);
         console.log('Horas cita:', horasCita);
         
         // El resto de tu lógica de procesamiento...
         
-        const textoDiasCita = [...new Set(diasCita)].join(', ');
-        const textoHorasCita = [...new Set(horasCita)].map(hora => {
+        let textoDiasCita = [...new Set(diasCita)].join(', ');
+        let textoHorasCita = [...new Set(horasCita)].map(hora => {
             // Asegúrate de que cada hora es una cadena y tiene el formato esperado.
             // Aquí, no necesitas convertir el formato de la hora, solo asegúrate de que no es un valor duplicado.
             return hora; // Dado que ya son AM o PM, no necesitas procesarlas más.

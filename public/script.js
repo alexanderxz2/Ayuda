@@ -196,31 +196,6 @@
             console.error("No se pudo encontrar el canvas de la gráfica");
         }
     }
-    function recolectarDatos() {
-        const formData = new FormData();
-        const diasSeleccionados = new Set();
-        const horasSeleccionadas = new Set();
-    
-        document.querySelectorAll('select[id^="diasCita"]').forEach(select => {
-            if (select.value) diasSeleccionados.add(select.value);
-        });
-    
-        document.querySelectorAll('select[id^="horaCita"]').forEach(select => {
-            if (select.value) horasSeleccionadas.add(select.value);
-        });
-    
-        Array.from(diasSeleccionados).forEach((dia, index) => {
-            formData.append(`diasCita[${index}]`, dia);
-        });
-    
-        Array.from(horasSeleccionadas).forEach((hora, index) => {
-            formData.append(`horaCita[${index}]`, hora);
-        });
-    
-        return formData;
-    }
-    
-    
 
     function chequearRespuestas(seccion) {
         let campos = seccion.querySelectorAll('input, textarea, select');
