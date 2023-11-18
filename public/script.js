@@ -231,22 +231,37 @@
         }
         return obj;
     }
-    function saveFormState(form) {
-        let formData = {};
-        form.querySelectorAll('[name]').forEach(input => {
-            if (input.type === 'checkbox') {
-                formData[input.name] = input.checked;
-            } else {
-                formData[input.name] = input.value;
+    function restoreFormState(form) {
+        let saved = localStorage.getItem('formularioData');
+        if (!saved) return;
+    
+        let parsedSavedData;
+        try {
+            parsedSavedData = JSON.parse(saved);
+        } catch (e) {
+            console.error('Error al analizar los datos guardados: ', e);
+            return;
+        }
+    
+        let { data: savedFormData, timestamp } = parsedSavedData;
+    
+        // Tiempo límite, por ejemplo, 24 horas (86400000 milisegundos)
+        const timeLimit = 86400000;
+        if (new Date().getTime() - timestamp > timeLimit) {
+            localStorage.removeItem('formularioData'); // Limpiar si es demasiado antiguo
+            return;
+        }
+    
+        for (let [key, value] of Object.entries(savedFormData)) {
+            let input = form.querySelector(`[name="${key}"]`);
+            if (input && input.type !== 'file') {
+                if (input.type === 'checkbox') {
+                    input.checked = value;
+                } else {
+                    input.value = value;
+                }
             }
-        });
-    
-        const dataToSave = {
-            data: formData,
-            timestamp: new Date().getTime() // Guardar la hora actual
-        };
-    
-        localStorage.setItem('formularioData', JSON.stringify(dataToSave));
+        }
     }
     
     function restoreFormState(form) {
