@@ -253,6 +253,11 @@
     
         let { data, timestamp } = savedFormData;
     
+        if (typeof data !== 'object' || data === null) {
+            console.error('Los datos del formulario guardados no son un objeto válido.');
+            return;
+        }
+    
         // Tiempo límite, por ejemplo, 24 horas (86400000 milisegundos)
         const timeLimit = 86400000;
         if (new Date().getTime() - timestamp > timeLimit) {
@@ -272,6 +277,7 @@
             }
         }
     }
+    
     
     
     function restoreFormState(form) {
