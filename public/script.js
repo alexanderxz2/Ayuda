@@ -232,67 +232,7 @@
         return obj;
     }
     function restoreFormState(form) {
-        let saved = localStorage.getItem('formularioData');
-        if (!saved) {
-            console.log('No hay datos guardados en localStorage para restaurar.');
-            return;
-        }
-    
-        let savedFormData;
-        try {
-            savedFormData = JSON.parse(saved);
-        } catch (e) {
-            console.error('Error al analizar los datos guardados: ', e);
-            return;
-        }
-    
-        if (!savedFormData || typeof savedFormData !== 'object' || !savedFormData.data) {
-            console.error('Los datos guardados no tienen el formato esperado.');
-            return;
-        }
-    
-        let { data, timestamp } = savedFormData;
-    
-        if (typeof data !== 'object' || data === null) {
-            console.error('Los datos del formulario guardados no son un objeto válido.');
-            return;
-        }
-    
-        // Tiempo límite, por ejemplo, 24 horas (86400000 milisegundos)
-        const timeLimit = 86400000;
-        if (new Date().getTime() - timestamp > timeLimit) {
-            localStorage.removeItem('formularioData'); // Limpiar si es demasiado antiguo
-            console.log('Los datos guardados han expirado y se han eliminado.');
-            return;
-        }
-    
-        for (let [key, value] of Object.entries(data)) {
-            let input = form.querySelector(`[name="${key}"]`);
-            if (input && input.type !== 'file') {
-                if (input.type === 'checkbox') {
-                    input.checked = value;
-                } else {
-                    input.value = value;
-                }
-            }
-        }
-    }
-    
-    
-    
-    function restoreFormState(form) {
-        let saved = localStorage.getItem('formularioData');
-        if (!saved) return;
-    
-        let { data: savedFormData, timestamp } = JSON.parse(saved);
-    
-        // Tiempo límite, por ejemplo, 24 horas (86400000 milisegundos)
-        const timeLimit = 86400000;
-        if (new Date().getTime() - timestamp > timeLimit) {
-            localStorage.removeItem('formularioData'); // Limpiar si es demasiado antiguo
-            return;
-        }
-    
+        let savedFormData = JSON.parse(localStorage.getItem('formularioData') || '{}');
         for (let [key, value] of Object.entries(savedFormData)) {
             let input = form.querySelector(`[name="${key}"]`);
             if (input && input.type !== 'file') {
@@ -304,8 +244,6 @@
             }
         }
     }
-    
-    
 
 document.addEventListener("DOMContentLoaded", function() {
     var contadorHorarios = 0;
@@ -1746,7 +1684,7 @@ document.addEventListener("DOMContentLoaded", function() {
         } */
         
         btnSiguiente.disabled = true;
-        saveFormState(formulario);
+        localStorage.setItem('formularioData', JSON.stringify(formToJSON(formulario)));
 
         seccionAnterior.style.display = 'none';
         actualizarCamposRequeridos(seccionAnterior, false);
