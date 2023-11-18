@@ -233,26 +233,35 @@
     }
     function restoreFormState(form) {
         let saved = localStorage.getItem('formularioData');
-        if (!saved) return;
+        if (!saved) {
+            console.log('No hay datos guardados en localStorage para restaurar.');
+            return;
+        }
     
-        let parsedSavedData;
+        let savedFormData;
         try {
-            parsedSavedData = JSON.parse(saved);
+            savedFormData = JSON.parse(saved);
         } catch (e) {
             console.error('Error al analizar los datos guardados: ', e);
             return;
         }
     
-        let { data: savedFormData, timestamp } = parsedSavedData;
+        if (!savedFormData || typeof savedFormData !== 'object' || !savedFormData.data) {
+            console.error('Los datos guardados no tienen el formato esperado.');
+            return;
+        }
+    
+        let { data, timestamp } = savedFormData;
     
         // Tiempo límite, por ejemplo, 24 horas (86400000 milisegundos)
         const timeLimit = 86400000;
         if (new Date().getTime() - timestamp > timeLimit) {
             localStorage.removeItem('formularioData'); // Limpiar si es demasiado antiguo
+            console.log('Los datos guardados han expirado y se han eliminado.');
             return;
         }
     
-        for (let [key, value] of Object.entries(savedFormData)) {
+        for (let [key, value] of Object.entries(data)) {
             let input = form.querySelector(`[name="${key}"]`);
             if (input && input.type !== 'file') {
                 if (input.type === 'checkbox') {
@@ -263,6 +272,7 @@
             }
         }
     }
+    
     
     function restoreFormState(form) {
         let saved = localStorage.getItem('formularioData');
