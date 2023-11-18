@@ -194,7 +194,7 @@
     }
 
     function chequearRespuestas(seccion) {
-        let campos = seccion.querySelectorAll('input, textarea, select');
+        let campos = seccion.querySelectorAll('input:not(.no-required), textarea, select');
         for (let campo of campos) {
             let parent = campo.parentElement;
             while (parent && parent !== seccion) {
