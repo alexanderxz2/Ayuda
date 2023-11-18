@@ -122,8 +122,10 @@ ul,
 li,
 ol {
     margin: 0px;
-    padding: 0px;
+    padding-left: 0px;
     list-style: none;
+    text-align: center; /* Alinea el texto de la lista a la izquierda */
+
 }
 
 p {
@@ -210,8 +212,7 @@ button {
 }
 
 .layout_padding {
-    padding-top: 0px;
-    padding-bottom: 0px;
+    padding: 60px 0;
 }
 
 
@@ -1162,17 +1163,19 @@ button {
     margin-top: 1em;
     font-size: 2em;
   }
-.footer_section {
+  .footer_section {
     width: 100%;
     float: left;
-    background-image: url(../images/fondo-footer.png); /* Ruta de la imagen de fondo */
-    background-size: cover; /* Ajusta la imagen para cubrir toda la sección */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-image: url('../images/fondo-footer.png'); /* Asegúrate de que la ruta de la imagen sea correcta */
+    background-size: cover;
+    background-repeat: no-repeat;
     height: auto;
     padding-top: 20px;
     padding-bottom: 20px;
     box-shadow: 0px 24px 19px -1px #222223;
     position: relative;
+    color: #fff; /* Color de texto general para footer_section */
+    font-family: "Montserrat", sans-serif; /* Fuente general para footer_section */
 }
 .noulol{
     -webkit-text-size-adjust: 100%;
@@ -1233,7 +1236,29 @@ button {
     padding-bottom: 30px;
 }
 
-consulta{
+.text-center {
+    text-align: center !important;
+  }
+
+.consulta ul.noulol {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto; /* Centra la lista en la página */
+    display: inline-block; /* Ajusta el bloque de la lista para permitir el centrado */
+    text-align: center; /* Alinea el texto de la lista a la izquierda */
+}
+
+.consulta{
+    text-align: center;
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    height: 100%; /* O una altura específica si es necesario */
+
+
+
+    font-size: 20px;
+    line-height: 1.5;
+    color: #fff;
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: transparent;
     --blue: #007bff;
