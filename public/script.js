@@ -738,6 +738,56 @@ document.addEventListener("DOMContentLoaded", function() {
         
         return CONS;
     }
+
+    function calcularConsMejorado() {
+        function estaSeleccionada(id) {
+            const elemento = document.getElementById(id);
+            if (elemento) {
+                return elemento.checked ? 1 : 0;
+            } else {
+                console.error(`Elemento con id ${id} no encontrado`);
+                return 0;
+            }
+        }
+    
+        function verificarInconsistencia(id1A, id1B, id2A, id2B) {
+            const respuesta1A = estaSeleccionada(id1A);
+            const respuesta1B = estaSeleccionada(id1B);
+            const respuesta2A = estaSeleccionada(id2A);
+            const respuesta2B = estaSeleccionada(id2B);
+    
+            // Casos de inconsistencia
+            if ((respuesta1A && !respuesta2A) || (!respuesta1A && respuesta2A)) return 1;
+            if ((respuesta1B && !respuesta2B) || (!respuesta1B && respuesta2B)) return 1;
+            if ((respuesta1A || respuesta1B) && !(respuesta2A || respuesta2B)) return 1;
+            if (!(respuesta1A || respuesta1B) && (respuesta2A || respuesta2B)) return 1;
+    
+            return 0; // Consistente
+        }
+    
+        let inconsistencias = 0;
+        // Asegúrate de completar el array 'pares' con los pares de preguntas correctos
+        const pares = [
+            ["opcion25_N", "opcion26_N", "opcion261_N", "opcion262_N"], // 13 y 131
+            ["opcion51_N", "opcion52_N", "opcion263_N", "opcion264_N"], // 26 y 132
+            ["opcion77_N", "opcion78_N", "opcion265_N", "opcion266_N"], // 39 y 133
+            ["opcion103_N", "opcion104_N", "opcion267_N", "opcion268_N"], // 52 y 134
+            ["opcion129_N", "opcion130_N", "opcion269_N", "opcion270_N"], // 65 y 135
+            ["opcion155_N", "opcion156_N", "opcion271_N", "opcion272_N"], // 78 y 136
+            ["opcion181_N", "opcion182_N", "opcion273_N", "opcion274_N"], // 91 y 137
+            ["opcion207_N", "opcion208_N", "opcion275_N", "opcion276_N"], // 104 y 138
+            ["opcion233_N", "opcion234_N", "opcion277_N", "opcion278_N"], // 117 y 139
+            ["opcion259_N", "opcion260_N", "opcion279_N", "opcion280_N"], // 130 y 140
+            ["opcion1_N", "opcion2_N", "opcion285_N", "opcion286_N"]    // 143 y 1
+        ];        
+    
+        pares.forEach(par => {
+            inconsistencias += verificarInconsistencia(par[0], par[1], par[2], par[3]);
+        });
+    
+        return inconsistencias;
+    }
+    
     
     function calcularVera() {
         function estaSeleccionada(id) {
@@ -1186,7 +1236,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     function realizarCalculos() {
         const valorVera = calcularVera();
-        const valorCons = calcularCons();
+        const valorCons = calcularConsMejorado();
         const valorCCFM = calcularCCFM();
         const valorCCSS = calcularCCSS();
         const valorCCNA = calcularCCNA();
@@ -1785,7 +1835,7 @@ document.addEventListener("DOMContentLoaded", function() {
             
 
         const valorVera = calcularVera();
-        const valorCons = calcularCons();
+        const valorCons = calcularConsMejorado();
         const valorCCFM = calcularCCFM();
         const valorCCSS = calcularCCSS();
         const valorCCNA = calcularCCNA();
