@@ -720,16 +720,19 @@ app.post('/procesar', upload, (req, res) => {
             crearPreguntaRespuesta("¿Cuál es la profesión de tu padre?", obtenerValor('profesionPadre', req.body)),
             crearPreguntaRespuesta("¿Cuál es la profesión de tu madre?", obtenerValor('profesionMadre', req.body)),
             crearPreguntaRespuesta("¿Quién es la persona que más influyó en tu elección de carrera?", obtenerValor('influenciaCarrera', req.body)),
-            crearPreguntaRespuesta("¿Cuáles eran tus cursos preferidos?", obtenerValor('cursosPreferidos', req.body)),
-            crearPreguntaRespuesta("¿Cuáles eran los cursos que te desagradaban?", obtenerValor('cursosDesagradables', req.body)),
-            crearPreguntaRespuesta("¿Cuáles eran los cursos en los que obtuviste las mejores notas?", obtenerValor('mejoresNotas', req.body)),
-            crearPreguntaRespuesta("¿Cuáles eran los cursos en los que obtuviste las peores notas?", obtenerValor('peoresNotas', req.body)),
-            crearPreguntaRespuesta("¿Qué cursos desaprobaste?", obtenerValor('cursosDesaprobados', req.body)),
+
+            crearPreguntaRespuesta("¿Cuáles eran tus cursos preferidos?", obtenerValor('cursosPreferidosColegio', req.body)),
+            crearPreguntaRespuesta("¿Cuáles eran los cursos que te desagradaban?", obtenerValor('cursosDesagradablesColegio', req.body)),
+            crearPreguntaRespuesta("¿Cuáles eran los cursos en los que obtuviste las mejores notas?", obtenerValor('mejoresNotasColegio', req.body)),
+            crearPreguntaRespuesta("¿Cuáles eran los cursos en los que obtuviste las peores notas?", obtenerValor('peoresNotasColegio', req.body)),
+            crearPreguntaRespuesta("¿Qué cursos desaprobaste?", obtenerValor('cursosDesaprobadosColegio', req.body)),
+
             crearPreguntaRespuesta("¿Cuáles han sido o son tus cursos preferidos?", obtenerValor('cursosPreferidos', req.body)),
             crearPreguntaRespuesta("¿Qué cursos te desagradan?", obtenerValor('cursosDesagradables', req.body)),
             crearPreguntaRespuesta("¿En qué cursos has obtenido las mejores notas?", obtenerValor('mejoresNotas', req.body)),
             crearPreguntaRespuesta("¿En qué cursos has obtenido las peores notas?", obtenerValor('peoresNotas', req.body)),
             crearPreguntaRespuesta("¿Qué cursos has desaprobado?", obtenerValor('cursosDesaprobados', req.body)),
+
             crearPreguntaRespuesta("¿De qué curso o cursos te has retirado alguna vez?", obtenerValor('cursosRetirados', req.body)),
             crearPreguntaRespuesta("¿Has llevado algún curso o cursos por segunda vez (BICAS)?", obtenerValor('cursosBICAS', req.body)),
             crearPreguntaRespuesta("¿Has llevado algún curso o cursos por tercera vez (TRICAS)?", obtenerValor('cursosTRICAS', req.body)),
@@ -943,7 +946,7 @@ app.post('/procesar', upload, (req, res) => {
             //myangali@esan.edu.pe
             const mailOptions = {
                 from: 'tuCorreo@gmail.com',
-                to: 'myangali@esan.edu.pe',
+                to: '13200125@ue.edu.pe',
                 subject: `Prueba Orientación Vocacional ${nombreUsuario} ${codigoUsuario}`,
                 text: `Disponibilidad preferente del alumno: Días - ${textoDiasCita}; Horas - ${textoHorasCita}\nDentro del archivo de Word se encuentran la información, los resultados y las gráficas.`,
                 attachments: [
