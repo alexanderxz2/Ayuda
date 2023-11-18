@@ -203,17 +203,18 @@
                 }
                 parent = parent.parentElement;
             }
-            // Si el contenedor está oculto, saltar al siguiente campo
-            if (parent && getComputedStyle(parent).display === 'none') {
+            // Si el contenedor está oculto o el campo no es requerido, saltar al siguiente campo
+            if ((parent && getComputedStyle(parent).display === 'none') || !campo.required) {
                 continue;
             }
-            if (campo.required && campo.value === '') {
+            if (campo.value === '') {
                 alert('Por favor complete todos los campos requeridos.');
                 return false;
             }
         }
         return true;
-    } 
+    }
+    
     function actualizarImagen() {
         const imagenSeccion = document.getElementById('imagenSeccion');
         if (seccionActual - 1 < imagenesPorSeccion.length) {
