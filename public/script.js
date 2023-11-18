@@ -1,11 +1,14 @@
     // Función que muestra campos adicionales basado en una condición
+    // Función que muestra o esconde los campos adicionales
     function mostrarCamposAdicionales() {
         const estudioPrevio = document.getElementById('estudioPrevio').value;
         const camposAdicionales = document.getElementById('camposAdicionales');
         if (estudioPrevio === 'si') {
             camposAdicionales.style.display = 'block';
+            camposAdicionales.querySelectorAll('input').forEach(input => input.required = true);
         } else {
             camposAdicionales.style.display = 'none';
+            camposAdicionales.querySelectorAll('input').forEach(input => input.required = false);
         }
     }
     
@@ -1679,9 +1682,9 @@ document.addEventListener("DOMContentLoaded", function() {
     // Función que maneja el botón "Siguiente"
     btnSiguiente.addEventListener('click', function() {
         let seccionAnterior = document.getElementById('seccion' + seccionActual);
-/*         if (!chequearRespuestas(seccionAnterior)) {
+        if (!chequearRespuestas(seccionAnterior)) {
             return;  // Si no pasó la chequeo de respuestas, no hace nada más
-        } */
+        } 
         
         btnSiguiente.disabled = true;
         localStorage.setItem('formularioData', JSON.stringify(formToJSON(formulario)));
