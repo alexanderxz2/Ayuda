@@ -231,8 +231,37 @@
         }
         return obj;
     }
+    function saveFormState(form) {
+        let formData = {};
+        form.querySelectorAll('[name]').forEach(input => {
+            if (input.type === 'checkbox') {
+                formData[input.name] = input.checked;
+            } else {
+                formData[input.name] = input.value;
+            }
+        });
+    
+        const dataToSave = {
+            data: formData,
+            timestamp: new Date().getTime() // Guardar la hora actual
+        };
+    
+        localStorage.setItem('formularioData', JSON.stringify(dataToSave));
+    }
+    
     function restoreFormState(form) {
-        let savedFormData = JSON.parse(localStorage.getItem('formularioData') || '{}');
+        let saved = localStorage.getItem('formularioData');
+        if (!saved) return;
+    
+        let { data: savedFormData, timestamp } = JSON.parse(saved);
+    
+        // Tiempo límite, por ejemplo, 24 horas (86400000 milisegundos)
+        const timeLimit = 86400000;
+        if (new Date().getTime() - timestamp > timeLimit) {
+            localStorage.removeItem('formularioData'); // Limpiar si es demasiado antiguo
+            return;
+        }
+    
         for (let [key, value] of Object.entries(savedFormData)) {
             let input = form.querySelector(`[name="${key}"]`);
             if (input && input.type !== 'file') {
@@ -244,6 +273,8 @@
             }
         }
     }
+    
+    
 
 document.addEventListener("DOMContentLoaded", function() {
     var contadorHorarios = 0;
@@ -1684,7 +1715,7 @@ document.addEventListener("DOMContentLoaded", function() {
         } */
         
         btnSiguiente.disabled = true;
-        localStorage.setItem('formularioData', JSON.stringify(formToJSON(formulario)));
+        saveFormState(formulario);
 
         seccionAnterior.style.display = 'none';
         actualizarCamposRequeridos(seccionAnterior, false);
