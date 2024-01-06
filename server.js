@@ -11,8 +11,8 @@ const app = express();
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: '13200125@ue.edu.pe',
-        pass: 'Jinkasama023'
+        user: 'alexanderxz96@gmail.com',
+        pass: 'hnqt wnnn ibre tymw!'
     }
 });
 // Define el middleware al principio
