@@ -12,7 +12,7 @@ const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: 'alexanderxz96@gmail.com',
-        pass: 'hnqt wnnn ibre tymw!'
+        pass: 'hnqt wnnn ibre tymw'
     }
 });
 // Define el middleware al principio
