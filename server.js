@@ -554,7 +554,7 @@ function crearResultado(nombre, valor) {
     return new Paragraph({
         children: [
             new TextRun({ text: nombre + ": ", bold: true, size: 32 }),
-            new TextRun({ text: ${resultadoTexto}\n, size: 32 }),
+            new TextRun({ text: `${resultadoTexto}\n`, size: 32 }),
         ],
     });
 }
