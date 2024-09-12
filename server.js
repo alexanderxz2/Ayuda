@@ -11,10 +11,10 @@ const app = express();
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'alexanderxz96@gmail.com',
-        pass: 'hnqt wnnn ibre tymw'
-    }
-});
+        user: process.env.EMAIL_USER,  // Variable de entorno para el usuario
+        pass: process.env.EMAIL_PASS   // Variable de entorno para la contraseña
+      }
+}); // Estoy usando render para poder guardar como variables de entorno el valor real de los email
 // Define el middleware al principio
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
@@ -554,7 +554,7 @@ function crearResultado(nombre, valor) {
     return new Paragraph({
         children: [
             new TextRun({ text: nombre + ": ", bold: true, size: 32 }),
-            new TextRun({ text: `${resultadoTexto}\n`, size: 32 }),
+            new TextRun({ text: ${resultadoTexto}\n, size: 32 }),
         ],
     });
 }
@@ -587,7 +587,7 @@ function crearSegundaEleccion(valor2) {
 function crearTerceraEleccion(valor3) {
     return new Paragraph({
         children: [
-            new TextRun({ text: `Tercera Elección: ${valor3}\n`, size: 28 }),
+            new TextRun({ text: Tercera Elección: ${valor3}\n, size: 28 }),
         ],
     });
 }
@@ -606,14 +606,14 @@ function crearSubtitulo(subtitulo) {
     });
 }
 function obtenerYProcesarResultados(categoria, req) {
-    const resultado = req.body[`resultado${categoria}`];
+    const resultado = req.body[resultado${categoria}];
     if (!resultado) return 'No Disponible';
     try {
         const resultadoParsed = JSON.parse(resultado);
         // Añadir un salto de línea entre 'Percentil' y 'Significado'
-        return `Percentil: ${resultadoParsed.percentil}\nSignificado: ${resultadoParsed.significado}`;
+        return Percentil: ${resultadoParsed.percentil}\nSignificado: ${resultadoParsed.significado};
     } catch (e) {
-        console.error(`Error al procesar resultado para ${categoria}:`, e);
+        console.error(Error al procesar resultado para ${categoria}:, e);
         return 'Error en el procesamiento';
     }
 }
@@ -621,7 +621,7 @@ function crearInformacionGenero(genero) {
     return new Paragraph({
         children: [
             new TextRun({ text: "Género seleccionado: ", bold: true, size: 32 }),
-            new TextRun({ text: `${genero}\n`, size: 32 }),
+            new TextRun({ text: ${genero}\n, size: 32 }),
         ],
     });
 }
@@ -912,7 +912,7 @@ app.post('/procesar', upload, (req, res) => {
         
         const codigoUsuario = obtenerValor('codigo', req.body) !== 'N/A' ? obtenerValor('codigo', req.body) : 'SinCodigo';
         const nombreUsuario = obtenerValor('nombre', req.body) !== 'N/A' ? obtenerValor('nombre', req.body) : 'SinNombre';
-        const nombreArchivo = `Resultados (${codigoUsuario}) ${nombreUsuario}.docx`;
+        const nombreArchivo = Resultados (${codigoUsuario}) ${nombreUsuario}.docx;
         const filename = path.join(__dirname, 'descargas', nombreArchivo);
 
         Packer.toBuffer(doc).then(buffer => {
@@ -946,9 +946,9 @@ app.post('/procesar', upload, (req, res) => {
             //myangali@esan.edu.pe
             const mailOptions = {
                 from: 'tuCorreo@gmail.com',
-                to: 'myangali@esan.edu.pe',
-                subject: `Prueba Orientación Vocacional ${nombreUsuario} ${codigoUsuario}`,
-                text: `Disponibilidad preferente del alumno: Días - ${textoDiasCita}; Horas - ${textoHorasCita}\nDentro del archivo de Word se encuentran la información, los resultados y las gráficas.`,
+                to: 'srossi@esan.edu.pe',
+                subject: Prueba Orientación Vocacional ${nombreUsuario} ${codigoUsuario},
+                text: Disponibilidad preferente del alumno: Días - ${textoDiasCita}; Horas - ${textoHorasCita}\nDentro del archivo de Word se encuentran la información, los resultados y las gráficas.,
                 attachments: [
                     {   // Adjunto del archivo DOCX
                         filename: path.basename(filename),
@@ -995,5 +995,5 @@ app.listen(process.env.PORT || 3000, () => {
 });
 app.use((err, req, res, next) => {
     console.error(err.stack); 
-    res.status(500).send('Algo salió mal!');
+    res.status(500).send('Algo salió mal!');
 });
